@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://osint-hub.dev/schemas/raw_tool.schema.json",
+  "title": "RawOSINTTool",
+  "description": "Schema for a raw (pre-enrichment) OSINT tool record produced by the ETL parser.",
+  "type": "object",
+  "required": ["id", "name", "url", "raw_description", "section", "source_file", "fetched_at"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "raw_description": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "source_file": {
+      "type": "string"
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_dead_link": {
+      "type": "boolean",
+      "description": "True if the source Markdown had the entry wrapped in ~~strikethrough~~, indicating the link may be dead."
+    }
+  },
+  "additionalProperties": false
+}

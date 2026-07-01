@@ -1,0 +1,32 @@
+[
+  {
+    "id": "whatsmyname",
+    "name": "WhatsMyName",
+    "url": "https://whatsmyname.app/",
+    "raw_description": "This tool allows you to enumerate usernames across many websites.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-01T00:00:00+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "offshoreleaks",
+    "name": "OffshoreLeaks",
+    "url": "https://offshoreleaks.icij.org/",
+    "raw_description": "Find out who's behind offshore companies, foundations, and trusts.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-01T00:00:00+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "dead-tool-example",
+    "name": "DeadTool",
+    "url": "https://example-dead.com/",
+    "raw_description": "An example tool that is no longer active.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-01T00:00:00+00:00",
+    "is_dead_link": true
+  }
+]

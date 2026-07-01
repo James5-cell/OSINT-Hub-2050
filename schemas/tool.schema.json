@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://osint-hub.dev/schemas/tool.schema.json",
+  "title": "OSINTTool",
+  "description": "Schema for a single enriched OSINT tool record in OSINT Hub. Schema version 1.1.0.",
+  "type": "object",
+  "required": ["id", "name", "url", "raw_description", "section", "source_file", "fetched_at"],
+  "properties": {
+
+    "id": {
+      "type": "string",
+      "description": "Stable slug derived from tool name, e.g. 'spiderfoot'.",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the tool as it appears in the source list.",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary URL of the tool (homepage or GitHub repo)."
+    },
+    "raw_description": {
+      "type": "string",
+      "description": "Original English description scraped from the Markdown source."
+    },
+    "section": {
+      "type": "string",
+      "description": "Source section heading the tool was extracted from, e.g. 'Basic OSINT'."
+    },
+    "source_file": {
+      "type": "string",
+      "description": "Relative path to the upstream Markdown file this record was parsed from."
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of when the source Markdown was fetched."
+    },
+    "is_dead_link": {
+      "type": "boolean",
+      "description": "True if the source Markdown had the entry wrapped in ~~strikethrough~~."
+    },
+
+    "description_zh_tw": {
+      "type": "string",
+      "description": "Traditional Chinese description of the tool. LLM-enriched."
+    },
+    "use_cases": {
+      "type": "array",
+      "description": "Concrete, actionable use-case scenarios in Traditional Chinese. LLM-enriched.",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "tags": {
+      "type": "array",
+      "description": "Taxonomy tags for structured navigation. LLM-enriched.",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "maxItems": 8,
+      "examples": [["username", "social-media", "passive-recon"]]
+    },
+    "pricing": {
+      "type": "string",
+      "description": "Pricing tier of the tool. LLM-enriched.",
+      "enum": ["free", "freemium", "paid", "open-source", "unknown"]
+    },
+    "difficulty": {
+      "type": "string",
+      "description": "Estimated skill level required to use the tool effectively. LLM-enriched.",
+      "enum": ["beginner", "intermediate", "advanced", "unknown"]
+    },
+    "target_types": {
+      "type": "array",
+      "description": "What the tool targets or investigates. LLM-enriched. (renamed from target_type in schema 1.1.0)",
+      "items": {
+        "type": "string",
+        "enum": [
+          "person", "email", "phone", "username", "domain", "ip",
+          "organization", "cryptocurrency", "image", "vehicle",
+          "social-media", "document", "network", "geolocation", "other"
+        ]
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "description": "Deployment/access platform(s) of the tool. (renamed from platform in schema 1.1.0)",
+      "items": {
+        "type": "string",
+        "enum": ["web", "cli", "api", "browser-extension", "desktop", "mobile", "other"]
+      }
+    },
+    "ethical_flag": {
+      "type": "boolean",
+      "description": "True if the LLM flagged this tool as ethically sensitive."
+    },
+    "ethics_note": {
+      "type": ["string", "null"],
+      "description": "Neutral-tone explanation of ethical concerns in Traditional Chinese, if ethical_flag is true."
+    },
+    "is_active": {
+      "type": "boolean",
+      "description": "Whether the tool URL is currently reachable (set by link-check scripts)."
+    },
+    "enriched_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of when LLM enrichment was last run. Null if not yet enriched."
+    },
+    "enrichment_model": {
+      "type": ["string", "null"],
+      "description": "LLM model identifier used for enrichment, e.g. 'gemini-2.0-flash'. Null if not yet enriched."
+    },
+
+    "raw_tool_id": {
+      "type": "string",
+      "description": "Provenance: id of the source RawTool record."
+    },
+    "raw_content_hash": {
+      "type": "string",
+      "description": "Provenance: SHA-256 of the raw tool content fingerprint (name|url|raw_description). Part of compound cache key.",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prompt_hash": {
+      "type": "string",
+      "description": "Provenance: SHA-256 of the enrichment prompt file content at time of enrichment. Part of compound cache key.",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Provenance: schema version string at time of enrichment. Part of compound cache key.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "source_repo": {
+      "type": "string",
+      "description": "Provenance: upstream GitHub repository URL (e.g. https://github.com/Astrosp/Awesome-OSINT-For-Everything)."
+    },
+    "source_section": {
+      "type": "string",
+      "description": "Provenance: section name within the upstream source (mirrors section field)."
+    },
+    "source_permalink": {
+      "type": "string",
+      "description": "Provenance: section-level anchor permalink to the upstream README. Used until line-level permalink is available."
+    },
+    "prompt_version": {
+      "type": ["string", "null"],
+      "description": "Provenance: human-readable version tag embedded in the prompt file header (e.g. '1.1.0')."
+    },
+
+    "review": {
+      "type": "object",
+      "description": "Manual review metadata. Managed by editors, not by automated enrichment.",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["ai_candidate", "manually_reviewed", "rejected"],
+          "description": "ai_candidate = produced by LLM, not yet reviewed. manually_reviewed = approved by a human. rejected = excluded from frontend."
+        },
+        "reviewed_by": {
+          "type": ["string", "null"],
+          "description": "Display name or GitHub handle of the reviewer."
+        },
+        "reviewed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "ISO-8601 timestamp of when review was completed."
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "description": "Free-text reviewer notes."
+        }
+      },
+      "additionalProperties": false
+    }
+
+  },
+  "additionalProperties": false
+}

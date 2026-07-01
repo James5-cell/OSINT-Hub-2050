@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a" />
+  
+  <!-- Center: Large version of the icon (120x120px) with white strokes + orange center -->
+  <g transform="translate(540, 180) scale(3.75)">
+    <circle cx="16" cy="16" r="13" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="65 17" stroke-linecap="round" transform="rotate(-15 16 16)" />
+    <circle cx="16" cy="16" r="2.5" fill="#f97316" />
+    <line x1="16" y1="16" x2="21" y2="11" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+    <line x1="16" y1="16" x2="11" y2="21" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+    <line x1="16" y1="16" x2="21.6" y2="20.2" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+  </g>
+  
+  <!-- Below icon: "OSINT Hub" in white, font-size 64, font-weight 700, font-family monospace -->
+  <text x="600" y="420" font-family="monospace" font-size="64" font-weight="700" fill="white" text-anchor="middle">OSINT Hub</text>
+  
+  <!-- Below that: tagline "Find the right OSINT tool for the job." in #a1a1aa, font-size 28 -->
+  <text x="600" y="480" font-family="monospace" font-size="28" fill="#a1a1aa" text-anchor="middle">Find the right OSINT tool for the job.</text>
+  
+  <!-- Bottom-left corner: "92 tools indexed · 18 categories · 10 workflows" in #52525b, font-size 18 -->
+  <text x="40" y="590" font-family="monospace" font-size="18" fill="#52525b">92 tools indexed · 18 categories · 10 workflows</text>
+  
+  <!-- Bottom-right corner: "postsoma-2050" in #52525b, font-size 18 -->
+  <text x="1160" y="590" font-family="monospace" font-size="18" fill="#52525b" text-anchor="end">postsoma-2050</text>
+</svg>

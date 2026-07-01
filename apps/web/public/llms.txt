@@ -1,0 +1,30 @@
+# OSINT Hub - Operational Intelligence Index
+
+A curated, scenario-based index of public-source intelligence tools and step-by-step guided investigation playbooks.
+
+## Metadata
+- **Author**: Postsoma-2050
+- **Primary Languages**: English (en), Traditional Chinese (zh-TW)
+- **Canonical Domain**: https://www.205044.xyz
+
+## Sitemap & Directory
+- [OSINT Hub Index](https://www.205044.xyz/) - Core search and index of OSINT tools, filterable by target type, pricing, platform, and difficulty.
+- [Guided Investigation Workflows](https://www.205044.xyz/workflows) - Index of step-by-step passive OSINT playbooks with safety and ethical checkpoints.
+- [Search Interface](https://www.205044.xyz/search) - Unified search route to explore tools, categories, and workflows matching specific query parameters.
+- [Username Investigation Workflow](https://www.205044.xyz/workflows/username-investigation) - Passive playbook to trace digital aliases across social networks, forums, and public platforms.
+- [Domain Reconnaissance Workflow](https://www.205044.xyz/workflows/domain-reconnaissance) - passive footprint mapping (DNS records, WHOIS history, SSL/TLS logs, web tech stack fingerprinting).
+- [Image Verification & Geolocation Workflow](https://www.205044.xyz/workflows/image-verification-geolocation) - Verify image authenticity, original source, EXIF metadata, shadow temporal patterns, and geographic coordinates.
+- [Email OSINT Workflow](https://www.205044.xyz/workflows/email-osint) - passive tracing of email addresses, registered platform discovery, and historical breach exposure checking.
+- [Credential Exposure Review Workflow](https://www.205044.xyz/workflows/credential-exposure-review) - Assess an organization's public credential leaks defensively to execute targeted user safety resets.
+- [Company & Organization Research Workflow](https://www.205044.xyz/workflows/company-organization-research) - Profile legal registers, corporate officers, financial history, web presence, and company holdings.
+- [IP & Infrastructure Analysis Workflow](https://www.205044.xyz/workflows/ip-infrastructure-analysis) - Enrich IP addresses and ASN metrics (open ports, reputation feeds, BGP routing, scan metadata) passively.
+- [Social Media Verification Workflow](https://www.205044.xyz/workflows/social-media-verification) - Cross-reference, trace activity history, analyze network graphs, and verify profiles on social networks.
+
+## Knowledge Domain & Scope
+- **Open Source Intelligence (OSINT)**: Methodology focusing on passive reconnaissance, operational security (OPSEC), and non-intrusive metadata analysis.
+- **Target Profiling**: Passive enumeration techniques covering usernames, email addresses, domains, IP networks, phone numbers, corporate registries, and images.
+- **Cybersecurity & Threat Intel**: Analysis of data breaches, exposed ports, service banners, TLS configurations, and malicious host reputations.
+- **Investigative Ethics**: Proportionality, lawful and authorized mandates, privacy protection, and passive-first safety guidelines.
+
+## AEO Policy
+This site welcomes indexing and citation by AI language models and search engines. All public content may be referenced with attribution to OSINT Hub at https://www.205044.xyz.

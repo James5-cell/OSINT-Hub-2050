@@ -1,0 +1,838 @@
+[
+  {
+    "id": "username-investigation",
+    "title": "Username Investigation",
+    "subtitle": "Trace a digital alias across platforms",
+    "summary": "Starting from a single username or alias, discover where it appears across social networks, forums, and public platforms. Build a cross-platform presence profile using only passive, publicly observable data.",
+    "starting_point": "A username or digital alias (e.g., handle123)",
+    "end_goal": "A verified cross-platform map linking the alias to specific profiles, stated interests, and potential real-name associations — assembled without contacting or alerting the subject.",
+    "difficulty": "beginner",
+    "estimated_time": "30–90 min",
+    "user_groups": [
+      "Journalists",
+      "CTF Competitors",
+      "Private Investigators",
+      "Security Researchers"
+    ],
+    "categories": ["Usernames", "Social Media", "People & Identity"],
+    "target_types": ["username", "person", "social-media"],
+    "signals": [
+      "Platform profiles",
+      "Profile photos",
+      "Biography text and links",
+      "Account creation dates",
+      "Cross-platform content patterns"
+    ],
+    "recommended_tools": ["WhatsMyName", "Sherlock", "Maltego", "Wayback Machine"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Prepare Your Investigation Environment",
+        "objective": "Isolate your personal identity before making any queries",
+        "what_to_do": "Use a dedicated browser profile or isolated environment with a VPN active. Avoid accounts or devices tied to your personal or organizational identity. Social platforms use algorithmic matching that can surface your real profile to the subject if you are logged in under your own identity while browsing theirs.",
+        "tools": ["VPN"],
+        "what_to_look_for": "Confirmation that your browsing IP and browser fingerprint are distinct from your usual environment. Use a dedicated 'clean' profile with no logged-in sessions.",
+        "pitfalls": "Skipping OPSEC preparation can cause platforms to suggest you as a contact to the subject via 'People You May Know' features, immediately exposing your investigation.",
+        "safety_notes": "Always verify your real IP address is masked before opening any target-facing URLs. Use a separate device or browser profile, not an incognito window of your regular browser."
+      },
+      {
+        "step_number": 2,
+        "title": "Automated Account Enumeration",
+        "objective": "Discover which platforms have registered accounts under this username",
+        "what_to_do": "Submit the username to aggregation tools that query hundreds of platforms simultaneously. Record all positive hits as investigative leads — not confirmed matches. Because people rely on habit for login names, a username used for gaming is often also present on professional and social platforms, revealing the subject's range of interests.",
+        "tools": ["WhatsMyName", "Sherlock"],
+        "what_to_look_for": "Positive hits across social media, gaming networks, professional platforms, and niche community forums. Note which platform categories appear most frequently to build a preliminary interest profile.",
+        "pitfalls": "Many platforms return a generic HTTP 200 OK status code even for non-existent usernames, generating false positives. Automated output is a starting point, not a final answer — every hit requires manual verification.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "Manual Verification and Cross-Pivoting",
+        "objective": "Confirm that discovered accounts belong to the same person and extract additional identifiers",
+        "what_to_do": "Visit each positive result and compare profile photos, biography text phrasing, linked accounts, and content style. Look for shared identifiers across platforms — the same avatar on a gaming forum and a GitHub account, for example, is strong corroborating evidence. Use archived snapshots to inspect historical account states that may have since been deleted.",
+        "tools": ["Wayback Machine", "Maltego"],
+        "what_to_look_for": "Shared visual assets, repeated biographical phrases, links to secondary platforms, references to locations, or cross-mentions from other accounts. Each confirmed shared indicator strengthens the attribution.",
+        "pitfalls": "Name collisions are a major risk — the same username is often used by multiple unrelated people. Never merge two profiles into a single attribution without at least two or three independently corroborating identifiers.",
+        "safety_notes": "Observe only publicly available data. Do not attempt to log in, contact, or engage with any accounts. Do not use password-recovery flows to extract contact information — this alerts the account holder and crosses into active interference."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "This workflow must remain strictly passive. Do not impersonate the subject, send messages, attempt to log in to any account, or use password recovery flows. All collected information must be limited to what is publicly observable without authentication. Aggregating detailed personal profiles of private individuals carries legal and ethical risks — ensure your mandate is lawful and proportionate.",
+      "badges": ["passive-first", "use-with-care"]
+    },
+    "related_tools": ["WhatsMyName", "Sherlock", "Maltego", "Wayback Machine"],
+    "related_categories": ["Usernames", "People & Identity", "Social Media"]
+  },
+  {
+    "id": "domain-reconnaissance",
+    "title": "Domain Reconnaissance",
+    "subtitle": "Map a domain's infrastructure through passive sources",
+    "summary": "Enumerate a domain's full technical footprint — subdomains, historical ownership, SSL certificates, and technology stack — using only third-party indexed data. No direct queries to the target's servers at any stage.",
+    "starting_point": "A domain name (e.g., example.com)",
+    "end_goal": "A map of the domain's subdomains, hosting infrastructure, certificate history, and technology stack assembled entirely from passive sources",
+    "difficulty": "intermediate",
+    "estimated_time": "1–2 hr",
+    "user_groups": [
+      "CTI Analysts",
+      "Authorized Penetration Testers",
+      "Bug Bounty Hunters",
+      "Security Researchers"
+    ],
+    "categories": ["Domains", "IPs & Infrastructure"],
+    "target_types": ["domain", "ip", "network"],
+    "signals": [
+      "WHOIS registration records",
+      "Subdomain DNS history",
+      "SSL/TLS certificate logs",
+      "HTTP response headers",
+      "Technology stack identifiers"
+    ],
+    "recommended_tools": [
+      "theHarvester",
+      "SpiderFoot",
+      "Censys",
+      "Recon-ng",
+      "Shodan"
+    ],
+    "risk_level": "medium",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "WHOIS and Historical Records",
+        "objective": "Identify domain ownership, registration history, and administrative contacts",
+        "what_to_do": "Query current and historical WHOIS databases for registration data. Modern privacy protection often redacts contact details, but pre-2018 records may still contain original registrant emails, phone numbers, and addresses. Focus on the change history — registrar changes, nameserver swaps, and privacy activation dates often tell a story about who controls the domain and when they began hiding it.",
+        "tools": ["SpiderFoot", "theHarvester"],
+        "what_to_look_for": "Pre-privacy-shield registrant emails, repeated nameserver patterns across domains, and registrar history. Unexplained directional changes in ownership or rapid privacy activation after a domain's initial registration period can indicate adversarial OPSEC.",
+        "pitfalls": "Modern WHOIS records often show only the privacy proxy. Never accept the current record at face value — always check historical aggregators for records predating GDPR privacy shields.",
+        "safety_notes": "Query only historical aggregators and passive databases. Do not attempt DNS zone transfers or direct nameserver enumeration queries, which constitute active reconnaissance."
+      },
+      {
+        "step_number": 2,
+        "title": "Passive Subdomain Enumeration",
+        "objective": "Discover the domain's wider digital perimeter without touching its infrastructure",
+        "what_to_do": "Use tools that aggregate previously crawled DNS data from search engine caches, DNS history services, and public indexing databases. The goal is to surface development, legacy, and staging environments that administrators may not realize are indexed. All queries go to third-party aggregators — not the target's nameservers.",
+        "tools": ["Recon-ng", "theHarvester", "SpiderFoot"],
+        "what_to_look_for": "Staging environments (stage., dev., beta.), legacy portals (old., legacy., vpn.), and internal-facing subdomains that reveal infrastructure layout. These often contain outdated software or relaxed access controls.",
+        "pitfalls": "Do not transition to active DNS brute-forcing. Sending direct enumeration queries to the target's nameservers generates immediate noise in their logs and can trigger security alerts.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "Certificate Transparency Log Analysis",
+        "objective": "Extract subdomains from public SSL/TLS certificate records",
+        "what_to_do": "All SSL certificates issued by public Certificate Authorities are required to be logged in public transparency registries. Query these logs to find subdomains that were never intended to be publicly indexed — including internal portals, staging servers, and admin panels embedded in certificate Subject Alternative Name (SAN) fields. Certificate presence in the log proves a subdomain existed; it does not confirm the subdomain is currently live.",
+        "tools": ["Censys"],
+        "what_to_look_for": "Subject Alternative Names containing sensitive or internal hostnames such as jira., sso., admin., or staging.. Certificate logs are often more comprehensive than DNS history and reveal infrastructure that has since been decommissioned.",
+        "pitfalls": "A certificate listed in a transparency log does not mean the subdomain is currently online or DNS-resolvable. Verify each discovery with a separate DNS lookup before treating it as an active asset.",
+        "safety_notes": "Certificate transparency logs are public record. All queries are read-only and do not contact the target organization's infrastructure."
+      },
+      {
+        "step_number": 4,
+        "title": "Technology Stack Fingerprinting",
+        "objective": "Identify the software frameworks and services running on discovered domains",
+        "what_to_do": "Analyze HTTP response headers, HTML source patterns, and third-party tag signatures on publicly accessible pages to identify the CMS, analytics tools, hosting provider, CDN, and JavaScript frameworks in use. Use passive analysis tools and browser extensions rather than active probing or vulnerability scanners.",
+        "tools": ["Shodan", "Censys"],
+        "what_to_look_for": "Specific CMS identifiers (WordPress, Drupal, Joomla), outdated plugin version numbers, third-party API keys inadvertently included in source code, and hosting provider signatures that indicate the organization's infrastructure dependencies.",
+        "pitfalls": "Web Application Firewalls deliberately spoof server headers to confuse scanners. Treat any header-based technology identification as an indicator to investigate further, not a confirmed fact.",
+        "safety_notes": "Remain within passive analysis. Do not submit forms, test inputs, run directory fuzzing, or execute vulnerability scanners against any discovered assets without explicit, documented written authorization."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "This workflow covers passive information gathering only. Executing active port scans, DNS brute-forcing, vulnerability tests, or any direct queries to infrastructure you do not own or have written authorization to test is illegal under the Computer Fraud and Abuse Act (CFAA) and equivalent international statutes. Passive reconnaissance findings must be handled confidentially and used only within the scope of an authorized engagement.",
+      "badges": ["passive-first", "requires-authorization", "use-with-care"]
+    },
+    "related_tools": ["theHarvester", "SpiderFoot", "Censys", "Recon-ng", "Shodan"],
+    "related_categories": ["Domains", "IPs & Infrastructure"]
+  },
+  {
+    "id": "image-verification-geolocation",
+    "title": "Image Verification & Geolocation",
+    "subtitle": "Verify the origin, authenticity, and location of an image",
+    "summary": "Determine where an image truly came from, whether it has been used before in a different context, and — when visual evidence permits — the precise geographic location it depicts. These techniques underpin conflict journalism verification, fact-checking, and open-source evidence collection.",
+    "starting_point": "A single image or video frame of unknown or disputed origin",
+    "end_goal": "Confirmation of the image's earliest known source, evidence of prior use or manipulation, and (where visual cues permit) the geographic coordinates of the location depicted",
+    "difficulty": "intermediate",
+    "estimated_time": "30 min – 3 hr",
+    "user_groups": [
+      "Investigative Journalists",
+      "Human Rights Researchers",
+      "Fact-Checkers",
+      "OSINT CTF Competitors"
+    ],
+    "categories": ["Images & Geolocation"],
+    "target_types": ["image", "geolocation"],
+    "signals": [
+      "EXIF metadata",
+      "Reverse image search results",
+      "Shadow angles and lengths",
+      "Architectural identifiers",
+      "Vegetation and signage",
+      "License plate formats"
+    ],
+    "recommended_tools": [
+      "Google Lens",
+      "Yandex Images",
+      "TinEye",
+      "ExifTool",
+      "SunCalc",
+      "Google Earth"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Reverse Search and Provenance",
+        "objective": "Find the earliest known occurrence of the image online",
+        "what_to_do": "Upload the image or its URL to multiple reverse image search engines. The goal is to find higher-resolution originals, earlier news articles featuring the same image, or stock photo databases that confirm the image predates the claim being investigated. Use at least two engines — Yandex frequently finds matches for Eastern European and Asian images that Google misses, and has stronger visual matching capabilities for faces and landscapes.",
+        "tools": ["Google Lens", "Yandex Images", "TinEye"],
+        "what_to_look_for": "Earlier publication dates on news articles, stock photo watermarks, related images showing the same scene from different angles, and evidence of AI generation artifacts such as unusual edge distortions or anatomical inconsistencies.",
+        "pitfalls": "Relying on a single search engine will miss a significant percentage of matches. Each engine indexes different portions of the web — run all three before concluding the image has no prior history.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "EXIF Metadata Extraction",
+        "objective": "Extract technical data embedded in the image file",
+        "what_to_do": "Download the original image file — not a screenshot — and analyze its embedded EXIF metadata. Original captures from cameras and some phones contain GPS coordinates, camera make and model, lens data, and timestamps. Note that virtually all major social media platforms automatically strip EXIF on upload to protect user privacy, so the absence of metadata is standard, not suspicious.",
+        "tools": ["ExifTool"],
+        "what_to_look_for": "GPS latitude and longitude, camera make and model, capture timestamp, and software tags indicating digital post-processing (e.g., the presence of an Adobe Photoshop save header on an image claimed to be an unedited photograph).",
+        "pitfalls": "Missing EXIF data is normal for any image downloaded from social media. Only treat absent metadata as significant if the file was received directly from a camera device or original upload source.",
+        "safety_notes": "Work with the original source file wherever possible. Screenshots capture only the visual pixels and lose all embedded metadata entirely."
+      },
+      {
+        "step_number": 3,
+        "title": "Shadow and Temporal Analysis",
+        "objective": "Estimate the time of day and hemisphere from shadow patterns in the image",
+        "what_to_do": "Identify a shadow with a visible reference object of known orientation in the frame — a building edge, a vertical post, or a person's shadow. Use a solar position calculator to simulate sun angle for the approximate location and claimed date. Cross-reference the shadow's direction and length against the simulated sun position to evaluate whether the claimed time and place are physically plausible.",
+        "tools": ["SunCalc"],
+        "what_to_look_for": "Contradictions between the shadow's direction and the claimed time or location. A shadow falling north when the sun should be south for the stated hemisphere and date is a strong indicator of misattribution or staging.",
+        "pitfalls": "Topographic obstructions, seasonal solar variation, and local cloud patterns all affect shadows. A single shadow inconsistency is not proof of fabrication on its own — corroborate with additional evidence from other steps.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "Geographic Cross-Referencing",
+        "objective": "Pinpoint the physical location depicted using environmental identifiers",
+        "what_to_do": "Catalog every identifiable environmental cue in the image: distinctive architecture, mountain or skyline profiles, road markings, vegetation species, visible text language and script, and license plate formats. Cross-reference each cue independently using satellite imagery and ground-level photography. Set a minimum threshold of three independently confirmed environmental matches before drawing a final geolocation conclusion.",
+        "tools": ["Google Earth", "Mapillary"],
+        "what_to_look_for": "Architectural style unique to a region, geographic landforms in the background, intersection geometry matching street map data, signage language and script that narrow the country or region, and vegetation consistent with specific climate zones.",
+        "pitfalls": "A single environmental indicator is never sufficient. Spanish-language text alone does not confirm Spain — it could be any of dozens of Spanish-speaking countries or a tourist district anywhere in the world. Require multiple independent corroborating indicators.",
+        "safety_notes": "Geolocation findings must never be published in ways that expose the real-time or habitual location of a private individual, a journalist operating undercover, or a source in a conflict zone. The physical safety consequences can be severe."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Image geolocation is dual-use by nature. The same techniques that verify journalism and document human rights abuses can be used to track, harass, or dox private individuals. Never apply these methods to establish the real-time or routine location of a private person. Before publishing any geolocation result, evaluate the physical safety implications for everyone depicted or identifiable in the imagery.",
+      "badges": ["passive-first", "use-with-care"]
+    },
+    "related_tools": ["Google Lens", "Yandex Images", "TinEye", "ExifTool", "SunCalc", "Google Earth", "Mapillary"],
+    "related_categories": ["Images & Geolocation"]
+  },
+  {
+    "id": "email-osint",
+    "title": "Email OSINT",
+    "subtitle": "Trace an email address to its owner and linked accounts",
+    "summary": "Starting from an email address, discover the platforms it is registered on, assess its breach exposure, and trace it back to a real identity through public records and organizational data. Passive-first — no contact with the subject at any stage.",
+    "starting_point": "An email address (e.g., target@example.com)",
+    "end_goal": "A map of platforms linked to the email, breach exposure summary, inferred identity clues, and organizational affiliation — assembled entirely from public and passively collected data.",
+    "difficulty": "beginner",
+    "estimated_time": "30–60 min",
+    "user_groups": [
+      "Journalists",
+      "Security Researchers",
+      "HR and Due Diligence Professionals",
+      "Counter-fraud Investigators"
+    ],
+    "categories": ["Emails", "People & Identity", "Leaks & Breaches"],
+    "target_types": ["email", "person", "social-media"],
+    "signals": [
+      "Platform registration matches",
+      "Breach incident names and dates",
+      "Organizational domain patterns",
+      "Linked usernames or display names",
+      "Associated phone numbers from breach records"
+    ],
+    "recommended_tools": ["Holehe", "Have I Been Pwned", "Hunter.io", "Phonebook.cz", "IntelligenceX"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Validate the Email Address Format and Domain",
+        "objective": "Confirm the email is syntactically valid and the domain is active before investing further effort",
+        "what_to_do": "Check that the email follows standard format rules. Look up the domain using a WHOIS tool to confirm it is registered and active. Check if the domain has functioning MX records, which confirms it can receive mail. A non-existent domain immediately narrows your working hypothesis.",
+        "tools": ["ViewDNS.info"],
+        "what_to_look_for": "An active, registered domain with valid MX records. Note if the domain belongs to a free provider (Gmail, Yahoo) or a corporate/custom domain — the latter may allow organizational pivoting.",
+        "pitfalls": "Disposable email domains (guerrillamail, mailinator variants) are frequently used by bad actors and may return no useful intelligence. Flag these early and adjust expectations.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "Enumerate Registered Platforms",
+        "objective": "Discover which online services are registered to this email address",
+        "what_to_do": "Run the email through Holehe to check which of 120+ platforms have an account registered to it. This works by testing registration flows passively — no accounts are created. Record all positive hits as investigative leads. For a corporate email, also query Hunter.io or Phonebook.cz to understand its organizational context.",
+        "tools": ["Holehe", "Hunter.io", "Phonebook.cz"],
+        "what_to_look_for": "Platform hits that reveal interests, professional affiliations, or geographic hints. Corporate domain matches in Hunter.io can reveal the email's role within an organization. A cluster of developer-focused platform hits (GitHub, GitLab, Stack Overflow) is a strong signal about the subject's professional background.",
+        "pitfalls": "Some platforms return false positives. Manually verify each hit by visiting the profile URL returned in results. Do not assume all positive results belong to the same person without cross-corroboration.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "Check Breach Exposure",
+        "objective": "Determine the email address's historical exposure in known data breach events",
+        "what_to_do": "Query Have I Been Pwned for a list of breach events the address appears in. Also check Breach Directory for free partial previews of breach data. If working on a paid engagement, DeHashed or LeakCheck can provide more detailed breach records. Document breach names, dates, and what categories of data were exposed.",
+        "tools": ["Have I Been Pwned", "Breach Directory"],
+        "what_to_look_for": "The number and recency of breaches, which platforms were affected, and what categories of data were exposed (password, address, phone). Multiple old breaches indicate a long-standing active email identity. A single recent breach may suggest a newly created account.",
+        "pitfalls": "Breach exposure confirms the email exists and has been active — it does not confirm current account control. Old breach entries may relate to accounts the subject no longer uses.",
+        "safety_notes": "Never attempt to log in using any credentials found in breach datasets, even to 'verify' they work. This is unauthorized access regardless of how the credentials were obtained."
+      },
+      {
+        "step_number": 4,
+        "title": "Pivot to Identity via Linked Usernames",
+        "objective": "Expand from the email address to linked usernames and real-identity clues",
+        "what_to_do": "Review the display names, usernames, and linked profiles discovered in previous steps. If a username was found on any platform (e.g., the email prefix is 'jsmith_dev'), run it through Sherlock or Maigret to find additional accounts. Cross-reference any real name or location clues across multiple platforms to build a corroborated identity picture.",
+        "tools": ["Sherlock", "Maigret"],
+        "what_to_look_for": "Consistent usernames or display names across unrelated platforms. A real name appearing in a GitHub bio that matches a LinkedIn profile is strong corroborating evidence. Look for location clues in bios, timezone patterns in post timing, or language use.",
+        "pitfalls": "Email prefixes are not always usernames. Common name prefixes (john, admin, info) will produce massive false-positive results in username searches — validate carefully before attributing.",
+        "safety_notes": "All pivoting must remain passive. Do not contact, message, follow, or interact with any accounts discovered. Do not use password-reset flows to probe account existence."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Email address investigation can quickly surface sensitive personal data including breach passwords, phone numbers, and home addresses. This workflow must remain strictly passive — no contact, no account interaction, no credential testing. Ensure your mandate is lawful and that you have a legitimate purpose before investigating a private individual's email. Corporate email investigations should be explicitly authorized by the organization.",
+      "badges": ["passive-first", "use-with-care"]
+    },
+    "related_tools": ["Holehe", "Have I Been Pwned", "Hunter.io", "Phonebook.cz", "IntelligenceX", "Sherlock", "Maigret", "DeHashed"],
+    "related_categories": ["Emails", "People & Identity", "Leaks & Breaches"]
+  },
+  {
+    "id": "credential-exposure-review",
+    "title": "Credential Exposure Review",
+    "subtitle": "Assess an organization's credential exposure across breach datasets",
+    "summary": "Systematically assess how many of an organization's email accounts and credentials have been exposed in publicly known data breaches. Used for defensive security assessments, executive risk briefings, and proactive user notification programs.",
+    "starting_point": "An organization's email domain (e.g., @company.com)",
+    "end_goal": "A prioritized list of compromised employee accounts with their breach sources, enabling targeted password reset, security awareness messaging, and executive risk reporting.",
+    "difficulty": "beginner",
+    "estimated_time": "1–2 hr",
+    "user_groups": [
+      "Security Teams",
+      "IT Administrators",
+      "Risk and Compliance Officers",
+      "Penetration Testers (with authorization)"
+    ],
+    "categories": ["Leaks & Breaches", "Emails"],
+    "target_types": ["email", "organization"],
+    "signals": [
+      "Number of breached email accounts",
+      "Breach incident names and dates",
+      "Password exposure categories",
+      "Repeat breach appearances",
+      "High-value account exposure (executives, IT staff)"
+    ],
+    "recommended_tools": ["Have I Been Pwned", "LeakCheck.io", "Breach Directory", "Phonebook.cz"],
+    "risk_level": "medium",
+    "public_safe": true,
+    "requires_authorization": true,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Enumerate Corporate Email Addresses",
+        "objective": "Build a list of email addresses to check from public sources",
+        "what_to_do": "Use Phonebook.cz and Hunter.io to enumerate email addresses publicly associated with the target domain. This produces a list of addresses that have appeared in public data (job postings, conference papers, public profiles) — without querying internal systems. Supplement with any email addresses already known from previous investigation steps.",
+        "tools": ["Phonebook.cz", "Hunter.io"],
+        "what_to_look_for": "Email addresses belonging to IT, security, executive, and finance staff are highest priority. Note the organizational email format pattern (first.last vs. f.last) for later enumeration validation.",
+        "pitfalls": "Public enumeration only captures email addresses that have appeared publicly. Many internal-only addresses will not appear. This list is a starting point, not a complete organizational directory.",
+        "safety_notes": "Only enumerate and assess email addresses for organizations you are explicitly authorized to assess. Bulk querying breach services against competitor or target organizations without authorization may violate terms of service and local laws."
+      },
+      {
+        "step_number": 2,
+        "title": "Check Each Address Against Breach Databases",
+        "objective": "Identify which email accounts have appeared in known data breach incidents",
+        "what_to_do": "Query each discovered email address against Have I Been Pwned and Breach Directory. For more detail on specific breach contents, use LeakCheck.io (which provides breach metadata and partial password previews). Record the breach name, date, and data categories exposed for each hit. Prioritize high-privilege accounts (IT, executives, finance) for immediate attention.",
+        "tools": ["Have I Been Pwned", "Breach Directory", "LeakCheck.io"],
+        "what_to_look_for": "Accounts with multiple breach appearances, recent breaches (within the past 12 months), or breaches involving plaintext password exposure. Executive and IT accounts appearing in any breach should be flagged as critical priority regardless of breach age.",
+        "pitfalls": "Breach database coverage varies — HIBP focuses on verified large breaches while other services index different datasets. No single service provides complete coverage. Use at least two services for completeness.",
+        "safety_notes": "Document what data you view and why. Avoid storing raw breach records — you only need the breach source and exposure category for a defensive assessment, not the actual exposed credentials."
+      },
+      {
+        "step_number": 3,
+        "title": "Prioritize and Report",
+        "objective": "Produce an actionable risk summary for the organization",
+        "what_to_do": "Aggregate findings into a prioritized report: count of total accounts checked, count of breached accounts, breakdown by breach recency, list of high-priority accounts (IT/exec), and recommended remediation actions. Focus on actionable outcomes: which accounts need immediate password resets, which users need security awareness messaging, and whether any breach credentials should be checked against current internal authentication systems by the IT team.",
+        "tools": [],
+        "what_to_look_for": "Patterns such as a large proportion of staff in a single breach event (suggesting a third-party SaaS compromise), or multiple staff accounts in dark-web credential markets (suggesting a longer-standing exposure).",
+        "pitfalls": "Do not share the full breach record list beyond authorized security personnel. Breach data is sensitive and its distribution must be controlled.",
+        "safety_notes": "Breach data must be handled as confidential. Do not send lists of compromised accounts over unencrypted channels. Brief executives on risk level without exposing individual employee credential details to non-security staff."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "This workflow must only be performed against organizations where you have explicit written authorization. Querying breach databases at scale without permission may violate terms of service. Never use retrieved credentials to test, log into, or access any system — discovery of a credential is not authorization to use it. Treat all breach data as highly confidential and restrict its distribution to authorized security personnel only.",
+      "badges": ["requires-authorization", "use-with-care"]
+    },
+    "related_tools": ["Have I Been Pwned", "LeakCheck.io", "Breach Directory", "DeHashed", "IntelligenceX", "Phonebook.cz", "Hunter.io"],
+    "related_categories": ["Leaks & Breaches", "Emails"]
+  },
+  {
+    "id": "company-organization-research",
+    "title": "Company & Organization Research",
+    "subtitle": "Build a complete intelligence profile of a corporate entity",
+    "summary": "Construct a comprehensive profile of a target organization using public registration records, business intelligence databases, web presence analysis, and employee-sourced signals. Designed for due diligence, investigative journalism, and authorized competitive intelligence.",
+    "starting_point": "A company name, domain, or registration number",
+    "end_goal": "A structured profile covering legal registration, key personnel, financial footprint, technology stack, domain infrastructure, and organizational relationships — assembled entirely from open sources.",
+    "difficulty": "beginner",
+    "estimated_time": "1–3 hr",
+    "user_groups": [
+      "Journalists",
+      "Due Diligence Analysts",
+      "Competitive Intelligence Professionals",
+      "Compliance Officers"
+    ],
+    "categories": ["Companies", "Domains", "People & Identity"],
+    "target_types": ["organization", "domain", "person"],
+    "signals": [
+      "Legal registration details and status",
+      "Director names and associated companies",
+      "Funding rounds and investor relationships",
+      "Web technology stack",
+      "Employee count and department structure",
+      "Domain registration and certificate history"
+    ],
+    "recommended_tools": ["OpenCorporates", "Crunchbase", "Companies House", "LinkedIn", "BuiltWith", "Maltego"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Establish Legal Identity via Company Registries",
+        "objective": "Confirm the organization's official legal status, jurisdiction, and registration details",
+        "what_to_do": "Search OpenCorporates to find all registration records for the company name across global jurisdictions. If the organization is UK-based, use Companies House for authoritative official filings. Note the registered address, company number, formation date, and current status. Download any available filings (accounts, confirmation statements) for financial and structural clues.",
+        "tools": ["OpenCorporates", "Companies House"],
+        "what_to_look_for": "Multiple registrations under similar names across different jurisdictions can indicate a complex corporate structure or shell company activity. Note any recent address changes, director additions, or status changes (e.g., 'in administration'). The registered address may differ substantially from the operational address — both are useful investigative data points.",
+        "pitfalls": "Company names are not globally unique. Verify you have the correct entity by cross-referencing the registration number, address, and incorporation date against other sources.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "Map Key Personnel and Corporate Relationships",
+        "objective": "Identify decision-makers, directors, and their connections to other entities",
+        "what_to_do": "Review director lists from company registry data and cross-reference on LinkedIn to confirm identities and professional backgrounds. Use Crunchbase to discover funding history, investors, and strategic partners. In Companies House, trace directors to other companies they are or were affiliated with — this reveals network connections that may not be publicly disclosed elsewhere.",
+        "tools": ["LinkedIn", "Crunchbase", "OpenCorporates"],
+        "what_to_look_for": "Directors who are also officers of other companies — particularly offshore or recently dissolved entities — are a key signal in fraud and money-laundering investigations. Note any investors or board members who appear in multiple organizations across your investigation scope.",
+        "pitfalls": "LinkedIn profiles may be outdated or aspirational. Always cross-reference claimed roles against official registry records. Do not conflate two people with similar names — verify with multiple independent identifiers (email domain, photo, previous employer).",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "Analyze Web Presence and Technology Stack",
+        "objective": "Understand the organization's digital infrastructure and public-facing footprint",
+        "what_to_do": "Profile the company's primary domain using BuiltWith to identify the technology stack — CMS, analytics, email service provider, and CDN. Use Wayback Machine to review how the website has evolved. Run DNSdumpster or SecurityTrails to map subdomains and mail infrastructure. Look for IP ranges using BGP.he.net for large organizations.",
+        "tools": ["BuiltWith", "Wayback Machine", "DNSdumpster", "SecurityTrails"],
+        "what_to_look_for": "Technology choices can reveal the organization's scale, budget, and security maturity. A company claiming enterprise status but using free-tier tools is a discrepancy worth noting. Wayback Machine historical snapshots can reveal previous products, claims, or personnel that have since been scrubbed.",
+        "pitfalls": "A company may use different domains for different purposes. Check for associated domains in certificate transparency logs via Censys or SecurityTrails — these often surface subsidiary brands or product domains.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "Cross-Reference and Synthesize",
+        "objective": "Consolidate findings into a structured organizational profile",
+        "what_to_do": "Bring together registry data, personnel findings, financial information, and infrastructure data into a unified profile. Identify discrepancies between official records and public marketing claims. Note any unresolved questions that require additional research. If using Maltego, use it to visualize entity relationships across the gathered data.",
+        "tools": ["Maltego"],
+        "what_to_look_for": "Inconsistencies between claimed and registered details, gaps in financial disclosure, sudden changes in leadership or ownership, and offshore entities that obscure beneficial ownership.",
+        "pitfalls": "Publicly available information represents a snapshot in time. Company situations change; verify that key facts (registered address, current directors) reflect the current state by checking the most recent filings.",
+        "safety_notes": null
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Corporate OSINT using public registry data is generally lawful, but the analysis of individual directors and employees requires proportionality. Do not publish unverified allegations about individuals based solely on corporate connections. Ensure your investigation is proportionate to a genuine public interest, legal mandate, or authorized due diligence scope. Treat gathered personal data about individuals within organizations with care.",
+      "badges": ["passive-first"]
+    },
+    "related_tools": ["OpenCorporates", "Crunchbase", "Companies House", "LinkedIn", "BuiltWith", "Maltego", "SecurityTrails", "Wayback Machine"],
+    "related_categories": ["Companies & Organizations", "Domains", "People & Identity"]
+  },
+  {
+    "id": "ip-infrastructure-analysis",
+    "title": "IP & Infrastructure Analysis",
+    "subtitle": "Map a target's network footprint from passive public sources",
+    "summary": "Investigate an IP address or ASN to understand who operates it, what services are exposed, and whether it has been associated with malicious activity — all without sending a single packet to the target. Useful for threat investigation, incident response enrichment, and authorized exposure assessment.",
+    "starting_point": "An IP address, ASN number, or hosting provider name",
+    "end_goal": "A complete passive picture of the IP address: owner, ASN, geolocation, exposed services, historical associations, and threat reputation — with no direct contact with the target infrastructure.",
+    "difficulty": "intermediate",
+    "estimated_time": "45–90 min",
+    "user_groups": [
+      "CTI Analysts",
+      "Incident Responders",
+      "Authorized Penetration Testers",
+      "Network Security Engineers"
+    ],
+    "categories": ["IPs & Infrastructure", "Threat Intelligence"],
+    "target_types": ["ip", "network", "domain"],
+    "signals": [
+      "ASN and hosting provider identity",
+      "Geolocation and organization attribution",
+      "Exposed services and open ports",
+      "TLS certificate associations",
+      "Threat reputation and scanner classifications",
+      "Historical DNS resolutions"
+    ],
+    "recommended_tools": ["Shodan", "Censys", "IPinfo", "GreyNoise", "AbuseIPDB", "VirusTotal"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Initial IP Enrichment",
+        "objective": "Establish basic ownership and geolocation context for the IP address",
+        "what_to_do": "Query IPinfo for ASN, geolocation, ISP, and whether the IP is a known VPN, proxy, or datacenter. Cross-reference with BGP.he.net to see all IP prefixes announced by the same ASN. This immediately establishes whether the IP is a commercial cloud provider (AWS, Azure), a VPS host, residential ISP, or known anonymization service.",
+        "tools": ["IPinfo", "BGP.he.net"],
+        "what_to_look_for": "Datacenter-hosted IPs are more commonly used by automated activity, scanners, and infrastructure attacks. Residential IPs may indicate compromised endpoints or legitimate end users. An IP in a high-risk jurisdiction or on a bulletproof hosting provider is a significant intelligence indicator.",
+        "pitfalls": "IP geolocation is approximate. Do not assert a specific city or precise location based on IP geolocation alone — it may be off by hundreds of kilometers, especially for VPN exit nodes and CDN IPs.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "Enumerate Exposed Services",
+        "objective": "Discover what services the IP is hosting using third-party scan data",
+        "what_to_do": "Search Shodan and Censys for all indexed data on the target IP. These platforms perform their own continuous internet-wide scans, so this step is entirely passive — you are querying their databases, not scanning the target. Note open ports, running services, service banners, and any TLS certificates associated with the IP. Review the Shodan 'All Results' tab for historical data.",
+        "tools": ["Shodan", "Censys"],
+        "what_to_look_for": "Unexpected open ports (RDP 3389, SMB 445, Telnet 23) on production IPs indicate potential security issues. TLS certificates can reveal additional domain names hosted on the same IP — these are pivoting opportunities. Note software versions in service banners that may indicate unpatched systems.",
+        "pitfalls": "Shodan and Censys scan data has a timestamp — always check when the data was last updated, as services change. A port that was open six months ago may be closed now. Use multiple tools to compare recency.",
+        "safety_notes": "Querying Shodan and Censys is passive intelligence gathering — you are accessing their database, not scanning the target. Do not follow this step by actively scanning the target IP unless you have explicit written authorization."
+      },
+      {
+        "step_number": 3,
+        "title": "Threat Reputation Assessment",
+        "objective": "Determine whether the IP has been associated with malicious activity",
+        "what_to_do": "Check GreyNoise to classify whether the IP is a known internet scanner (benign or malicious). Query AbuseIPDB for community-reported abuse history and confidence score. Run the IP through VirusTotal to see if any threat intelligence vendors have flagged it. Consult AlienVault OTX for associated attack pulses and community threat tags.",
+        "tools": ["GreyNoise", "AbuseIPDB", "VirusTotal", "AlienVault OTX"],
+        "what_to_look_for": "A high AbuseIPDB confidence score combined with GreyNoise malicious classification is strong evidence of active bad actor infrastructure. VirusTotal community tags (C2, phishing, botnet) provide additional context. Note the recency of threat reports — old reports on a dynamic IP may not reflect current usage.",
+        "pitfalls": "A clean reputation does not mean the IP is safe or unrelated to malicious activity. Freshly registered infrastructure or newly provisioned IPs will have no threat history yet. Combine reputation data with service and registration context for a complete picture.",
+        "safety_notes": null
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Passive IP investigation using third-party scan data is lawful public-source research. However, pivoting from IP intelligence to active reconnaissance, port scanning, or exploitation is a separate matter requiring explicit authorization. Do not use Shodan or Censys findings as justification for unauthorized access. If investigation reveals compromised third-party infrastructure, follow responsible disclosure norms.",
+      "badges": ["passive-first"]
+    },
+    "related_tools": ["Shodan", "Censys", "IPinfo", "GreyNoise", "AbuseIPDB", "VirusTotal", "AlienVault OTX", "BGP.he.net"],
+    "related_categories": ["IPs & Infrastructure", "Threat Intelligence"]
+  },
+  {
+    "id": "social-media-verification",
+    "title": "Social Media Account Verification",
+    "subtitle": "Verify authenticity, identity, and context of a social media account",
+    "summary": "Evaluate whether a social media account is authentic, who likely operates it, and whether its stated context is credible. Used in journalism fact-checking, counter-disinformation work, and due diligence on public-facing sources. Strictly observational — no account interaction.",
+    "starting_point": "A social media profile URL, username, or display name",
+    "end_goal": "A verified assessment of account authenticity, identity attribution confidence, behavioral patterns, and whether the account's claims and context are consistent with observable evidence.",
+    "difficulty": "beginner",
+    "estimated_time": "30–60 min",
+    "user_groups": [
+      "Journalists and Fact-Checkers",
+      "Disinformation Researchers",
+      "Social Media Investigators",
+      "HR and Background Check Professionals"
+    ],
+    "categories": ["Social Media", "People & Identity"],
+    "target_types": ["social-media", "person", "username"],
+    "signals": [
+      "Account creation date and early activity",
+      "Follower-to-following ratio and growth patterns",
+      "Profile photo provenance",
+      "Cross-platform presence consistency",
+      "Content language and topic consistency",
+      "Engagement authenticity"
+    ],
+    "recommended_tools": ["WhatsMyName", "Sherlock", "Social Blade", "TinEye", "Yandex Images", "Nitter"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Observe Account Surface Signals",
+        "objective": "Collect baseline account metadata without interacting with the account",
+        "what_to_do": "Use Nitter (for Twitter/X) or browse the profile directly in an isolated, logged-out browser. Note the account creation date, follower/following counts, bio text, linked URLs, location, and profile photo. Record the total post count and assess whether it is proportionate to the account age. Screenshot key details for your investigation record.",
+        "tools": ["Nitter"],
+        "what_to_look_for": "Very new accounts posting high volumes of politically or emotionally charged content are a disinformation red flag. An account created during a specific news event may have been purpose-built for that narrative. Verify any links in the bio — they may lead to additional identity information or reveal the operator's other projects.",
+        "pitfalls": "Account creation dates can sometimes be obscured on certain platforms. Old account age does not guarantee authenticity — accounts are frequently purchased or re-purposed after being dormant.",
+        "safety_notes": "Always use an isolated browser and avoid logging into your personal account while browsing investigation targets. Logged-in browsing can trigger algorithmic recommendations that surface your profile to the subject."
+      },
+      {
+        "step_number": 2,
+        "title": "Analyze Growth Patterns and Engagement",
+        "objective": "Identify artificial follower growth or engagement manipulation",
+        "what_to_do": "For YouTube, Twitch, or Twitter/X accounts, use Social Blade to review historical follower count charts. Look for sudden vertical growth spikes that are inconsistent with organic audience building. Compare the follower count against actual engagement rates (likes, replies, shares per post) — a large following with near-zero engagement is a strong bot-follower indicator.",
+        "tools": ["Social Blade"],
+        "what_to_look_for": "Spike-and-plateau follower growth patterns are characteristic of purchased follower campaigns. High follower counts with very low engagement ratios (under 0.5% for large accounts) suggest artificial inflation. Simultaneous follower drops on specific dates may correlate with platform bot-purge events.",
+        "pitfalls": "Engagement rates vary significantly by platform, content type, and account size. Large accounts (1M+) typically have lower percentage engagement than small ones. Context matters — a follower spike following a viral moment is organic, not artificial.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "Reverse Image Search the Profile Photo",
+        "objective": "Verify whether the profile photo is original or stolen from another source",
+        "what_to_do": "Download the profile photo and run it through TinEye, Yandex Images, and Google Lens. These three engines have different image indexes and will surface matches the others miss. Note where the image appears — stock photo libraries, earlier accounts on other platforms, or news photos of unrelated individuals. If PimEyes is available, it can perform a face-match search to find where this face appears elsewhere online.",
+        "tools": ["TinEye", "Yandex Images"],
+        "what_to_look_for": "A profile photo that appears on a stock photo site or is attributed to a completely different person in a news article is a definitive inauthenticity signal. Finding the same photo on an older account with a different name suggests the photo was reused from a previous sock puppet identity.",
+        "pitfalls": "If no matches are found, this does not confirm the photo is original — it may simply not have been indexed. AI-generated face photos will not match any real-world source and cannot be reverse-searched. Consider using AI-detection tools for photorealistic but unidentifiable profile photos.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "Cross-Platform Identity Corroboration",
+        "objective": "Verify whether the account's claimed identity is consistent across platforms",
+        "what_to_do": "Run the username through WhatsMyName, Sherlock, or Maigret to find other accounts using the same handle. Compare profile photos, bios, stated locations, and content across platforms. Consistent use of the same username, photo, and biography across multiple independent platforms is strong evidence of a genuine long-standing identity. Inconsistencies — different photos, contradictory biographical claims — suggest impersonation or a newly constructed identity.",
+        "tools": ["WhatsMyName", "Sherlock"],
+        "what_to_look_for": "Cross-platform consistency is the gold standard for identity verification. Look for the same username on GitHub (which shows real software contributions), LinkedIn (professional history), and niche forums — these are harder to fake than mainstream social accounts. A name appearing in academic papers, court records, or news archives tied to the stated identity is the strongest corroborating evidence.",
+        "pitfalls": "Username collisions (different people using the same handle) are common. Never merge two profiles into a single attribution without at least two independently corroborating identifiers beyond the username alone.",
+        "safety_notes": "Do not follow, like, share, or interact with any account under investigation. Do not send friend requests or messages in any form. Observation must remain strictly one-way."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Social media verification should be proportionate to a genuine journalistic, security, or public-interest purpose. Do not apply these techniques to verify the identity of private individuals for personal purposes. Aggregating detailed behavioral profiles of social media users — even from public posts — can enable harassment, stalking, and reputational harm. Publish only verified conclusions, not investigative speculation.",
+      "badges": ["passive-first", "use-with-care"]
+    },
+    "related_tools": ["WhatsMyName", "Sherlock", "Social Blade", "TinEye", "Yandex Images", "Nitter", "Maigret"],
+    "related_categories": ["Social Media", "People & Identity"]
+  },
+  {
+    "id": "public-records-research",
+    "title": "Public Records Research",
+    "subtitle": "Navigate government databases and official filings",
+    "summary": "Starting from a company name, individual, or legal matter, locate and cross-reference publicly available government records — court filings, corporate registrations, securities disclosures, and sanctions data — to establish a factual record without relying on secondary sources.",
+    "starting_point": "A company name, individual name, organization, or legal case reference",
+    "end_goal": "A structured record of verified public filings, court history, regulatory actions, and sanctions data linked to the subject — drawn only from official primary sources.",
+    "difficulty": "beginner",
+    "estimated_time": "45–120 min",
+    "user_groups": [
+      "Journalists",
+      "Due Diligence Analysts",
+      "Lawyers and Paralegals",
+      "Compliance Professionals"
+    ],
+    "categories": ["Government & Public Records", "Companies & Organizations"],
+    "target_types": ["organization", "person", "document"],
+    "signals": [
+      "Corporate registration details",
+      "Beneficial ownership filings",
+      "Court case numbers and parties",
+      "Sanctions list entries",
+      "SEC disclosures and insider trades",
+      "FOIA-released documents"
+    ],
+    "recommended_tools": ["SEC EDGAR", "PACER", "OpenCorporates", "OpenSanctions", "ICIJ Offshore Leaks Database", "Judyrecords"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Establish Subject Identity",
+        "objective": "Confirm the exact registered legal name and jurisdiction before querying databases",
+        "what_to_do": "Before searching databases, confirm the exact legal name and jurisdiction of your subject. Companies are often registered under names that differ from their trading name. Search OpenCorporates for the registered entity and note the jurisdiction, registration number, and registered address. These identifiers are more reliable than trading names for cross-referencing other databases.",
+        "tools": ["OpenCorporates", "Companies House"],
+        "what_to_look_for": "The registered legal name, incorporation number, registered jurisdiction, and current status (active/dissolved). Also note any related entities — subsidiaries, parent companies, or entities at the same address.",
+        "pitfalls": "Searching under a trading name or informal name will miss records. Companies frequently register under opaque holding structures. Always cross-check the exact legal name from the primary registration source.",
+        "safety_notes": "All sources in this step are official public registries. No authorization is required to access them."
+      },
+      {
+        "step_number": 2,
+        "title": "Sanctions and Adverse Media Screening",
+        "objective": "Check whether the subject appears on any global sanctions or watchlists",
+        "what_to_do": "Search OpenSanctions and the OFAC SDN list for the subject's confirmed legal name and any known aliases. OpenSanctions aggregates over 100 global sanctions lists, PEP registries, and criminal watchlists. Note any exact matches and record the source list and date. Cross-reference with the ICIJ Offshore Leaks Database for offshore entity exposure.",
+        "tools": ["OpenSanctions", "ICIJ Offshore Leaks Database"],
+        "what_to_look_for": "Exact name matches on OFAC, UN, EU, or Interpol lists. PEP designations indicating political exposure. ICIJ database links to offshore entities in Panama Papers, Pandora Papers, or similar leaks.",
+        "pitfalls": "Name-only screening produces false positives with common names. Always corroborate a sanctions match with additional identifiers — date of birth, jurisdiction, or registration number — before drawing conclusions.",
+        "safety_notes": "Sanctions screening data is drawn from official government sources. Conclusions must be verified before publication or inclusion in formal reports."
+      },
+      {
+        "step_number": 3,
+        "title": "Securities and Regulatory Filings",
+        "objective": "Find official disclosure filings for publicly traded companies or regulated entities",
+        "what_to_do": "Search SEC EDGAR for US public companies to retrieve annual reports (10-K), quarterly reports (10-Q), insider trading disclosures (Forms 3, 4, 5), proxy statements (DEF 14A), and beneficial ownership filings (13G/13D). These contain executive compensation, related-party transactions, legal proceedings, and risk disclosures that are rarely covered in secondary media.",
+        "tools": ["SEC EDGAR", "GovInfo"],
+        "what_to_look_for": "Disclosed legal proceedings in the 10-K 'Legal Proceedings' section. Related-party transaction disclosures. Insider trading patterns from Form 4 filings. Large position disclosures (13D/13G) that reveal activist investors or undisclosed controlling interests.",
+        "pitfalls": "Not all companies are SEC-registered. Private companies, foreign issuers, and small entities may not file with the SEC. For non-US companies, search the equivalent national regulator.",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "Court Record and FOIA Search",
+        "objective": "Find litigation history and government-released documents related to the subject",
+        "what_to_do": "Search Judyrecords for a broad state-level litigation overview first, then use PACER for full US federal court dockets. Note all case numbers, parties, and docket types. For government documents, check MuckRock for already-released FOIA materials before filing new requests — another researcher may have already obtained what you need.",
+        "tools": ["Judyrecords", "PACER", "MuckRock"],
+        "what_to_look_for": "Civil, criminal, or bankruptcy cases naming the subject. Pattern of repeated litigation in a specific domain. Previously released government documents covering the subject through FOIA. Settlement agreements, consent decrees, or injunctions.",
+        "pitfalls": "PACER charges per page; set a download budget before searching. State court records in Judyrecords may be incomplete for some states. Always verify case details directly with the originating court before citing.",
+        "safety_notes": "All records accessed through PACER and Judyrecords are official court records in the public domain. Avoid publishing individual names in non-newsworthy contexts, even from public records."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Public records research is among the most defensible forms of OSINT because it relies on official government-maintained sources. Nonetheless, aggregating public records about private individuals — even from official databases — can cause disproportionate harm relative to the public interest served. Always apply proportionality: the depth of research should match the public interest justification. Avoid publishing identifying details from court records that courts have sealed or expunged.",
+      "badges": ["passive-first"]
+    },
+    "related_tools": ["SEC EDGAR", "PACER", "OpenCorporates", "OpenSanctions", "ICIJ Offshore Leaks Database", "Judyrecords", "MuckRock", "GovInfo"],
+    "related_categories": ["Government & Public Records", "Companies & Organizations"]
+  },
+  {
+    "id": "malware-url-triage",
+    "title": "Malware & URL Triage",
+    "subtitle": "Safely analyze suspicious files and URLs without local execution",
+    "summary": "When you receive a suspicious file, link, or email attachment, triage it safely using online sandboxes and threat intelligence services — without executing it on your own machine. This workflow establishes the threat context, extracts indicators of compromise (IOCs), and determines whether escalation is required.",
+    "starting_point": "A suspicious file (hash, attachment, or download), URL, or domain that may be malicious",
+    "end_goal": "A threat verdict on the file or URL, a list of extracted IOCs (hashes, IPs, domains, registry keys), and a recommendation for escalation — all without executing the sample on a live system.",
+    "difficulty": "intermediate",
+    "estimated_time": "30–60 min",
+    "user_groups": [
+      "SOC Analysts",
+      "Security Researchers",
+      "IT Administrators",
+      "Incident Responders"
+    ],
+    "categories": ["Malware & File Analysis", "Threat Intelligence", "IPs & Infrastructure"],
+    "target_types": ["network", "domain", "ip"],
+    "signals": [
+      "File hash (SHA256, MD5)",
+      "Suspicious URL",
+      "Process tree behavior",
+      "Network connections",
+      "Registered domains and IPs",
+      "YARA signature matches"
+    ],
+    "recommended_tools": ["VirusTotal", "URLScan.io", "ANY.RUN", "Hybrid Analysis", "URLVoid", "MalwareBazaar"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Static Hash and Reputation Check",
+        "objective": "Determine if the file is already known to threat intelligence systems",
+        "what_to_do": "Before submitting any file to an external service, calculate the file's SHA256 hash locally (use PowerShell 'Get-FileHash' or 'sha256sum' on Linux). Search the hash in VirusTotal and MalwareBazaar. If the hash is already known, you get an immediate verdict without uploading the file — which could alert an adversary if the sample is targeted. Also check URLVoid and URLScan for any URLs embedded in the suspicious message.",
+        "tools": ["VirusTotal", "MalwareBazaar", "URLVoid"],
+        "what_to_look_for": "A VirusTotal detection ratio above 5/70 engines is a strong positive signal. Check the behavioral tags (RAT, trojan, downloader, banker) and the last submission date. A very recent first-seen date may indicate a novel or targeted sample.",
+        "pitfalls": "A zero detection ratio does not mean the file is clean — it may be a fresh targeted sample designed to evade signature-based detection. Proceed to sandbox analysis if the file is suspicious despite low detections.",
+        "safety_notes": "Do not open the file on your local machine under any circumstances before completing triage. If the file is highly targeted (e.g., addressed to your name), do not submit to public services — it will appear in VirusTotal's public feed."
+      },
+      {
+        "step_number": 2,
+        "title": "URL and Domain Reputation Analysis",
+        "objective": "Assess the reputation of embedded or linked URLs",
+        "what_to_do": "Submit suspicious URLs from the message or document to URLScan.io, which will screenshot the page, record all network requests, and extract DOM content in an isolated environment. Check URLVoid for blocklist coverage. Search PhishTank for known phishing patterns. Review the domain's registration date in WHOIS — domains registered within the past 30 days are a major red flag.",
+        "tools": ["URLScan.io", "URLVoid", "PhishTank"],
+        "what_to_look_for": "URLScan screenshots revealing credential harvesting forms, fake login pages, or malware download prompts. A newly registered domain (less than 30 days). The URL resolving to a known malware distribution IP. Redirect chains that obscure the final destination.",
+        "pitfalls": "Scanning a URL can trigger it — some malicious pages are single-use and will serve a 404 after the first request. URLScan is safer than clicking because it uses an isolated headless browser.",
+        "safety_notes": "URLScan submissions are public. If the URL contains sensitive personal data (e.g., a password reset link), sanitize it before submission. Do not submit URLs that could expose authentication tokens."
+      },
+      {
+        "step_number": 3,
+        "title": "Dynamic Sandbox Analysis",
+        "objective": "Observe the file's real behavior inside an isolated virtual machine",
+        "what_to_do": "Submit the file to ANY.RUN for interactive analysis or Hybrid Analysis for automated behavioral report generation. Observe the process tree, file system modifications, registry changes, and network connections the sample makes. Note any child processes spawned, DLLs loaded, and external IPs contacted. Record all domains and IPs for enrichment in the next step.",
+        "tools": ["ANY.RUN", "Hybrid Analysis"],
+        "what_to_look_for": "Processes injecting into legitimate system processes (e.g., svchost.exe). Registry persistence mechanisms (Run keys, scheduled tasks). Network connections to hardcoded C2 domains or IPs immediately after execution. File drops in %TEMP%, %APPDATA%, or system directories.",
+        "pitfalls": "Sophisticated malware may detect sandbox environments and remain dormant. A clean sandbox run does not guarantee the sample is benign. Always combine dynamic analysis with static YARA signature matching.",
+        "safety_notes": "Never execute unknown samples on your local machine, even in a VM on the same network — lateral movement is a real risk. Use cloud-based sandboxes that are fully isolated from your infrastructure."
+      },
+      {
+        "step_number": 4,
+        "title": "IOC Extraction and Threat Intelligence Enrichment",
+        "objective": "Compile indicators and determine if they link to known threat actors or campaigns",
+        "what_to_do": "Collect all IOCs from the previous steps: file hashes, C2 IPs, contacted domains, dropped file names, mutex names, and registry keys. Search these IOCs in AlienVault OTX and VirusTotal Relations to identify associations with known threat actor infrastructure or malware families. Document findings in a structured format for your incident response team.",
+        "tools": ["AlienVault OTX", "VirusTotal", "Filescan.io"],
+        "what_to_look_for": "IOC overlap with known APT or criminal group infrastructure. Multiple IOCs pointing to the same C2 IP cluster. Attribution tags or malware family labels attached to the sample. Related file hashes that indicate a malware campaign.",
+        "pitfalls": "IOC-based attribution is probabilistic, not definitive. Infrastructure is frequently recycled and reassigned. Do not make public attribution claims based solely on IOC overlap — it requires additional corroborating technical evidence.",
+        "safety_notes": "Share IOCs responsibly through appropriate channels (ISACs, incident response teams). Publishing C2 IPs prematurely may alert the adversary before containment is complete."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Malware triage is a defensive activity. This workflow is intended for analyzing samples you have received or encountered in the context of protecting systems you are authorized to defend. Do not use sandboxes to analyze malware for offensive purposes, to develop evasion techniques, or to build malicious tooling. Uploading a file to a public sandbox creates a permanent public record — consider this before submitting sensitive or targeted samples.",
+      "badges": ["passive-first", "use-with-care"]
+    },
+    "related_tools": ["VirusTotal", "URLScan.io", "ANY.RUN", "Hybrid Analysis", "MalwareBazaar", "URLVoid", "URLhaus", "PhishTank", "AlienVault OTX", "Filescan.io"],
+    "related_categories": ["Malware & File Analysis", "Threat Intelligence", "IPs & Infrastructure"]
+  },
+  {
+    "id": "investigator-opsec-setup",
+    "title": "Investigator OPSEC Setup",
+    "subtitle": "Establish a clean, anonymous research environment",
+    "summary": "Before beginning any sensitive investigation, set up an isolated research environment that protects your identity, prevents operational leakage, and ensures evidence integrity. This foundational workflow applies to journalists, security researchers, human rights investigators, and anyone conducting research that could expose them to legal, physical, or technical risk.",
+    "starting_point": "A new investigation that requires anonymity, source protection, or isolation from personal identity",
+    "end_goal": "A hardened, isolated, and auditable research environment — a clean browser profile, anonymous network path, encrypted storage, and verified OPSEC posture — ready for the actual investigation to begin.",
+    "difficulty": "beginner",
+    "estimated_time": "60–120 min (one-time setup)",
+    "user_groups": [
+      "Journalists",
+      "Human Rights Researchers",
+      "Security Researchers",
+      "Private Investigators"
+    ],
+    "categories": ["Privacy / Investigator Safety"],
+    "target_types": ["person"],
+    "signals": [
+      "Browser fingerprint",
+      "IP address visibility",
+      "WebRTC leak status",
+      "DNS query exposure",
+      "Local storage isolation"
+    ],
+    "recommended_tools": ["Tails OS", "Mullvad VPN", "BrowserLeaks", "VeraCrypt", "Signal", "Whonix"],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "Choose Your Isolation Level",
+        "objective": "Decide how much separation your investigation requires from your personal identity",
+        "what_to_do": "Assess the sensitivity of your investigation. For routine research on public companies or general OSINT, a dedicated browser profile with a VPN is sufficient. For investigations involving sensitive sources, political risk, or legal jeopardy, use Tails OS booted from USB for maximum separation. For long-running investigations where you need to save work between sessions, Whonix running inside VirtualBox is the better choice. Match your isolation level to the real risk — over-engineering slows you down; under-engineering exposes you.",
+        "tools": ["Tails OS", "Whonix"],
+        "what_to_look_for": "The goal is a verified separation between your personal digital identity and the investigation environment. The higher the risk to you or your sources, the stricter the separation should be.",
+        "pitfalls": "Using incognito/private browsing mode is not sufficient isolation. Incognito prevents local history storage but does not mask your IP, browser fingerprint, or logged-in account identifiers from remote servers.",
+        "safety_notes": "For investigations involving personal safety risk or authoritarian-government subjects, always err toward Tails OS or Whonix, not a VPN alone."
+      },
+      {
+        "step_number": 2,
+        "title": "Establish an Anonymous Network Path",
+        "objective": "Ensure your real IP address is not visible to any target-facing server",
+        "what_to_do": "Activate a trusted, no-logs VPN before opening any investigation-related URLs. For high-sensitivity work, use Tor Browser or Tails OS (which routes all traffic through Tor by default). If using a commercial VPN, choose one with a proven no-logs policy and independent audits, such as Mullvad. Do not use free VPNs — they often log and monetize user traffic.",
+        "tools": ["Mullvad VPN", "Tor Browser", "Tails OS"],
+        "what_to_look_for": "Confirmation from BrowserLeaks or ipleak.net that the IP displayed is your VPN/Tor exit IP, not your real IP. Check for WebRTC leaks specifically — WebRTC can bypass VPN tunneling and expose your local IP address.",
+        "pitfalls": "WebRTC is a common VPN leak vector. Many VPNs do not block WebRTC by default. Always verify with BrowserLeaks before proceeding. Mobile devices have additional VPN bypass risks through app-level network requests.",
+        "safety_notes": "Your VPN provider can see your traffic if they choose to log it. For maximum anonymity, use Tor, where no single entity sees both who you are and what you are accessing."
+      },
+      {
+        "step_number": 3,
+        "title": "Verify Your OPSEC Posture",
+        "objective": "Confirm that your isolation environment is not leaking identifying signals",
+        "what_to_do": "Open BrowserLeaks in your investigation browser and run all available tests: IP address, WebRTC, Canvas fingerprint, Font fingerprint, and DNS leak test. Verify that no real IP or personal identifier is visible. If using a dedicated browser profile, ensure no personal accounts are logged in anywhere in the browser. Disable JavaScript-heavy browser extensions that may have unique fingerprints.",
+        "tools": ["BrowserLeaks"],
+        "what_to_look_for": "All IP tests should show only the VPN/Tor exit IP. WebRTC Local IP should not show your LAN or real public IP. Canvas and font fingerprints should not be uniquely identifiable (Tor Browser normalizes these by default).",
+        "pitfalls": "Even with a VPN active, browser extensions can leak data. Password managers, ad blockers, and productivity extensions all add unique fingerprint components. In Tor Browser, do not install additional extensions.",
+        "safety_notes": "Run this verification every time you open a new investigation session, not just during initial setup. VPN clients can disconnect silently, exposing your real IP without warning."
+      },
+      {
+        "step_number": 4,
+        "title": "Secure Your Evidence Storage",
+        "objective": "Encrypt your investigation notes, screenshots, and collected evidence",
+        "what_to_do": "Create a VeraCrypt encrypted container for all investigation materials — screenshots, notes, downloaded documents, and contact information. Use a strong, unique passphrase not used anywhere else. For team investigations, establish a secure communication channel with collaborators using Signal. Set a document retention policy — do not keep evidence longer than necessary, especially sensitive source contact information.",
+        "tools": ["VeraCrypt", "Signal"],
+        "what_to_look_for": "Evidence stored in the encrypted container should be accessible only after entering the VeraCrypt passphrase. Signal messages with sources should have disappearing messages enabled and be regularly cleared from the device.",
+        "pitfalls": "Cloud sync services (Dropbox, Google Drive, iCloud) can silently upload VeraCrypt container files to cloud storage. Ensure encrypted containers are not in sync-watched folders. Metadata like file creation timestamps may still leak investigation timing even with encrypted content.",
+        "safety_notes": "Do not store source identities in plaintext anywhere — encrypted notes, device contacts, or calendar events. The encrypted VeraCrypt container should be the sole location for any sensitive source or investigation material."
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "Investigator OPSEC protects both you and your sources. Strong operational security is not just about self-protection — it is a professional obligation when working with sources who face legal or physical risk. Inadequate OPSEC in sensitive investigations has caused the exposure of journalists' sources, endangered activists, and resulted in legal proceedings against researchers. Treat OPSEC setup as a non-negotiable prerequisite, not an optional enhancement.",
+      "badges": ["passive-first"]
+    },
+    "related_tools": ["Tails OS", "Whonix", "Mullvad VPN", "Tor Browser", "BrowserLeaks", "VeraCrypt", "Signal"],
+    "related_categories": ["Privacy / Investigator Safety"]
+  }
+]

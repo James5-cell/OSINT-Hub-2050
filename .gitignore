@@ -1,0 +1,64 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# ── API keys and secrets ─────────────────────────────────────────────────────
+# NEVER commit API keys, tokens, or credentials.
+.env
+.env.local
+.env.production
+.env.*
+secrets/
+*.key
+*.pem
+*.p12
+
+# ── IDE / Editor ──────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ── OSINT Hub specific ───────────────────────────────────────────────────────
+# Enrichment cache — large & regenerable, not tracked.
+data/cache/
+
+# Enrichment failures — may contain partial LLM output, not tracked by default.
+# Remove this line if you intentionally want to commit failures.json.
+data/enriched/failures.json
+
+# Logs
+*.log
+logs/
+link-check-results.txt
+link-check-summary.md
+
+# Temporary files from atomic writes
+*.json.tmp
+
+# Node / Next.js (frontend — not yet in scope)
+node_modules/
+package-lock.json
+.next/
+out/
+apps/web/.next/
+apps/web/node_modules/

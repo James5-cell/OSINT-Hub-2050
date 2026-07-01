@@ -1,0 +1,132 @@
+[
+  {
+    "id": "lampyre",
+    "name": "Lampyre",
+    "url": "https://lampyre.io/",
+    "raw_description": "Data analysis & osint tool, obtain, visualize and analyze data in one place to see what other's can't.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "offshoreleaks",
+    "name": "OffshoreLeaks",
+    "url": "https://offshoreleaks.icij.org/",
+    "raw_description": "find out who's behind offshore companies.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "worldwide-osint-map",
+    "name": "WorldWide OSINT Map",
+    "url": "http://cybdetective.com/osintmap/",
+    "raw_description": "gather basic info around the world.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "whatsmyname",
+    "name": "WhatsMyName",
+    "url": "https://whatsmyname.app/",
+    "raw_description": "This tool allow to enumerate usernames across many websites.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "os-surveillance",
+    "name": "os-surveillance",
+    "url": "https://os-surveillance.io/",
+    "raw_description": "Gather real-time intelligence from Social media, Cameras, Internet of Things or Crimes and Amber Alerts",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "chiasmodon",
+    "name": "Chiasmodon",
+    "url": "https://github.com/chiasmod0n/chiasmodon",
+    "raw_description": "Chiasmodon is an OSINT tool designed to assist in the process of gathering information about a target domain. Its primary functionality revolves around searching for domain-related data, including domain emails, domain credentials, CIDRs , ASNs , and subdomains, the tool also allows users to search Google Play application ID.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "tookie-osint",
+    "name": "Tookie-osint",
+    "url": "https://github.com/alfredredbird/tookie-osint",
+    "raw_description": "Tookie is a advanced OSINT information gathering tool that finds social media accounts based on inputs.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "dangerzone",
+    "name": "dangerzone",
+    "url": "https://github.com/freedomofpress/dangerzone",
+    "raw_description": "Take potentially dangerous PDFs, office documents, or images and convert them to safe PDFs",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "comb",
+    "name": "COMB",
+    "url": "https://www.proxynova.com/tools/comb/",
+    "raw_description": "the largest dataset of leaked credentials (emails, usernames, and passwords)",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "face-detection-and-comparison",
+    "name": "Face Detection and comparison",
+    "url": "https://6mzld2.csb.app/",
+    "raw_description": "compare two uploaded faces",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "prospeo",
+    "name": "Prospeo",
+    "url": "https://prospeo.io/",
+    "raw_description": "Find business email addresses for outreach, find mobile, domain search, email verifier.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "repoanalyzer",
+    "name": "RepoAnalyzer",
+    "url": "https://repoanalyzer.site/",
+    "raw_description": "Discover authentic blockchain projects through comprehensive analysis of on-chain data, GitHub activity, and community engagement.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  },
+  {
+    "id": "reverse-contact",
+    "name": "Reverse Contact",
+    "url": "https://www.reversecontact.com/",
+    "raw_description": "Find real-time contact and company data from an email address.",
+    "section": "Basic OSINT",
+    "source_file": "data/raw/source.md",
+    "fetched_at": "2026-05-08T13:02:28.528092+00:00",
+    "is_dead_link": false
+  }
+]

@@ -1,0 +1,1251 @@
+[
+  {
+    "id": "username-investigation",
+    "title": "用戶名調查",
+    "subtitle": "跨平台追蹤數位別名",
+    "summary": "從一個用戶名出發，追蹤目標在各平台的帳號足跡，建立完整的數位身份地圖。適合社交媒體調查與身份驗證場景。",
+    "starting_point": "用戶名或數位別名（例如 handle123）",
+    "end_goal": "建立一個經核實的跨平台地圖，將別名連結到特定個人檔案、公開興趣以及潛在的真實姓名關聯——整個過程無需與目標進行接觸或觸發其警報。",
+    "difficulty": "beginner",
+    "estimated_time": "30–90 分鐘",
+    "user_groups": [
+      "調查記者",
+      "CTF 參賽者",
+      "私家偵探",
+      "安全研究員"
+    ],
+    "categories": [
+      "Usernames",
+      "Social Media",
+      "People & Identity"
+    ],
+    "target_types": [
+      "username",
+      "person",
+      "social-media"
+    ],
+    "signals": [
+      "平台個人檔案",
+      "頭像照片",
+      "個人簡介文字與連結",
+      "帳號創建日期",
+      "跨平台發布內容模式"
+    ],
+    "recommended_tools": [
+      "WhatsMyName",
+      "Sherlock",
+      "Maltego",
+      "Wayback Machine"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "準備調查環境",
+        "objective": "在進行任何查詢前隔離您的個人身份",
+        "what_to_do": "使用專用的瀏覽器設定檔或啟用了 VPN 的隔離環境。避免使用與您的個人或組織身份關聯的帳號或裝置。社交平台使用演算法匹配，如果您在登入自己身份的同時瀏覽目標的帳號，可能會向目標推薦您的真實個人檔案。",
+        "tools": [
+          "VPN"
+        ],
+        "what_to_look_for": "確認您的瀏覽 IP 和瀏覽器指紋與日常環境不同。使用專用的「乾淨」設定檔，無任何已登入的個人工作階段。",
+        "pitfalls": "忽視 OPSEC 準備可能導致平台透過「您可能認識的人」功能將您作為聯絡人推薦給目標，從而暴露您的調查。",
+        "safety_notes": "在開啟任何指向目標的 URL 之前，務必確認您的真實 IP 地址已被隱藏。使用單獨的裝置或瀏覽器設定檔，而非日常瀏覽器的無痕視窗。"
+      },
+      {
+        "step_number": 2,
+        "title": "自動化帳號枚舉",
+        "objective": "發現哪些平台已使用此用戶名註冊了帳號",
+        "what_to_do": "將用戶名提交給WhatsMyName或Sherlock等自動化枚舉工具，這些工具會同時查詢數百個平台。將所有正面結果記錄為調查線索，而非確認的匹配。因為人們習慣在不同平台上使用相同的註冊名稱，遊戲帳號的名稱往往也出現在專業與社交平台上。",
+        "tools": [
+          "WhatsMyName",
+          "Sherlock"
+        ],
+        "what_to_look_for": "社交媒體、遊戲網絡、專業平台和特定社群論壇的註冊結果。記錄哪些平台類別出現最頻繁，以建立初步的興趣畫像。",
+        "pitfalls": "許多平台即使對於不存在的用戶名也返回標準的 HTTP 200 OK 狀態碼，從而產生虛假結果。自動化輸出是起點，而非最終答案——每個結果都需要手動驗證。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "手動驗證與交叉關聯",
+        "objective": "確認發現的帳號屬於同一個人，並提取其他識別資訊",
+        "what_to_do": "訪問每個正面的搜尋結果，並對比頭像照片、個人簡介措辭、關聯帳號和內容風格。尋找跨平台共享的識別特徵——例如遊戲論壇和 GitHub 帳號上使用相同的頭像。使用 Wayback Machine 查看歷史存檔，以檢查可能已被刪除的歷史帳號狀態。",
+        "tools": [
+          "Wayback Machine",
+          "Maltego"
+        ],
+        "what_to_look_for": "共享的視覺資產、重複的個人簡介短語、指向次要平台的連結、提及的地點或來自其他帳號的提及。每個確認的共享指標都會加強關聯置信度。",
+        "pitfalls": "重名和別名碰撞是主要風險——多個無關的人可能使用同一個用戶名。在沒有至少兩到三個獨立且互相關聯的識別指標之前，切勿將兩個檔案歸入同一個實體。",
+        "safety_notes": "僅觀察公開可見的數據。請勿嘗試登入、聯繫或與任何帳號互動。請勿使用密碼找回流程來提取聯繫資訊——這會警告帳號所有者，並越界進入主動干預。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "此工作流必須保持嚴格的被動性。請勿冒充目標、發送訊息、嘗試登入任何帳號或使用密碼找回功能。所有收集的資訊必須限制在無需身份驗證即可公開觀察的範圍內。彙整私人的詳細個人檔案具有法律與倫理風險——請確保您的授權是合法且合比例的。",
+      "badges": [
+        "passive-first",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "WhatsMyName",
+      "Sherlock",
+      "Maltego",
+      "Wayback Machine"
+    ],
+    "related_categories": [
+      "Usernames",
+      "People & Identity",
+      "Social Media"
+    ]
+  },
+  {
+    "id": "domain-reconnaissance",
+    "title": "域名偵察",
+    "subtitle": "網路基礎設施全面枚舉",
+    "summary": "對目標域名進行全面的基礎設施枚舉，包含子域名發現、WHOIS 分析與暴露服務識別。常用於安全評估前期偵查。",
+    "starting_point": "域名（例如 example.com）",
+    "end_goal": "完全基於被動來源收集目標域名的子域名、託管基礎設施、證書歷史和技術棧地圖",
+    "difficulty": "intermediate",
+    "estimated_time": "1–2 小時",
+    "user_groups": [
+      "威脅情報分析師",
+      "獲授權的滲透測試員",
+      "Bug Bounty 獵人",
+      "安全研究員"
+    ],
+    "categories": [
+      "Domains",
+      "IPs & Infrastructure"
+    ],
+    "target_types": [
+      "domain",
+      "ip",
+      "network"
+    ],
+    "signals": [
+      "WHOIS 註冊記錄",
+      "子域名 DNS 歷史",
+      "SSL/TLS 憑證日誌",
+      "HTTP 響應頭",
+      "技術棧識別標誌"
+    ],
+    "recommended_tools": [
+      "theHarvester",
+      "SpiderFoot",
+      "Censys",
+      "Recon-ng",
+      "Shodan"
+    ],
+    "risk_level": "medium",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "WHOIS 與歷史記錄分析",
+        "objective": "識別域名所有權、註冊歷史和管理聯絡人",
+        "what_to_do": "查詢當前和歷史 WHOIS 資料庫以獲取註冊數據。現代隱私保護通常會隱藏聯絡詳情，但 2018 年之前的記錄仍可能包含原始註冊人的電子郵件、電話號碼和地址。關注變更歷史——註冊商變更、名稱伺服器交換和隱私啟用日期，通常能反映出誰在何時開始隱藏該域名。",
+        "tools": [
+          "SpiderFoot",
+          "theHarvester"
+        ],
+        "what_to_look_for": "啟用隱私保護前的註冊人電子郵件、多個域名間重複出現的名稱伺服器模式以及註冊商歷史。所有權的不尋常變更或註冊後迅速啟用隱私保護可能表明對抗性的 OPSEC 行為。",
+        "pitfalls": "現代 WHOIS 記錄通常僅顯示隱私代理。切勿僅憑當前記錄下結論——務必檢查 GDPR 隱私保護生效前的歷史聚合記錄。",
+        "safety_notes": "僅查詢歷史聚合和被動資料庫。請勿嘗試 DNS 區域傳輸或直接的名稱伺服器枚舉查詢，這些屬於主動偵察。"
+      },
+      {
+        "step_number": 2,
+        "title": "被動子域名枚舉",
+        "objective": "在不接觸目標基礎設施的情況下，發現其數位邊界",
+        "what_to_do": "使用整合了來自搜尋引擎快取、DNS 歷史服務和公共索引資料庫的被動 DNS 數據的工具。目標是找出管理員可能未意識到已被索引的開發、舊版和預發布（Staging）環境。所有查詢均發送至第三方聚合商，而非目標的名稱伺服器。",
+        "tools": [
+          "Recon-ng",
+          "theHarvester",
+          "SpiderFoot"
+        ],
+        "what_to_look_for": "預發布環境（stage.、dev.、beta.）、舊版入口網站（old.、legacy.、vpn.）和揭示基礎設施佈局的內部子域名。這些地方通常存在未修補的軟體或較寬鬆的存取控制。",
+        "pitfalls": "請勿轉換為主動 DNS 暴力破解。向目標名稱伺服器發送直接枚舉查詢會在日誌中產生噪音，並觸發安全警報。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "憑證透明度日誌分析",
+        "objective": "從公共 SSL/TLS 憑證記錄中提取子域名",
+        "what_to_do": "公共憑證授權單位發行的所有 SSL 憑證都必須記錄在公共透明度登錄檔中。查詢這些日誌以尋找從未打算公開索引的子域名——包括嵌入在憑證主體別名（SAN）欄位中的內部入口網站、預發布伺服器和管理面板。日誌中存在憑證證明該子域名曾存在，但不能確認其當前是否在線。",
+        "tools": [
+          "Censys"
+        ],
+        "what_to_look_for": "主體別名中包含敏感或內部主機名，例如 jira.、sso.、admin. 或 staging.。憑證日誌通常比 DNS 歷史更全面，能揭示已被停用的基礎設施。",
+        "pitfalls": "憑證日誌中列出子域名並不意味著該域名當前在線或可進行 DNS 解析。在將其視為活動資產之前，需通過單獨的 DNS 查詢進行確認。",
+        "safety_notes": "憑證透明度日誌是公開記錄。所有查詢均為唯讀，不會接觸目標組織的基礎設施。"
+      },
+      {
+        "step_number": 4,
+        "title": "技術棧指紋識別",
+        "objective": "識別在發現的域名上運行的軟體框架和服務",
+        "what_to_do": "分析公開可訪問頁面上的 HTTP 響應頭、HTML 原始碼模式和第三方標記特徵，以識別所使用的 CMS、分析工具、託管提供商、CDN 和 JavaScript 框架。使用被動分析工具和瀏覽器擴充功能，而非主動探測或漏洞掃描器。",
+        "tools": [
+          "Shodan",
+          "Censys"
+        ],
+        "what_to_look_for": "特定的 CMS 標識（WordPress、Drupal）、過期的外掛版本號、原始碼中不慎包含的第三方 API 金鑰以及表明組織基礎設施依賴性的託管商特徵。",
+        "pitfalls": "Web 應用程式防火牆（WAF）會故意偽造伺服器標頭以干擾掃描。將任何基於標頭的技術識別視為進一步調查的線索，而非確認的事實。",
+        "safety_notes": "保持在被動分析範圍內。在沒有獲得明確且書面的正式授權之前，請勿提交表單、測試輸入、運行目錄模糊測試或對發現的任何資產執行漏洞掃描。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "此工作流僅涵蓋被動資訊收集。在未獲書面授權的情況下，對不屬於您的基礎設施執行主動端口掃描、DNS 暴力破解、漏洞測試或任何直接查詢均屬違法行為。被動偵察發現的結果必須妥善保密，且僅在授權業務範圍內使用。",
+      "badges": [
+        "passive-first",
+        "requires-authorization",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "theHarvester",
+      "SpiderFoot",
+      "Censys",
+      "Recon-ng",
+      "Shodan"
+    ],
+    "related_categories": [
+      "Domains",
+      "IPs & Infrastructure"
+    ]
+  },
+  {
+    "id": "image-verification-geolocation",
+    "title": "圖像驗證與地理定位",
+    "subtitle": "反向搜尋與影像真偽鑑定",
+    "summary": "通過反向圖片搜尋、元數據分析及地標識別，驗證圖像的真實性與拍攝地點。常用於新聞事實核查與社交媒體調查。",
+    "starting_point": "來源未知或有爭議的單一圖像或影片影格",
+    "end_goal": "確認影像的最早已知來源、先前使用或篡改的證據，以及在視覺線索允許的情況下，確定所描繪地點的地理坐標",
+    "difficulty": "intermediate",
+    "estimated_time": "30 分鐘 – 3 小時",
+    "user_groups": [
+      "調查記者",
+      "人權研究員",
+      "事實核查員",
+      "OSINT CTF 參賽者"
+    ],
+    "categories": [
+      "Images & Geolocation"
+    ],
+    "target_types": [
+      "image",
+      "geolocation"
+    ],
+    "signals": [
+      "EXIF 元數據",
+      "反向圖片搜尋結果",
+      "陰影角度和長度",
+      "建築特徵識別",
+      "植被與標誌牌",
+      "車牌格式"
+    ],
+    "recommended_tools": [
+      "Google Lens",
+      "Yandex Images",
+      "TinEye",
+      "ExifTool",
+      "SunCalc",
+      "Google Earth"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "反向搜尋與溯源",
+        "objective": "尋找該影像在網路上最早出現的記錄",
+        "what_to_do": "將影像或其 URL 上傳到多個反向圖片搜尋引擎。目標是尋找更高解析度的原圖、包含該影像的早期新聞文章或證實影像早於調查聲稱時間的圖庫資料庫。至少使用兩個引擎——Yandex 通常能找到 Google 遺漏的東歐和亞洲影像匹配，且在人臉和風景的視覺匹配方面能力更強。",
+        "tools": [
+          "Google Lens",
+          "Yandex Images",
+          "TinEye"
+        ],
+        "what_to_look_for": "新聞文章上較早的發布日期、圖庫浮水印、顯示相同場景但角度不同的相關影像以及 AI 生成的痕跡（如邊緣異常扭曲或解剖結構不合理）。",
+        "pitfalls": "僅依賴單一搜尋引擎會遺漏大量匹配結果。每個引擎索引的網路範圍不同——在斷定影像無歷史記錄前，務必運行全部三個引擎。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "EXIF 元數據提取",
+        "objective": "提取嵌入在影像文件中的技術數據",
+        "what_to_do": "下載原始影像文件（而非螢幕截圖）並分析其嵌入的 EXIF 元數據。相機或部分手機的原始拍攝文件包含 GPS 坐標、相機製造商和型號、鏡頭數據和時間戳記。請注意，幾乎所有主流社交媒體平台在外部上傳時都會自動清除 EXIF 以保護用戶隱私，因此元數據缺失是常態，而非可疑現象。",
+        "tools": [
+          "ExifTool"
+        ],
+        "what_to_look_for": "GPS 緯度和經度、相機品牌和型號、拍攝時間戳記以及表明數位後期處理的軟體標記（例如聲稱為未編輯照片的影像上出現 Adobe Photoshop 的保存頭部資訊）。",
+        "pitfalls": "對於從社交媒體下載的任何影像，缺失 EXIF 數據是正常的。只有當文件直接來自相機裝置或原始上傳源時，才將缺失元數據視為重要信號。",
+        "safety_notes": "盡可能使用原始源文件。螢幕截圖僅擷取視覺像素，會完全遺失所有嵌入的元數據。"
+      },
+      {
+        "step_number": 3,
+        "title": "陰影與時間分析",
+        "objective": "根據影像中的陰影模式估計時間與半球",
+        "what_to_do": "在畫面中識別出一個帶有已知朝向參考物的陰影——例如建築物邊緣、垂直柱子或人的陰影。使用太陽角度計算器模擬大約位置和聲稱日期的太陽位置。將陰影的方向和長度與模擬的太陽位置進行交叉比對，以評估聲稱的時間和地點在物理上是否合理。",
+        "tools": [
+          "SunCalc"
+        ],
+        "what_to_look_for": "陰影方向與聲稱的時間或地點之間的矛盾。在聲稱的半球和日期下，陰影朝北而太陽應該在南邊，這是錯誤標註或偽造的強烈指標。",
+        "pitfalls": "地形障礙、季節性太陽變化和局部雲層模式都會影響陰影。單一陰影不一致本身並不能作為偽造的確鑿證據——需與其他步驟的證據相結合。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "地理特徵交叉比對",
+        "objective": "使用環境特徵精確定位影像拍攝的物理位置",
+        "what_to_do": "編錄影像中所有可識別的環境特徵：獨特的建築風格、山脈或天際線輪廓、道路標線、植被物種、可見文字的語言和字體以及車牌格式。使用衛星圖像和實景照片獨立交叉比對每個特徵。在得出最終地理定位結論前，設定至少三個獨立確認的環境匹配特徵。",
+        "tools": [
+          "Google Earth",
+          "Mapillary"
+        ],
+        "what_to_look_for": "某個地區特有的建築風格、背景中的地理地形、與街道地圖數據相符的交叉口幾何形狀、縮小國家或地區範圍的標誌語言和字體以及與特定氣候區相符的植被。",
+        "pitfalls": "單一環境指標絕不足夠。僅憑西班牙語文本並不能確認是在西班牙——它可能是幾十個西班牙語國家之一，或是世界上任何地方的旅遊區。必須要求多個獨立的佐證指標。",
+        "safety_notes": "絕不能以暴露私人、臥底記者或衝突區消息來源的即時或日常位置的方式公佈地理定位結果。這會帶來嚴重的物理安全後果。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "影像地理定位在本質上具有雙重用途。用於驗證新聞和記錄人權侵害的相同技術，也可用於追踪、騷擾或人肉搜索私人。切勿應用這些方法來確定私人的即時或日常位置。在發布任何地理定位結果之前，評估對影像中描繪或可識別之人的安全影響。",
+      "badges": [
+        "passive-first",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "Google Lens",
+      "Yandex Images",
+      "TinEye",
+      "ExifTool",
+      "SunCalc",
+      "Google Earth",
+      "Mapillary"
+    ],
+    "related_categories": [
+      "Images & Geolocation"
+    ]
+  },
+  {
+    "id": "email-osint",
+    "title": "電子郵件 OSINT",
+    "subtitle": "電郵溯源與帳號關聯分析",
+    "summary": "從電子郵件地址出發，追蹤其關聯帳號、洩露記錄及網絡足跡，建立完整的身份輪廓。",
+    "starting_point": "電子郵件地址（例如 target@example.com）",
+    "end_goal": "建立與電子郵件連結的平台地圖、洩露暴露摘要、推斷的身份線索以及組織關聯——完全從公開和被動收集的數據中彙整。",
+    "difficulty": "beginner",
+    "estimated_time": "30–60 分鐘",
+    "user_groups": [
+      "調查記者",
+      "安全研究員",
+      "人事與盡職調查專業人員",
+      "反欺詐調查員"
+    ],
+    "categories": [
+      "Emails",
+      "People & Identity",
+      "Leaks & Breaches"
+    ],
+    "target_types": [
+      "email",
+      "person",
+      "social-media"
+    ],
+    "signals": [
+      "平台註冊匹配",
+      "洩露事件名稱和日期",
+      "組織域名模式",
+      "關聯的用戶名或顯示名稱",
+      "來自洩露記錄的關聯電話號碼"
+    ],
+    "recommended_tools": [
+      "Holehe",
+      "Have I Been Pwned",
+      "Hunter.io",
+      "Phonebook.cz",
+      "IntelligenceX"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "驗證電子郵件格式與域名",
+        "objective": "在投入更多精力前，確認電子郵件格式有效且域名處於活動狀態",
+        "what_to_do": "檢查電子郵件是否符合標準格式規則。使用 WHOIS 工具查詢域名以確認其已註冊並處於活動狀態。檢查域名是否具有正常運行的 MX 記錄，這確認了其可以接收郵件。不存在的域名會直接縮小您的工作假設。",
+        "tools": [
+          "ViewDNS.info"
+        ],
+        "what_to_look_for": "一個帶有有效 MX 記錄的活動、已註冊的域名。記錄該域名是屬於免費提供商（Gmail、Yahoo）還是企業/自定義域名——後者可能允許組織級別的關聯分析。",
+        "pitfalls": "一次性電子郵件域名（如 guerrilla-mail、mailinator 變體）經常被惡意行為者使用，可能無法返回任何有用的情報。及早標記這些域名並調整預期。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "枚舉已註冊平台",
+        "objective": "發現哪些線上服務註冊了此電子郵件地址",
+        "what_to_do": "通過 Holehe 運行電子郵件，以檢查 120 多個平台中哪些註冊了該帳號。這通過被動測試註冊流程來實現——不會創建帳號。將所有正面結果記錄為調查線索。對於企業電子郵件，還可以查詢 Hunter.io 或 Phonebook.cz 以了解其組織背景。",
+        "tools": [
+          "Holehe",
+          "Hunter.io",
+          "Phonebook.cz"
+        ],
+        "what_to_look_for": "揭示興趣、專業背景或地理線索的平台匹配。Hunter.io 中的企業域名匹配可以揭示該電子郵件在組織內的角色。開發者平台（GitHub、GitLab）的匹配可能揭示目標的技術背景。",
+        "pitfalls": "某些平台會返回虛假結果。通過訪問結果中返回的個人檔案 URL 進行手動驗證。在沒有交叉佐證的情況下，不要假設所有正面結果都屬於同一個人。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "檢查洩露暴露",
+        "objective": "確定電子郵件地址在已知數據洩露事件中的歷史暴露情況",
+        "what_to_do": "向 Have I Been Pwned 查詢該地址出現的洩露事件列表。還可以檢查 Breach Directory 以獲取數據洩露的免費部分預覽。如果是在付費託託業務中，DeHashed 或 LeakCheck 可以提供更詳細的洩露記錄。記錄每次洩露的名稱、日期和暴露的數據類別。",
+        "tools": [
+          "Have I Been Pwned",
+          "Breach Directory"
+        ],
+        "what_to_look_for": "洩露的數量和新鮮度、受影響的平台以及暴露的數據類別（密碼、地址、電話）。多次舊洩露表明該郵箱使用歷史悠久。單次近期洩露可能表明帳號是新創建的。",
+        "pitfalls": "洩露暴露證實了電子郵件的存在和使用歷史——但不能確認當前的帳號控制權。舊的洩露條目可能與目標不再使用的帳號有關。",
+        "safety_notes": "切勿嘗試使用在數據洩露集中找到的任何憑證進行登入，即使是為了「驗證」其是否有效。無論憑證是如何獲取的，這都屬於未經授權的訪問行為。"
+      },
+      {
+        "step_number": 4,
+        "title": "通過關聯用戶名關聯至身份",
+        "objective": "從電子郵件地址擴展到關聯的用戶名和真實身份線索",
+        "what_to_do": "審查在前述步驟中發現的顯示名稱、用戶名和關聯檔案。如果在任何平台上找到了用戶名，通過 Sherlock 或 Maigret 運行它以尋找其他帳號。在多個平台上交叉比對任何真實姓名或地點線索，以建立相互佐證的身份畫像。",
+        "tools": [
+          "Sherlock",
+          "Maigret"
+        ],
+        "what_to_look_for": "不同平台間一致的用戶名或顯示名稱。GitHub 簡介中出現的真實姓名若與 LinkedIn 檔案相符，則是強有力的佐證。在簡介中尋找地點線索、發帖時間中的時區模式或語言使用習慣。",
+        "pitfalls": "電子郵件前綴並不總是通用用戶名。常見的名稱前綴（如 john、admin、info）會在用戶名搜尋中產生大量虛假結果——在歸因前需仔細驗證。",
+        "safety_notes": "所有關聯分析必須保持被動。請勿聯繫、留言、關注或與發現的任何帳號互動。請勿使用密碼重設流程來探測帳號的存在性。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "電子郵件地址調查可能會迅速曝露敏感的個人數據，包括洩露的密碼、電話號碼和家庭地址。此工作流必須保持嚴格的被動性——無聯繫、無帳號互動、無憑證測試。在調查個人的電子郵件之前，請確保您的授權是合法的，並且您有正當的調查目的。企業電子郵件調查應獲得組織的明確授權。",
+      "badges": [
+        "passive-first",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "Holehe",
+      "Have I Been Pwned",
+      "Hunter.io",
+      "Phonebook.cz",
+      "IntelligenceX",
+      "Sherlock",
+      "Maigret",
+      "DeHashed"
+    ],
+    "related_categories": [
+      "Emails",
+      "People & Identity",
+      "Leaks & Breaches"
+    ]
+  },
+  {
+    "id": "credential-exposure-review",
+    "title": "憑證洩露核查",
+    "subtitle": "評估帳號安全暴露程度",
+    "summary": "快速評估目標電郵或帳號的洩露暴露程度，適合個人隱私審計或企業員工帳號安全核查。",
+    "starting_point": "組織的電子郵件域名（例如 @company.com）",
+    "end_goal": "一份包含洩露來源的受影響員工帳號優先順序列表，以便進行針對性的密碼重設、安全意識推廣和管理層風險報告。",
+    "difficulty": "beginner",
+    "estimated_time": "1–2 小時",
+    "user_groups": [
+      "安全團隊",
+      "IT 管理員",
+      "風險與合規官員",
+      "滲透測試員（需授權）"
+    ],
+    "categories": [
+      "Leaks & Breaches",
+      "Emails"
+    ],
+    "target_types": [
+      "email",
+      "organization"
+    ],
+    "signals": [
+      "洩露的電子郵件帳號數量",
+      "洩露事件的名稱和日期",
+      "密碼暴露類別",
+      "重複出現的洩露次數",
+      "高價值帳號暴露情況（管理層、IT 人員）"
+    ],
+    "recommended_tools": [
+      "Have I Been Pwned",
+      "LeakCheck.io",
+      "Breach Directory",
+      "Phonebook.cz"
+    ],
+    "risk_level": "medium",
+    "public_safe": true,
+    "requires_authorization": true,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "枚舉企業電子郵件地址",
+        "objective": "從公開來源建立待核查的電子郵件地址列表",
+        "what_to_do": "使用 Phonebook.cz 和 Hunter.io 來枚舉公開與目標域名關聯的電子郵件地址。這會產生出現在公開數據（招聘啟事、會議論文、公開檔案）中的地址列表，而無需查詢內部系統。補充從先前調查步驟中已知的任何電子郵件地址。",
+        "tools": [
+          "Phonebook.cz",
+          "Hunter.io"
+        ],
+        "what_to_look_for": "屬於 IT、安全、管理層和財務人員的電子郵件地址是最高優先級。記錄組織的電子郵件格式模式（如 first.last 還是 f.last），以便後續驗證。",
+        "pitfalls": "公開枚舉僅擷取公開出現過的電子郵件地址。許多僅在內部使用的地址不會出現。此列表是起點，而非完整的組織通訊錄。",
+        "safety_notes": "僅對您獲得明確授權的組織進行電子郵件地址評估。在未經授權的情況下對競爭對手或目標組織進行批量洩露查詢可能違反服務條款和當地法律。"
+      },
+      {
+        "step_number": 2,
+        "title": "核查每個地址的洩露庫記錄",
+        "objective": "識別哪些電子郵件帳號出現在已知的數據洩露事件中",
+        "what_to_do": "向 Have I Been Pwned 和 Breach Directory 查詢每個發現的電子郵件地址。要獲取特定洩露內容的更多細節，使用 LeakCheck.io（提供洩露元數據和部分密碼預覽）。記錄每個命中結果的洩露名稱、日期和暴露數據類別。優先處理高權限帳號。",
+        "tools": [
+          "Have I Been Pwned",
+          "Breach Directory",
+          "LeakCheck.io"
+        ],
+        "what_to_look_for": "具有多次洩露記錄、近期洩露（過去 12 個月內）或涉及明文密碼暴露的帳號。出現在任何洩露事件中的管理層和 IT 帳號應被列為關鍵優先級，不論洩露時間早晚。",
+        "pitfalls": "洩露資料庫的覆蓋範圍各不相同——HIBP 側重於已驗證的大型洩露，而其他服務可能索引了不同的數據集。沒有單一服務能提供完整覆蓋。至少使用兩個服務以確保完整性。",
+        "safety_notes": "記錄您查看了哪些數據以及原因。避免存儲原始洩露記錄——您只需要洩露源和暴露類別來進行防禦性評估，不需要實際暴露的憑證文字。"
+      },
+      {
+        "step_number": 3,
+        "title": "優先排序與報告",
+        "objective": "為組織產出可執行的風險摘要",
+        "what_to_do": "將發現彙整為一份排定優先順序的報告：檢查的帳號總數、受影響帳號數、按洩露新舊分類、高優先級帳號列表（IT/管理層）以及建議的補救措施。側重於可執行的結果：哪些帳號需要立即重設密碼，哪些用戶需要安全防範宣導，以及 IT 團隊是否應該在內部系統中核對洩露憑證。",
+        "tools": [],
+        "what_to_look_for": "分析模式，例如大量員工出現在同一個洩露事件中（提示第三方 SaaS 平台遭入侵），或者多個員工帳號出現在暗網憑證市場中。",
+        "pitfalls": "請勿將完整的洩露記錄列表分享給授權安全人員之外的其他人。洩露數據十分敏感，其分發必須受到嚴格控制。",
+        "safety_notes": "洩露數據必須作為機密處理。請勿通過未加密的管道發送受影響帳號的列表。在不向非安全人員透露個別員工憑證細節的情況下，向管理層簡報風險水平。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "此工作流僅能對您獲得明確書面授權的組織執行。在未經許可的情況下大規模查詢洩露資料庫可能違反服務條款。切勿使用獲取的憑證去測試、登入或訪問任何系統——發現憑證並不等於獲得了使用授權。將所有洩露數據視為高度機密，並僅限於授權的安全人員知悉。",
+      "badges": [
+        "requires-authorization",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "Have I Been Pwned",
+      "LeakCheck.io",
+      "Breach Directory",
+      "DeHashed",
+      "IntelligenceX",
+      "Phonebook.cz",
+      "Hunter.io"
+    ],
+    "related_categories": [
+      "Leaks & Breaches",
+      "Emails"
+    ]
+  },
+  {
+    "id": "company-organization-research",
+    "title": "公司 / 組織調查",
+    "subtitle": "企業結構與關係網絡分析",
+    "summary": "系統性調查目標企業或組織的結構、人員、基礎設施與公開資訊，適合盡職調查和競爭情報場景。",
+    "starting_point": "公司名稱、域名或註冊編號",
+    "end_goal": "一份涵蓋法定註冊、關鍵人員、財務狀況、技術棧、域名基礎設施和組織關係的結構化檔案——完全從公開來源彙整。",
+    "difficulty": "beginner",
+    "estimated_time": "1–3 小時",
+    "user_groups": [
+      "調查記者",
+      "盡職調查分析師",
+      "競爭情報專業人員",
+      "合規官員"
+    ],
+    "categories": [
+      "Companies & Organizations",
+      "Domains",
+      "People & Identity"
+    ],
+    "target_types": [
+      "organization",
+      "domain",
+      "person"
+    ],
+    "signals": [
+      "法定註冊詳情與狀態",
+      "董事姓名及關聯公司",
+      "融資輪次與投資者關係",
+      "網站技術棧",
+      "員工數量與部門結構",
+      "域名註冊與憑證歷史"
+    ],
+    "recommended_tools": [
+      "OpenCorporates",
+      "Crunchbase",
+      "Companies House",
+      "LinkedIn",
+      "BuiltWith",
+      "Maltego"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "通過公司註冊處確立法人身份",
+        "objective": "確認組織的官方持牌法人名稱、管轄區和註冊詳情",
+        "what_to_do": "搜尋 OpenCorporates 以尋找該公司名稱在全球管轄區內的所有註冊記錄。如果組織位於英國，使用 Companies House 獲取權威的官方申報文件。記錄註冊地址、公司編號、成立日期和當前狀態。下載任何可用的申報文件（財務報表、確認聲明）以獲取財務和結構線索。",
+        "tools": [
+          "OpenCorporates",
+          "Companies House"
+        ],
+        "what_to_look_for": "在不同管轄區以相似名稱進行的多個註冊，可能表明複雜的企業結構或殼公司活動。注意註冊地址的任何變更、新董事的加入或狀態變更（如「清算中」）。註冊地址可能與實際營運地址有很大不同——兩者都是有用的調查數據點。",
+        "pitfalls": "公司名稱並非全球唯一。通過交叉比對註冊編號、地址和成立日期，確認您定位了正確的實體。",
+        "safety_notes": "此步驟中的所有來源均為官方公共登記處。訪問這些登記處無需任何授權。"
+      },
+      {
+        "step_number": 2,
+        "title": "繪製關鍵人員與企業關係圖譜",
+        "objective": "識別決策者、董事及其與其他實體的聯繫",
+        "what_to_do": "審查來自公司註冊數據的董事名單，並在 LinkedIn 上交叉比對以確認身份和專業背景。使用 Crunchbase 來發現融資歷史、投資者和戰略合作夥伴。在 Companies House 中，追蹤董事與他們當前或曾經關聯的其他公司的關係——這能揭示可能未在其他地方公開披露的關係網絡。",
+        "tools": [
+          "LinkedIn",
+          "Crunchbase",
+          "OpenCorporates"
+        ],
+        "what_to_look_for": "同時擔任其他公司（特別是離岸或近期解散的實體）高管的董事，是欺詐和洗錢調查中的關鍵信號。記錄在您的調查範圍內出現在多個組織中的任何投資者或董事會成員。",
+        "pitfalls": "LinkedIn 檔案可能是過時的或虛假的。務必對比官方登記記錄來驗證聲稱的職位。不要混淆名字相似的兩個人——通過多個獨立識別碼（電郵域名、照片、前雇主）進行驗證。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "分析網站呈現與技術棧",
+        "objective": "了解組織的數位基礎設施和面向公眾的網路足跡",
+        "what_to_do": "使用 BuiltWith 對公司的主要域名進行分析，以識別其技術棧——CMS、分析工具、郵件服務商和 CDN。使用 Wayback Machine 審查網站的演變歷史。運行 DNSdumpster 或 SecurityTrails 來繪製子域名和郵件基礎設施圖譜。對於大型組織，使用 BGP.he.net 尋找其 IP 範圍。",
+        "tools": [
+          "BuiltWith",
+          "Wayback Machine",
+          "DNSdumpster",
+          "SecurityTrails"
+        ],
+        "what_to_look_for": "技術選擇可以揭示組織的規模、預算和安全成熟度。一家聲稱擁有企業規模但使用免費工具的公司是一個值得注意的矛盾點。Wayback Machine 歷史快照可以揭示已被清除的舊產品、聲稱或人員資訊。",
+        "pitfalls": "公司可能因不同目的使用不同的域名。在 Censys 或 SecurityTrails 中查詢憑證透明度日誌以尋找關聯的域名——這些日誌通常會曝露子公司品牌或產品域名。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "交叉比對與綜合彙整",
+        "objective": "將發現合併為結構化的組織檔案",
+        "what_to_do": "將註冊登記數據、人員調查發現、財務資訊和基礎設施數據整合到同一個檔案中。識別官方記錄與公開營銷宣傳之間的不一致之處。記錄任何需要進一步研究的未決問題。如果使用 Maltego，用它來視覺化收集數據中的實體關係。",
+        "tools": [
+          "Maltego"
+        ],
+        "what_to_look_for": "登記詳情與宣傳資料之間的不一致、財務披露中的空白、領導層或所有權的突然變更以及掩蓋實際受益人的離岸實體。",
+        "pitfalls": "公開可用的資訊僅代表某個時間點的快照。公司情況會發生變化；通過檢查最新的申報文件，驗證關鍵事實（註冊地址、現任董事）反映了最新狀態。",
+        "safety_notes": null
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "使用公共登記數據進行企業 OSINT 通常是合法的，但對個人董事和員工的分析需要符合比例原則。不要僅憑企業聯繫就發布關於個人的未經證實的指控。確保您的調查與合法的公共利益、法律授權或授權的盡職調查範圍相符。妥善處理收集到的關於組織內個人的個人數據。",
+      "badges": [
+        "passive-first"
+      ]
+    },
+    "related_tools": [
+      "OpenCorporates",
+      "Crunchbase",
+      "Companies House",
+      "LinkedIn",
+      "BuiltWith",
+      "Maltego",
+      "SecurityTrails",
+      "Wayback Machine"
+    ],
+    "related_categories": [
+      "Companies & Organizations",
+      "Domains",
+      "People & Identity"
+    ]
+  },
+  {
+    "id": "ip-infrastructure-analysis",
+    "title": "IP 與基礎設施分析",
+    "subtitle": "網域資產偵察與威脅映射",
+    "summary": "分析目標 IP 地址的地理位置、關聯域名、ASN 資訊與暴露服務，建立完整的網路資產圖譜。",
+    "starting_point": "IP 地址、ASN 編號或託管提供商名稱",
+    "end_goal": "關於該 IP 地址的完整被動畫像：所有者、ASN、地理位置、暴露服務、歷史關聯和威脅信譽——不與目標基礎設施發生直接接觸。",
+    "difficulty": "intermediate",
+    "estimated_time": "45–90 分鐘",
+    "user_groups": [
+      "威脅情報分析師",
+      "事件響應人員",
+      "獲授權的滲透測試員",
+      "網路安全工程師"
+    ],
+    "categories": [
+      "IPs & Infrastructure",
+      "Threat Intelligence"
+    ],
+    "target_types": [
+      "ip",
+      "network",
+      "domain"
+    ],
+    "signals": [
+      "ASN 和託管提供商身份",
+      "地理位置與組織歸屬",
+      "暴露的服務與開放端口",
+      "TLS 憑證關聯",
+      "威脅信譽與掃描器分類",
+      "歷史 DNS 解析記錄"
+    ],
+    "recommended_tools": [
+      "Shodan",
+      "Censys",
+      "IPinfo",
+      "GreyNoise",
+      "AbuseIPDB",
+      "VirusTotal"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "初始 IP 資訊豐富化",
+        "objective": "為 IP 地址建立基本的所有權和地理位置背景",
+        "what_to_do": "查詢 IPinfo 以獲取 ASN、地理位置、ISP，以及該 IP 是否為已知的 VPN、代理或數據中心。與 BGP.he.net 進行交叉比對，以查看由同一個 ASN 宣告的所有 IP 前綴。這能立即確認該 IP 是商業雲端提供商（如 AWS、Azure）、VPS 託管商、住宅 ISP 還是已知的匿名化服務。",
+        "tools": [
+          "IPinfo",
+          "BGP.he.net"
+        ],
+        "what_to_look_for": "託管在數據中心的 IP 更常用於自動化活動、掃描器和基礎設施攻擊。住宅 IP 可能表明受感染的端點或合法的終端用戶。位於高風險管轄區或防彈託管商處的 IP 是一個重要的情報指標。",
+        "pitfalls": "IP 地理定位是近似的。不要僅憑 IP 地理定位就斷定具體的城市或精確位置——它可能存在數百公里的偏差，對於 VPN 節點和 CDN IP 尤其如此。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 2,
+        "title": "枚舉暴露服務",
+        "objective": "使用第三方掃描數據發現該 IP 託管了哪些服務",
+        "what_to_do": "在 Shodan 和 Censys 中搜尋目標 IP 的所有索引數據。這些平台執行自己的持續全網掃描，因此此步驟完全是被動的——您是在查詢他們的資料庫，而不是掃描目標。記錄開放的端口、運行的服務、服務橫幅以及與該 IP 關聯的任何 TLS 憑證。在 Shodan 的「所有結果」標籤中查看歷史數據。",
+        "tools": [
+          "Shodan",
+          "Censys"
+        ],
+        "what_to_look_for": "在生產 IP 上發現非預期的開放端口（如 RDP 3389、SMB 445、Telnet 23）提示潛在的安全問題。TLS 憑證可以揭示在同一個 IP 上託管的其他域名——這些是關聯分析的契機。注意服務橫幅中的軟體版本，它們可能提示系統未修補漏洞。",
+        "pitfalls": "Shodan 和 Censys 掃描數據帶有時間戳記——務必檢查數據的更新時間，因為服務會發生變化。六個月前開放的端口現在可能已經關閉。使用多個工具對比時效性。",
+        "safety_notes": "查詢 Shodan 和 Censys 是被動情報收集行為——您訪問的是他們的資料庫，而不是直接掃描目標。在沒有獲得明確書面授權的情況下，請勿對目標 IP 進行主動掃描。"
+      },
+      {
+        "step_number": 3,
+        "title": "威脅信譽評估",
+        "objective": "確定該 IP 是否與惡意活動相關聯",
+        "what_to_do": "檢查 GreyNoise 以分類該 IP 是否為已知的網路掃描器。查詢 AbuseIPDB 獲取社群報告的濫用歷史和置信度評分。通過 VirusTotal 運行該 IP，看看是否有任何威脅情報廠商將其標記。諮詢 AlienVault OTX 獲取關聯的攻擊指標和社群威脅標籤。",
+        "tools": [
+          "GreyNoise",
+          "AbuseIPDB",
+          "VirusTotal",
+          "AlienVault OTX"
+        ],
+        "what_to_look_for": "較高的 AbuseIPDB 置信度評分結合 GreyNoise 的惡意分類是活動惡意基礎設施的強力證據。VirusTotal 的社群標籤（如 C2、phishing、botnet）提供了額外的背景。注意威脅報告的時效性——動態 IP 上的舊報告可能無法反映當前的狀況。",
+        "pitfalls": "沒有威脅記錄並不意味著該 IP 是安全的或與惡意活動無關。新註冊的基礎設施或新分配的 IP 還不會有任何威脅歷史。將信譽數據與服務和註冊背景相結合，以獲得完整的畫像。",
+        "safety_notes": null
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "使用第三方掃描數據進行被動 IP 調查是合法的公共來源研究。然而，從 IP 情報轉為主動偵察、端口掃描或漏洞利用是另一回事，需要明確的授權。不要將 Shodan 或 Censys 的發現作為未經授權訪問的藉口。如果調查發現了受感染的第三方基礎設施，請遵循負責的漏洞披露規範。",
+      "badges": [
+        "passive-first"
+      ]
+    },
+    "related_tools": [
+      "Shodan",
+      "Censys",
+      "IPinfo",
+      "GreyNoise",
+      "AbuseIPDB",
+      "VirusTotal",
+      "AlienVault OTX",
+      "BGP.he.net"
+    ],
+    "related_categories": [
+      "IPs & Infrastructure",
+      "Threat Intelligence"
+    ]
+  },
+  {
+    "id": "social-media-verification",
+    "title": "社交媒體驗證",
+    "subtitle": "帳號真偽鑑定與影響力分析",
+    "summary": "驗證社交媒體帳號的真實性，識別可疑的自動化行為、帳號年齡、活動模式與關聯指標。",
+    "starting_point": "社交媒體個人檔案 URL、用戶名或顯示名稱",
+    "end_goal": "對帳號真實性、身份歸屬置信度、行為模式以及帳號的聲稱和背景是否與可觀察的證據一致做出經過核實的評估。",
+    "difficulty": "beginner",
+    "estimated_time": "30–60 分鐘",
+    "user_groups": [
+      "記者和事實核查員",
+      "反輿論操縱研究員",
+      "社交媒體調查員",
+      "人事與背景核查專業人員"
+    ],
+    "categories": [
+      "Social Media",
+      "People & Identity"
+    ],
+    "target_types": [
+      "social-media",
+      "person",
+      "username"
+    ],
+    "signals": [
+      "帳號創建日期和早期活動",
+      "粉絲與關注比例以及增長模式",
+      "頭像照片來源",
+      "跨平台呈現的一致性",
+      "內容語言和主題的一致性",
+      "互動真實性"
+    ],
+    "recommended_tools": [
+      "WhatsMyName",
+      "Sherlock",
+      "Social Blade",
+      "TinEye",
+      "Yandex Images",
+      "Nitter"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "觀察帳號表層信號",
+        "objective": "在不與帳號互動的情況下收集基準帳號元數據",
+        "what_to_do": "使用 Nitter（針對 Twitter/X）或在隔離、未登入的瀏覽器中直接瀏覽個人檔案。記錄帳號創建日期、粉絲/關注數、個人簡介文本、連結的 URL、地點和頭像照片。記錄總發帖數，並評估其是否與帳號年齡相稱。截圖關鍵細節作為調查記錄。",
+        "tools": [
+          "Nitter"
+        ],
+        "what_to_look_for": "創建時間非常新且發布大量政治或情緒化內容的帳號是輿論操縱的危險信號。在特定新聞事件期間創建的帳號可能是專門為該敘事量身定制的。驗證簡介中的任何連結——它們可能指向更多的身份資訊或揭示運營者的其他項目。",
+        "pitfalls": "在某些平台上，帳號創建日期有時可能會被隱藏。較老的帳號年齡並不能保證真實性——帳號經常在閒置一段時間後被購買或重新使用。",
+        "safety_notes": "務必使用隔離的瀏覽器，並避免在瀏覽調查目標時登入您的個人帳號。登入瀏覽會觸發算法推薦，將您的個人檔案展現給目標。"
+      },
+      {
+        "step_number": 2,
+        "title": "分析增長模式與互動情況",
+        "objective": "識別虛假的粉絲增長或互動操縱",
+        "what_to_do": "對於 YouTube、Twitch 或 Twitter/X 帳號，使用 Social Blade 審查歷史粉絲數量圖表。尋找與有機受眾建立不符的突發垂直增長峰值。將粉絲數量與實際互動率（每篇帖子的按讚、回覆、分享數）進行比較——粉絲量巨大但互動幾近於零是強烈的殭屍粉指標。",
+        "tools": [
+          "Social Blade"
+        ],
+        "what_to_look_for": "暴增後進入平台的粉絲增長模式是購買粉絲活動的典型特徵。粉絲數高但互動比例極低（大型帳號低於 0.5%）提示人工灌水。特定日期粉絲數同時下降可能與平台的殭屍帳號清理事件有關。",
+        "pitfalls": "互動率因平台、內容類型和帳號大小而有很大差異。大型帳號（100萬+）的互動百分比通常低於小帳號。背景脈絡很重要——在爆紅事件之後出現的粉絲激增是有機的，而非人工的。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 3,
+        "title": "對頭像照片進行反向圖像搜尋",
+        "objective": "驗證頭像照片是原創的還是盜用自其他來源",
+        "what_to_do": "下載頭像照片並通過 TinEye、Yandex Images 和 Google Lens 運行它。這三個引擎擁有不同的影像索引，能發現其他引擎遺漏的匹配。記錄影像出現的地方——圖庫網站、其他平台上的早期帳號或無關人員的新聞照片。如果可以使用 PimEyes，它可以執行人臉匹配搜尋以尋找該人臉出現在網路上的其他地方。",
+        "tools": [
+          "TinEye",
+          "Yandex Images"
+        ],
+        "what_to_look_for": "出現在圖庫網站上或在新聞文章中被歸屬於完全不同之人的頭像照片是明確的虛假信號。在另一個不同名字的較老帳號上找到相同的照片，提示該照片是從先前的馬甲身份中重複使用的。",
+        "pitfalls": "如果沒有找到匹配結果，這並不能確認照片是原創的——它可能只是未被索引。AI 生成的人臉照片不會與任何真實世界的來源匹配，因此無法進行反向搜尋。對於逼真但無法識別的頭像照片，考慮使用 AI 檢測工具。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "跨平台身份佐證",
+        "objective": "驗證帳號聲稱的身份在不同平台間是否一致",
+        "what_to_do": "通過 WhatsMyName、Sherlock 或 Maigret 運行用戶名，以尋找使用相同名稱的其他帳號。比較不同平台上的頭像照片、個人簡介、聲稱的地點和內容。在多個獨立平台上一致使用相同的用戶名、照片和簡介是真實長期存在之身份的有力證據。不一致性（不同的照片、矛盾的簡介宣稱）則提示冒充或新構建的身份。",
+        "tools": [
+          "WhatsMyName",
+          "Sherlock"
+        ],
+        "what_to_look_for": "跨平台一致性是身份驗證的黃金標準。在 GitHub（顯示真實軟體貢獻）、LinkedIn（職業歷史）和特定論壇上尋找相同的用戶名——這些比主流社交帳號更難造假。出現在與所聲稱身份綁定的學術論文、法院記錄或新聞存檔中的名字是最強有力的佐證。",
+        "pitfalls": "用戶名碰撞（不同的人使用同一個名稱）很常見。在沒有除用戶名之外至少兩個獨立佐證識別碼的情況下，切勿將兩個檔案歸入同一個實體。",
+        "safety_notes": "請勿關注、按讚、分享或與任何受調查的帳號互動。請勿發送好友請求或任何形式的訊息。觀察必須保持嚴格的單向性。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "社交媒體驗證應與合法的調查、安全或公共利益目的相稱。請勿將這些技術用於個人目的來驗證私人的身份。彙整社交媒體用戶的詳細行為檔案（即使來自公開帖子）可能會導致騷擾、跟踪和聲譽損害。僅發布已證實的結論，而非調查推測。",
+      "badges": [
+        "passive-first",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "WhatsMyName",
+      "Sherlock",
+      "Social Blade",
+      "TinEye",
+      "Yandex Images",
+      "Nitter",
+      "Maigret"
+    ],
+    "related_categories": [
+      "Social Media",
+      "People & Identity"
+    ]
+  },
+  {
+    "id": "public-records-research",
+    "title": "公開記錄調查",
+    "subtitle": "政府資料庫與官方文件查閱",
+    "summary": "從公司名稱、個人或法律事項出發，在法院卷宗、企業登記、證券披露及制裁資料庫中定位並交叉核對公開政府記錄，建立基於一手官方來源的事實紀錄。",
+    "starting_point": "公司名稱、個人姓名、組織或法律案件案號",
+    "end_goal": "一份包含與主體連結的已證實官方申報、訴訟歷史、監管行動和制裁數據的結構化記錄——僅從官方主要來源獲取。",
+    "difficulty": "beginner",
+    "estimated_time": "45–120 分鐘",
+    "user_groups": [
+      "調查記者",
+      "盡職調查分析師",
+      "律師和法律助理",
+      "合規專業人員"
+    ],
+    "categories": [
+      "Government & Public Records",
+      "Companies & Organizations"
+    ],
+    "target_types": [
+      "organization",
+      "person",
+      "document"
+    ],
+    "signals": [
+      "企業註冊登記詳情",
+      "受益所有權申報",
+      "法院案件案號與當事人",
+      "制裁名單條目",
+      "SEC 披露與內部人交易",
+      "經資訊公開法（FOIA）公開的文件"
+    ],
+    "recommended_tools": [
+      "SEC EDGAR",
+      "PACER",
+      "OpenCorporates",
+      "OpenSanctions",
+      "ICIJ Offshore Leaks Database",
+      "Judyrecords"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "確立主體身份",
+        "objective": "在查詢資料庫前確認準確的註冊法定名稱和管轄區",
+        "what_to_do": "在搜尋資料庫之前，確認您主體的準確法定名稱和管轄區。公司的註冊名稱往往與其營運名稱不同。在 OpenCorporates 中搜尋註冊實體，並記錄管轄區、註冊編號和註冊地址。這些識別碼比營運名稱在交叉比對其他資料庫時更可靠。",
+        "tools": [
+          "OpenCorporates",
+          "Companies House"
+        ],
+        "what_to_look_for": "註冊的法定名稱、公司註冊號碼、註冊管轄區和當前狀態（活動/解散）。同時記錄任何關聯的實體——子公司、母公司或在相同地址的實體。",
+        "pitfalls": "使用營運名稱或非正式名稱搜尋會遺漏記錄。公司經常使用不透明的控股結構進行註冊。務必從主要註冊源交叉核對準確的法定名稱。",
+        "safety_notes": "此步驟中的所有來源均為官方公共登記處。訪問它們不需要任何授權。"
+      },
+      {
+        "step_number": 2,
+        "title": "制裁與不良媒體審查",
+        "objective": "檢查主體是否出現在任何全球制裁或觀察名單上",
+        "what_to_do": "在 OpenSanctions 和 OFAC SDN 名單中搜尋主體已確認的法定名稱和任何已知別名。OpenSanctions 整合了 100 多個全球制裁名單、PEP（政治敏感人物）登記處和犯罪觀察名單。記錄任何精確匹配結果，並保留來源名單和日期。與 ICIJ 離岸洩露資料庫交叉比對，以獲取離岸實體暴露情況。",
+        "tools": [
+          "OpenSanctions",
+          "ICIJ Offshore Leaks Database"
+        ],
+        "what_to_look_for": "出現在 OFAC、聯合國、歐盟或國際刑警組織名單上的精確姓名匹配。表明政治敏感人物的 PEP 指定。ICIJ 資料庫中指向巴拿馬文件、潘朵拉文件或類似洩露事件中離岸實體的連結。",
+        "pitfalls": "僅靠姓名篩選會在面對常見姓名時產生虛假結果。在得出結論之前，務必用其他識別碼（出生日期、管轄區或註冊編號）來佐證制裁匹配結果。",
+        "safety_notes": "制裁審查數據源自官方政府管道。結論在發表或寫入正式報告前必須經過驗證。"
+      },
+      {
+        "step_number": 3,
+        "title": "證券與監管申報文件",
+        "objective": "尋找上市公司或受監管實體的官方披露申報文件",
+        "what_to_do": "搜尋美國上市公司的 SEC EDGAR，以獲取年度報告（10-K）、季度報告（10-Q）、內部人交易披露（表3、表4、表5）、委託投票說明書（DEF 14A）和受益所有權申報文件（13G/13D）。這些文件包含在次要媒體中極少報導的高管薪酬、關聯方交易、法律訴訟和風險披露。",
+        "tools": [
+          "SEC EDGAR",
+          "GovInfo"
+        ],
+        "what_to_look_for": "在 10-K「法律訴訟」部分中披露的訴訟進展。關聯方交易披露。源自表 4 申報的內部人交易模式。揭示激進投資者或未披露控制權益的大額持股披露（13D/13G）。",
+        "pitfalls": "並非所有公司都在 SEC 註冊。私人公司、外國發行人和小型實體可能不會向 SEC 申報。對於非美國公司，搜尋其對應的國家監管機構。",
+        "safety_notes": null
+      },
+      {
+        "step_number": 4,
+        "title": "法院記錄與資訊公開法（FOIA）搜尋",
+        "objective": "尋找與主體相關的訴訟歷史和政府公開文件",
+        "what_to_do": "首先搜尋 Judyrecords 以獲取廣泛的州級訴訟概覽，然後使用 PACER 獲取完整的美國聯邦法院卷宗。記錄所有案件案號、當事人和卷宗類型。對於政府文件，在提交新的 FOIA 請求之前，檢查 MuckRock 上已公開的材料——其他研究人員可能已經獲取了您需要的內容。",
+        "tools": [
+          "Judyrecords",
+          "PACER",
+          "MuckRock"
+        ],
+        "what_to_look_for": "點名主體的民事、刑事或破產案件。特定領域內重複訴訟的模式。先前通過 FOIA 公開的涵蓋該主體的政府文件。和解協議、同意命令或禁制令。",
+        "pitfalls": "PACER 按頁收費；在搜尋前設定下載預算。Judyrecords 中的州法院記錄對於某些州可能不完整。在引用前務必直接向原審法院核實案件細節。",
+        "safety_notes": "通過 PACER 和 Judyrecords 訪問的所有記錄均為公共領域的官方法院記錄。即使是公共記錄，也應避免在不具新聞價值的背景下公佈個人姓名。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "公共記錄研究是最站得住腳的 OSINT 形式之一，因為它依賴於官方維護的來源。然而，彙整關於私人的公共記錄（即使來自官方資料庫）也可能相對於所服務的公共利益造成不成比例的損害。務必應用比例原則：研究的深度應與公共利益正當性相符。避免公佈法院已封存或註銷的法院記錄中的身份詳情。",
+      "badges": [
+        "passive-first"
+      ]
+    },
+    "related_tools": [
+      "SEC EDGAR",
+      "PACER",
+      "OpenCorporates",
+      "OpenSanctions",
+      "ICIJ Offshore Leaks Database",
+      "Judyrecords",
+      "MuckRock",
+      "GovInfo"
+    ],
+    "related_categories": [
+      "Government & Public Records",
+      "Companies & Organizations"
+    ]
+  },
+  {
+    "id": "malware-url-triage",
+    "title": "惡意軟體與 URL 快速分流",
+    "subtitle": "不在本機執行即可安全分析可疑文件",
+    "summary": "收到可疑文件、連結或電郵附件時，透過線上沙箱和威脅情報服務安全地進行分流——無需在自己的機器上執行——確定威脅上下文、提取入侵指標（IOC）並判斷是否需要升級處理。",
+    "starting_point": "可能具有惡意特徵的可疑文件（哈希值、附件或下載文件）、URL 或網域",
+    "end_goal": "對文件或 URL 的威脅判定、提取的 IOC 列表（哈希值、IP、網域、登錄檔機碼）以及處置建議——整個過程均無需在活動系統上執行樣本。",
+    "difficulty": "intermediate",
+    "estimated_time": "30–60 分鐘",
+    "user_groups": [
+      "SOC 分析師",
+      "安全研究員",
+      "IT 管理員",
+      "事件響應人員"
+    ],
+    "categories": [
+      "Malware & File Analysis",
+      "Threat Intelligence",
+      "IPs & Infrastructure"
+    ],
+    "target_types": [
+      "network",
+      "domain",
+      "ip"
+    ],
+    "signals": [
+      "文件哈希值（SHA256、MD5）",
+      "可疑 URL",
+      "行程樹行為",
+      "網路連線",
+      "已註冊的網域與 IP",
+      "YARA 簽名匹配"
+    ],
+    "recommended_tools": [
+      "VirusTotal",
+      "URLScan.io",
+      "ANY.RUN",
+      "Hybrid Analysis",
+      "URLVoid",
+      "MalwareBazaar"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "靜態哈希值與信譽核查",
+        "objective": "確定威脅情報系統是否已知該文件",
+        "what_to_do": "在將任何文件提交給外部服務之前，在本地計算文件的 SHA256 哈希值（使用 PowerShell 的 'Get-FileHash' 或 Linux 的 'sha256sum'）。在 VirusTotal 和 MalwareBazaar 中搜尋該哈希值。如果哈希值已存在記錄，您無需上傳文件即可立即獲得判定結果——如果樣本是針對性攻擊，上傳文件可能會驚動對手。同時檢查 URLVoid 和 URLScan 以獲取可疑郵件中嵌入的任何 URL。",
+        "tools": [
+          "VirusTotal",
+          "MalwareBazaar",
+          "URLVoid"
+        ],
+        "what_to_look_for": "VirusTotal 檢測率高於 5/70 個引擎是一個強烈的陽性信號。檢查行為標籤（RAT、木馬、下載器、網銀木馬）和最近提交日期。非常新的首次發現日期可能表明是新型或針對性的樣本。",
+        "pitfalls": "檢測率為零並不意味著文件是乾淨的——它可能是一個精心設計的、旨在繞過特徵碼檢測的全新針對性樣本。如果文件高度可疑，即使檢測率低，也應繼續進行沙箱分析。",
+        "safety_notes": "在完成分流之前，在任何情況下都不要在您的本地機器上打開該文件。如果文件高度針對性（例如指名道姓發送給您），請勿提交給公共服務——它會出現在 VirusTotal 的公共資訊流中。"
+      },
+      {
+        "step_number": 2,
+        "title": "URL 與網域信譽分析",
+        "objective": "評估嵌入或連結 URL 的信誉",
+        "what_to_do": "將郵件或文件中的可疑 URL 提交給 URLScan.io，它將截取頁面截圖、記錄所有網路請求，並在隔離的環境中提取 DOM 內容。檢查 URLVoid 的黑名單覆蓋情況。在 PhishTank 中搜尋已知的釣魚模式。在 WHOIS 中審查網域的註冊日期——過去 30 天內註冊的網域是一個主要的危險信號。",
+        "tools": [
+          "URLScan.io",
+          "URLVoid",
+          "PhishTank"
+        ],
+        "what_to_look_for": "URLScan 截圖顯示的憑證釣魚表單、假冒登入頁面或惡意軟體下載提示。新註冊的網域（少於 30 天）。URL 解析至已知的惡意軟體分發 IP。混淆最終目的地的重定向鏈。",
+        "pitfalls": "掃描 URL 可能會觸發它——某些惡意頁面是一次性的，在首次請求後會返回 404。使用 URLScan 比直接點擊更安全，因為它使用隔離的無頭瀏覽器。",
+        "safety_notes": "URLScan 提交是公開的。如果 URL 包含敏感的個人數據（例如密碼重設連結），在提交前對其進行脫敏處理。請勿提交可能洩露身份驗證權限的 URL。"
+      },
+      {
+        "step_number": 3,
+        "title": "動態沙箱分析",
+        "objective": "在隔離的虛擬機內觀察文件的真實行為",
+        "what_to_do": "將文件提交給 ANY.RUN 進行互動式分析，或提交給 Hybrid Analysis 進行自動化行為報告生成。觀察行程樹、文件系統修改、登錄檔變更以及樣本建立的網路連線。記錄創建的任何子行程、加載的 DLL 和聯繫的外部 IP。記錄所有網域和 IP，以便在下一步中進行豐富化。",
+        "tools": [
+          "ANY.RUN",
+          "Hybrid Analysis"
+        ],
+        "what_to_look_for": "行程注入到合法的系統行程（例如 svchost.exe）。登錄檔持久化機制（如 Run 機碼、排程工作）。執行後立即與寫死的 C2 網域或 IP 建立網路連線。在 %TEMP%、%APPDATA% 或系統目錄中釋放文件。",
+        "pitfalls": "複雜的惡意軟體可能會檢測到沙箱環境並保持休眠狀態。乾淨的沙箱運行並不能保證樣本是良性的。務必將動態分析與靜態 YARA 簽名匹配相結合。",
+        "safety_notes": "切勿在您的本地機器上執行未知的樣本，即使是在同一個網路的虛擬機中——橫向移動是一個真實的威脅。使用與您的基礎設施完全隔離的雲端沙箱。"
+      },
+      {
+        "step_number": 4,
+        "title": "IOC 提取與威脅情報豐富化",
+        "objective": "編譯指標並確定它們是否連結到已知的威脅組織或活動",
+        "what_to_do": "收集前述步驟中的所有 IOC：文件哈希值、C2 IP、聯繫網域、釋放的文件名稱、Mutex 名稱和登錄檔機碼。在 AlienVault OTX 和 VirusTotal Relations 中搜尋這些 IOC，以識別與已知威脅組織基礎設施或惡意軟體家族的關聯。為您的事件響應團隊以結構化格式記錄發現。",
+        "tools": [
+          "AlienVault OTX",
+          "VirusTotal",
+          "Filescan.io"
+        ],
+        "what_to_look_for": "IOC 與已知 APT 或網絡犯罪集團基礎設施的重合。指向同一個 C2 IP 叢集的多個 IOC。附帶在樣本上的歸因標籤或惡意軟體家族標籤。表明惡意軟體活動的相關文件哈希值。",
+        "pitfalls": "基於 IOC 的歸因是概率性的，而非決定性的。基礎設施經常被回收和重新分配。不要僅憑 IOC 重合就公開發出歸因聲明——這需要額外的技術佐證。",
+        "safety_notes": "通過適當的管道（如 ISAC、事件響應團隊）負責任地分享 IOC。在收容完成之前過早公佈 C2 IP 可能會驚動對手。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "惡意軟體分流是一項防禦性活動。此工作流旨在分析您在保護授權防禦系統的背景下收到或遇到的樣本。請勿將沙箱用於攻擊目的、開發規避技術或構建惡意工具。將文件上傳到公共沙箱會創建永久的公共記錄——在提交敏感或針對性樣本前考慮這一點。",
+      "badges": [
+        "passive-first",
+        "use-with-care"
+      ]
+    },
+    "related_tools": [
+      "VirusTotal",
+      "URLScan.io",
+      "ANY.RUN",
+      "Hybrid Analysis",
+      "MalwareBazaar",
+      "URLVoid",
+      "URLhaus",
+      "PhishTank",
+      "AlienVault OTX",
+      "Filescan.io"
+    ],
+    "related_categories": [
+      "Malware & File Analysis",
+      "Threat Intelligence",
+      "IPs & Infrastructure"
+    ]
+  },
+  {
+    "id": "investigator-opsec-setup",
+    "title": "調查員作業安全設置",
+    "subtitle": "建立乾淨、匿名的調查環境",
+    "summary": "在開始任何敏感調查之前，建立隔離的調查環境以保护您的身份、防止操作洩露並確保證據完整性。本流程適用於需要匿名性、線人保護或與個人身份隔離的調查場景。",
+    "starting_point": "一項需要匿名性、保護消息來源或與個人身份隔離的敏感新調查",
+    "end_goal": "一個經過加固、隔離且可審計的調查環境——乾淨的瀏覽器設定檔、匿名網路路徑、加密存儲和驗證的 OPSEC 狀態——隨時可以開始實際調查。",
+    "difficulty": "beginner",
+    "estimated_time": "60–120 分鐘（一次性設置）",
+    "user_groups": [
+      "調查記者",
+      "人權研究員",
+      "安全研究員",
+      "私家偵探"
+    ],
+    "categories": [
+      "Privacy / Investigator Safety"
+    ],
+    "target_types": [
+      "person"
+    ],
+    "signals": [
+      "瀏覽器指紋",
+      "IP 地址可見性",
+      "WebRTC 洩漏狀態",
+      "DNS 查詢暴露情況",
+      "本地存儲隔離"
+    ],
+    "recommended_tools": [
+      "Tails OS",
+      "Mullvad VPN",
+      "BrowserLeaks",
+      "VeraCrypt",
+      "Signal",
+      "Whonix"
+    ],
+    "risk_level": "low",
+    "public_safe": true,
+    "requires_authorization": false,
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "選擇您的隔離級別",
+        "objective": "決定您的調查需要與您的個人身份保持多大程度的隔離",
+        "what_to_do": "評估您調查的敏感性。對於對上市公司或一般 OSINT 的常規研究，帶有 VPN 的專用瀏覽器設定檔就足夠了。對於涉及敏感消息來源、政治風險或法律風險的調查，使用從 USB 啟動的 Tails OS 以獲得最大程度的隔離。對於需要在兩次會話之間保存工作的長期調查，運行在 VirtualBox 內部的 Whonix 是更好的選擇。將您的隔離級別與實際風險相匹配——過度設計會降低效率；設計不足會暴露自己。",
+        "tools": [
+          "Tails OS",
+          "Whonix"
+        ],
+        "what_to_look_for": "目標是驗證您的個人數位身份與調查環境之間的分離。對您或您消息來源的風險越高，分離就應該越嚴格。",
+        "pitfalls": "使用無痕/私密瀏覽模式並不足以進行隔離。無痕模式可以防止本地歷史記錄存儲，但不會向遠端伺服器掩蓋您的 IP、瀏覽器指紋或已登入的帳號識別碼。",
+        "safety_notes": "對於涉及個人安全風險或威權政府目標的調查，務必傾向於使用 Tails OS 或 Whonix，而非僅靠 VPN。"
+      },
+      {
+        "step_number": 2,
+        "title": "建立匿名網路路徑",
+        "objective": "確保您的真實 IP 地址對任何面向目標的伺服器都不可見",
+        "what_to_do": "在打開任何與調查相關的 URL 之前，啟用信任的、無日誌 VPN。對於高敏感度工作，使用 Tor 瀏覽器或 Tails OS（預設情況下將所有流量通過 Tor 路由）。如果使用商業 VPN，選擇具有已證實無日誌政策和獨立審計的提供商（如 Mullvad）。請勿使用免費 VPN——它們經常記錄並將用戶流量變現。",
+        "tools": [
+          "Mullvad VPN",
+          "Tor Browser",
+          "Tails OS"
+        ],
+        "what_to_look_for": "來自 BrowserLeaks 或 ipleak.net 的確認，顯示的 IP 是您的 VPN/Tor 出口 IP，而非您的真實 IP。特別檢查 WebRTC 洩漏——WebRTC 可以繞過 VPN 隧道並曝露您的本地 IP 地址。",
+        "pitfalls": "WebRTC 是一個常見的 VPN 洩漏向量。許多 VPN 預設不阻止 WebRTC。在繼續操作前，務必通過 BrowserLeaks 進行驗證。行動裝置有通過應用程式級網路請求產生額外 VPN 繞過的風險。",
+        "safety_notes": "如果您的 VPN 提供商選擇記錄日誌，他們可以看到您的流量。為了最大程度的匿名性，使用 Tor，其中沒有單一實體能同時看到您是誰以及您正在訪問什麼。"
+      },
+      {
+        "step_number": 3,
+        "title": "驗證您的 OPSEC 狀態",
+        "objective": "確認您的隔離環境沒有洩漏識別信號",
+        "what_to_do": "在您的調查瀏覽器中打開 BrowserLeaks 並運行所有可用測試：IP 地址、WebRTC、Canvas 指紋、字體指紋和 DNS 洩漏測試。驗證沒有可見的真實 IP 或個人識別碼。如果使用專用的瀏覽器設定檔，確保瀏覽器中的任何地方都沒有登入個人帳號。禁用可能具有獨特指紋的重型瀏覽器擴充功能。",
+        "tools": [
+          "BrowserLeaks"
+        ],
+        "what_to_look_for": "所有 IP 測試應僅顯示 VPN/Tor 出口 IP。WebRTC 本地 IP 不應顯示您的區域網路或真實公網 IP。Canvas 和字體指紋不應具有唯一的識別性（Tor 瀏覽器預設對這些進行了歸一化）。",
+        "pitfalls": "即使啟用了 VPN，瀏覽器擴充功能也可能洩漏數據。密碼管理器、廣告攔截器和效率擴充功能都會增加唯一的指紋特徵。在 Tor 瀏覽器中，請勿安裝額外的擴充功能。",
+        "safety_notes": "每次打開新的調查會話時都運行此驗證，而不僅僅是在初始設置期間。VPN 客戶端可能會靜默斷開連線，在無警告的情況下暴露您的真實 IP。"
+      },
+      {
+        "step_number": 4,
+        "title": "保護您的證據存儲",
+        "objective": "加密您的調查筆記、螢幕截圖和收集的證據",
+        "what_to_do": "為所有調查材料——螢幕截圖、筆記、下載的文件和聯繫人資訊——創建一個 VeraCrypt 加密貨櫃。使用不在其他任何地方使用的強大、唯一的密碼。對於團隊調查，使用 Signal 與合作夥伴建立安全通信管道。設定文件保留政策——不要保留證據超過必要的時間，特別是敏感消息來源的聯繫人資訊。",
+        "tools": [
+          "VeraCrypt",
+          "Signal"
+        ],
+        "what_to_look_for": "存儲在加密貨櫃中的證據應只能在輸入 VeraCrypt 密碼後才能訪問。與消息來源的 Signal 訊息應啟用閱後即焚功能，並定期從裝置中清除。",
+        "pitfalls": "雲端同步服務（Dropbox、Google Drive、iCloud）可能會靜默將 VeraCrypt 貨櫃文件上傳到雲端存儲。確保加密貨櫃不在同步監視的文件夾中。即使內容已加密，諸如文件創建時間戳記之類的元數據仍可能洩漏調查時機。",
+        "safety_notes": "不要在任何地方以明文形式存儲消息來源身份——不論是加密筆記、裝置聯絡人還是日曆事件。加密的 VeraCrypt 貨櫃應該是存放任何敏感消息來源或調查材料的唯一位置。"
+      }
+    ],
+    "ethical_checkpoint": {
+      "summary": "調查員 OPSEC 保護您和您的消息來源。強大的操作安全不僅僅是自我保護——當與面臨法律或物理風險的消息來源合作時，這是一項專業義務。敏感調查中不當的 OPSEC 曾導致記者消息來源曝光、使活動人士面臨危險，並導致研究人員面臨法律訴訟。將 OPSEC 設置視為不可妥協的前提條件，而非可選的增強功能。",
+      "badges": [
+        "passive-first"
+      ]
+    },
+    "related_tools": [
+      "Tails OS",
+      "Whonix",
+      "Mullvad VPN",
+      "Tor Browser",
+      "BrowserLeaks",
+      "VeraCrypt",
+      "Signal"
+    ],
+    "related_categories": [
+      "Privacy / Investigator Safety"
+    ]
+  }
+]

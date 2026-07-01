@@ -1,0 +1,215 @@
+/* ─── Google Fonts ─────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@import "tailwindcss";
+
+/* ─── Design tokens — Dark (default) ────────────────────────── */
+:root,
+:root.dark {
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "DM Mono", monospace;
+
+  /* Surfaces */
+  --bg:           #07090C;
+  --surface:      #0D1117;
+  --panel:        #111820;
+  --card:         #0F141B;
+  --border:       #26313D;
+  --border-subtle:#1C2530;
+
+  /* Header (glassmorphism) */
+  --header-bg:    rgba(7, 9, 12, 0.92);
+
+  /* Text */
+  --text:         #E6EDF3;
+  --muted:        #8B949E;
+  --faint:        #30363D;
+
+  /* Accent — sky blue */
+  --accent:       #7DD3FC;
+  --accent-dim:   #38A0D4;
+  --accent-faint: #0C1F2E;
+
+  /* Verified / success */
+  --verified:      #A7F3D0;
+  --verified-dim:  #2DD4BF;
+  --verified-faint:#0A1F1A;
+
+  /* Warning / Paid */
+  --warning:      #F59E0B;
+  --warning-faint:#1F1A09;
+
+  /* Danger / Ethical */
+  --danger:       #F97316;
+  --danger-faint: #1F1009;
+
+  --radius:    4px;
+  --radius-lg: 8px;
+}
+
+/* ─── Design tokens — Light ──────────────────────────────────── */
+:root.light {
+  /* Surfaces */
+  --bg:           #f8f8f5;
+  --surface:      #ffffff;
+  --panel:        #f1f1ee;
+  --card:         #ffffff;
+  --border:       #e2e2dc;
+  --border-subtle:#ececea;
+
+  /* Header */
+  --header-bg:    rgba(255, 255, 255, 0.92);
+
+  /* Text */
+  --text:         #1a1a1a;
+  --muted:        #6b7280;
+  --faint:        #b0b8c4;
+
+  /* Accent — deeper sky blue for light backgrounds */
+  --accent:       #0284c7;
+  --accent-dim:   #0369a1;
+  --accent-faint: #e0f2fe;
+
+  /* Verified */
+  --verified:      #059669;
+  --verified-dim:  #047857;
+  --verified-faint:#dcfce7;
+
+  /* Warning */
+  --warning:      #d97706;
+  --warning-faint:#fef3c7;
+
+  /* Danger */
+  --danger:       #ea580c;
+  --danger-faint: #fff7ed;
+}
+
+/* ─── Reset / Base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::selection {
+  background: var(--accent-faint);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+:focus-visible {
+  outline: 1.5px solid var(--accent-dim);
+  outline-offset: 2px;
+}
+
+/* ─── Typography ─────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+code, kbd, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+/* ─── Utility ────────────────────────────────────────────────── */
+.text-2xs { font-size: 0.65rem; line-height: 1rem; }
+
+/* ─── Scanline texture (dark mode only) ─────────────────────── */
+:root.dark body::after,
+:root:not(.light) body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.animate-slide-up  { animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-panel-in  { animation: panelIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in   { animation: fadeIn  0.2s ease both; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Stats grid: 2-col mobile → 4-col desktop */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stats-grid > div {
+    border-bottom: none !important;
+  }
+  /* Reset 2-col right-edge, re-apply 4-col */
+  .stats-grid > div:nth-child(2) {
+    border-right: 1px solid var(--border) !important;
+  }
+  .stats-grid > div:nth-child(4) {
+    border-right: none !important;
+  }
+}
+
+/* Tab bar underline track */
+.tab-track {
+  border-bottom: 1px solid var(--border);
+}
+
+/* stagger helpers */
+.stagger-1  { animation-delay: 0.03s; }
+.stagger-2  { animation-delay: 0.06s; }
+.stagger-3  { animation-delay: 0.09s; }
+.stagger-4  { animation-delay: 0.12s; }
+.stagger-5  { animation-delay: 0.15s; }
+.stagger-6  { animation-delay: 0.18s; }
+.stagger-7  { animation-delay: 0.21s; }
+.stagger-8  { animation-delay: 0.24s; }

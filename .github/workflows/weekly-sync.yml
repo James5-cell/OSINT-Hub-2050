@@ -1,0 +1,91 @@
+name: Weekly OSINT Hub ETL Sync
+
+on:
+  schedule:
+    # Every Sunday at 02:00 UTC
+    # - cron: "0 2 * * 0"
+  workflow_dispatch:
+    inputs:
+      sections:
+        description: "Space-separated list of sections to parse (e.g. 'Basic OSINT' 'Breaches and Leaks'), or ALL"
+        required: false
+        default: "Basic OSINT"
+      skip_fetch:
+        description: "Skip download and use cached source.md (true/false)"
+        required: false
+        default: "false"
+      strict:
+        description: "Treat validation warnings as errors (true/false)"
+        required: false
+        default: "false"
+
+jobs:
+  etl:
+    name: Fetch → Parse → Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write   # needed to commit the updated JSON back to the repo
+      pull-requests: write
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── 2. Python setup ────────────────────────────────────────────────────
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      # ── 3. Run ETL ─────────────────────────────────────────────────────────
+      - name: Run ETL pipeline
+        env:
+          SECTIONS: ${{ github.event.inputs.sections || 'Basic OSINT' }}
+          SKIP_FETCH: ${{ github.event.inputs.skip_fetch || 'false' }}
+          STRICT: ${{ github.event.inputs.strict || 'false' }}
+        run: |
+          ARGS="--sections $SECTIONS"
+          if [ "$SKIP_FETCH" = "true" ]; then
+            ARGS="$ARGS --skip-fetch"
+          fi
+          if [ "$STRICT" = "true" ]; then
+            ARGS="$ARGS --strict"
+          fi
+          python scripts/run_etl.py $ARGS
+
+      # ── 4. Commit updated data ─────────────────────────────────────────────
+      - name: Check for changes in data/
+        id: diff
+        run: |
+          git diff --quiet data/ || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push updated data
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "chore(etl): weekly sync $(date -u '+%Y-%m-%d')"
+          git push
+
+      # ── 5. Summary ─────────────────────────────────────────────────────────
+      - name: Write job summary
+        if: always()
+        run: |
+          COUNT=$(python -c "import json,sys; data=json.load(open('data/processed/raw_tools.json')); print(len(data))" 2>/dev/null || echo "N/A")
+          echo "## OSINT Hub ETL Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Run date | $(date -u '+%Y-%m-%d %H:%M UTC') |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Tools parsed | $COUNT |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Output | \`data/processed/raw_tools.json\` |" >> "$GITHUB_STEP_SUMMARY"
