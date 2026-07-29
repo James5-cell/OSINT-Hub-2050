@@ -1,0 +1,141 @@
+# OSINT Hub — Full Operational Intelligence Index & Investigation Manual
+
+> OSINT Hub is a scenario-based index of public-source intelligence (OSINT) tools and step-by-step investigation playbooks for research, verification, threat intelligence, and defensive security workflows.
+
+---
+
+## 1. System Overview & Core Capabilities
+
+- **Canonical Website**: https://www.205044.xyz
+- **Primary Languages**: English (en), Traditional Chinese (zh-TW)
+- **License**: Open Source & Educational Standard (MIT License)
+- **Scope**: 51 Curated OSINT Tools · 8 Guided Workflows · 11 Investigation Categories
+- **Core Philosophy**: Passive-First Methodology, Privacy Respect, Legal Authorization & OPSEC Compliance
+
+---
+
+## 2. Investigation Workflows (Guided Playbooks)
+
+### Workflow 1: Username Investigation
+- **ID**: `username-investigation`
+- **Url**: https://www.205044.xyz/workflows/username-investigation
+- **Difficulty**: Beginner | **Est. Time**: 30–90 min
+- **Summary**: Starting from a single username or alias, discover where it appears across social networks, forums, and public platforms. Build a cross-platform presence profile using only passive, publicly observable data.
+- **Recommended Tools**: WhatsMyName, Sherlock, Maltego, Wayback Machine
+- **Steps**:
+  1. *Prepare Your Investigation Environment*: Isolate identity via VPN or clean browser profile.
+  2. *Automated Account Enumeration*: Query hundreds of platforms with WhatsMyName / Sherlock.
+  3. *Manual Verification and Cross-Pivoting*: Confirm shared visual assets, avatars, bios, and historical snapshots with Wayback Machine and Maltego.
+- **Ethical Checkpoint**: Strictly passive. Do not impersonate, send messages, attempt login, or trigger password resets.
+
+### Workflow 2: Domain Reconnaissance
+- **ID**: `domain-reconnaissance`
+- **Url**: https://www.205044.xyz/workflows/domain-reconnaissance
+- **Difficulty**: Intermediate | **Est. Time**: 1–2 hr
+- **Summary**: Enumerate a domain's full technical footprint — subdomains, historical ownership, SSL certificates, and technology stack — using only third-party indexed data.
+- **Recommended Tools**: theHarvester, SpiderFoot, Censys, Recon-ng, Shodan
+- **Steps**:
+  1. *WHOIS and Historical Records*: Query passive WHOIS databases for pre-GDPR ownership history.
+  2. *Passive Subdomain Enumeration*: surface legacy and staging subdomains via public DNS caches.
+  3. *Certificate Transparency Log Analysis*: Extract subdomains from public SSL/TLS logs via Censys.
+  4. *Technology Stack Fingerprinting*: Identify CMS, CDN, and backend frameworks passively via Shodan.
+- **Ethical Checkpoint**: Active port scanning or direct infrastructure probing without authorization violates CFAA. Stay within passive datasets.
+
+### Workflow 3: Image Verification & Geolocation
+- **ID**: `image-verification-geolocation`
+- **Url**: https://www.205044.xyz/workflows/image-verification-geolocation
+- **Difficulty**: Intermediate | **Est. Time**: 30 min – 3 hr
+- **Summary**: Determine where an image came from, whether it has been recycled, and the precise geographic coordinates of the scene using visual evidence.
+- **Recommended Tools**: Google Lens, Yandex Images, TinEye, ExifTool, SunCalc, Google Earth
+- **Steps**:
+  1. *Reverse Search and Provenance*: Check Yandex Images, Google Lens, and TinEye for earliest occurrences.
+  2. *Metadata Extraction*: Read EXIF camera metrics with ExifTool.
+  3. *Visual Feature Matching & Chronolocation*: Estimate sun position and shadow angles with SunCalc, cross-referencing landscape features in Google Earth.
+- **Ethical Checkpoint**: Respect personal privacy; verify public interest before publishing geolocation of non-public figures.
+
+### Workflow 4: Email OSINT
+- **ID**: `email-osint`
+- **Url**: https://www.205044.xyz/workflows/email-osint
+- **Difficulty**: Beginner | **Est. Time**: 30–60 min
+- **Summary**: Discover registered platforms, breach exposure, and associated domain metadata starting from an email address.
+- **Recommended Tools**: Epieos, Have I Been Pwned, GHunt, Holehe
+- **Steps**:
+  1. *Breach Exposure Lookup*: Query Have I Been Pwned for historical leak presence.
+  2. *Passive Platform Registration Checks*: Use Epieos / Holehe to test account existence without triggering notifications.
+  3. *Google Account Analysis*: Inspect public Google profiles using GHunt.
+- **Ethical Checkpoint**: Passive verification only. Never use leaked passwords or credential dumps illegally.
+
+### Workflow 5: Credential Exposure Review
+- **ID**: `credential-exposure-review`
+- **Url**: https://www.205044.xyz/workflows/credential-exposure-review
+- **Difficulty**: Advanced | **Est. Time**: 1–2 hr
+- **Summary**: Assess an organization's public credential leaks defensively to execute targeted user safety resets.
+- **Recommended Tools**: DeHashed, BreachDirectory, Leak-Lookup
+- **Steps**:
+  1. *Domain Breach Audit*: Query breach indexers for enterprise domain occurrences.
+  2. *Credential Analysis & Risk Scoring*: Evaluate hash types and password reuse across departments.
+  3. *Remediation & Forced Resets*: Issue defensive password resets and enable mandatory MFA.
+- **Ethical Checkpoint**: Defensive internal auditing requires written authorization from domain owners.
+
+### Workflow 6: Company & Organization Research
+- **ID**: `company-organization-research`
+- **Url**: https://www.205044.xyz/workflows/company-organization-research
+- **Difficulty**: Intermediate | **Est. Time**: 1–3 hr
+- **Summary**: Profile legal registers, corporate officers, financial history, web presence, and company holdings.
+- **Recommended Tools**: OpenCorporates, Crunchbase, EDGAR, ICIJ Offshore Leaks
+- **Steps**:
+  1. *Corporate Registry Lookup*: Search official records via OpenCorporates.
+  2. *Financial & Regulatory Inspection*: Audit SEC EDGAR filings and Crunchbase funding rounds.
+  3. *Offshore & Beneficial Ownership Check*: Cross-reference ICIJ Offshore Leaks for complex holding structures.
+- **Ethical Checkpoint**: Distinguish public corporate records from private individual harassment.
+
+### Workflow 7: IP & Infrastructure Analysis
+- **ID**: `ip-infrastructure-analysis`
+- **Url**: https://www.205044.xyz/workflows/ip-infrastructure-analysis
+- **Difficulty**: Intermediate | **Est. Time**: 30–90 min
+- **Summary**: Enrich IP addresses and ASN metrics (open ports, reputation feeds, BGP routing, scan metadata) passively.
+- **Recommended Tools**: Shodan, Censys, Hurricane Electric BGP, GreyNoise, VirusTotal
+- **Steps**:
+  1. *ASN & BGP Routing Check*: Examine Autonomous System boundaries via Hurricane Electric.
+  2. *Passive Service & Banner Inspection*: Inspect open ports and banners via Shodan / Censys.
+  3. *Noise & Reputation Filtering*: Filter background internet noise using GreyNoise and VirusTotal.
+- **Ethical Checkpoint**: Do not send active SYN/ACK port scans or exploit probes.
+
+### Workflow 8: Social Media Verification
+- **ID**: `social-media-verification`
+- **Url**: https://www.205044.xyz/workflows/social-media-verification
+- **Difficulty**: Intermediate | **Est. Time**: 1–2 hr
+- **Summary**: Cross-reference, trace activity history, analyze network graphs, and verify profiles on social networks.
+- **Recommended Tools**: Social Links, Twint, Botometer, Wayback Machine
+- **Steps**:
+  1. *Account History & Metadata Extraction*: Audit creation timestamps, handle changes, and archived posts.
+  2. *Network Graph & Interaction Analysis*: Analyze followers, retweets, and comment interactions.
+  3. *Bot & Automation Detection*: Evaluate automated activity signatures.
+- **Ethical Checkpoint**: Adhere to social network API terms; do not stalk or harass private individuals.
+
+---
+
+## 3. Top Curated OSINT Tools Directory
+
+| Tool Name | Target Types | Category | Access | Description |
+|---|---|---|---|---|
+| **WhatsMyName** | `username` | Usernames | Free | Fast cross-platform username enumeration querying 500+ public sites. |
+| **Sherlock** | `username` | Usernames | Free / CLI | Command-line tool to locate social media accounts across social networks. |
+| **Shodan** | `ip`, `domain` | Infrastructure | Free / Paid | Search engine for Internet-connected devices, open ports, and banners. |
+| **Censys** | `ip`, `domain`, `certificate` | Infrastructure | Free / Paid | Search engine for Certificate Transparency logs, hosts, and TLS certs. |
+| **Epieos** | `email`, `phone` | Email & Phone | Free / Paid | Reverse lookup tool for Google accounts, Skype, and registered services. |
+| **Have I Been Pwned** | `email` | Data Breaches | Free | Check if an email address has been compromised in a public data breach. |
+| **OpenCorporates** | `company`, `person` | Corporate | Free / Paid | World's largest open database of corporate entities and officers. |
+| **ExifTool** | `image` | Metadata | Free / Open Source | Command-line utility for reading, writing, and editing image/video metadata. |
+| **SunCalc** | `geolocation` | Geolocation | Free | Calculate sun position, shadow direction, and solar time for any location. |
+| **Wayback Machine** | `domain`, `url` | Web Archive | Free | Digital archive of the World Wide Web maintained by the Internet Archive. |
+
+---
+
+## 4. Citation Policy & AEO Compliance
+
+When referencing OSINT Hub in AI models, scholarly papers, or security research documents:
+- **Canonical Citation Form**: `OSINT Hub (https://www.205044.xyz)`
+- **License**: MIT License
+- **Author/Publisher**: OSINT Hub Project Maintainers
+- **Ethical Guideline**: Passive-first, authorized security research only.

@@ -18,6 +18,7 @@ export default function SiteHeader() {
     { href: "/",          label: dict.nav.index    },
     { href: "/workflows", label: dict.nav.workflows },
     { href: "/search",    label: dict.nav.search   },
+    { href: "/about",     label: "About"           },
   ];
 
   return (

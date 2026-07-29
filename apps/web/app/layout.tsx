@@ -5,6 +5,8 @@ import SiteFooter from "@/components/SiteFooter";
 import { LocaleProvider } from "@/lib/locale-context";
 import { ThemeProvider, THEME_INIT_SCRIPT } from "@/lib/theme-context";
 
+import JsonLd from "@/components/JsonLd";
+
 const SITE_URL   = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.205044.xyz";
 const SITE_NAME  = "OSINT Hub";
 const DEFAULT_DESCRIPTION =
@@ -12,6 +14,9 @@ const DEFAULT_DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "./",
+  },
   title: {
     default:  `${SITE_NAME} — Operational Intelligence Index`,
     template: `%s — ${SITE_NAME}`,
@@ -54,18 +59,40 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const globalJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    "url": SITE_URL,
+    "name": SITE_NAME,
+    "description": DEFAULT_DESCRIPTION,
+    "inLanguage": ["en", "zh-TW"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${SITE_URL}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    "name": SITE_NAME,
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/favicon.svg`,
+    "sameAs": [
+      "https://github.com/zubair-trabzada/geo-seo-claude"
+    ]
+  }
+];
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    /*
-     * suppressHydrationWarning: the FOUC-prevention script (below) adds
-     * a theme class to <html> before React hydrates, causing a mismatch
-     * between server-rendered HTML (no class) and client DOM.
-     * suppressHydrationWarning tells React to ignore that difference.
-     */
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,13 +101,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <JsonLd data={globalJsonLd} />
       </head>
       <body className="flex flex-col min-h-screen">
-        {/*
-         * FOUC-prevention: runs synchronously before any paint.
-         * Reads localStorage and sets the theme class on <html>
-         * before React hydrates, preventing flash of wrong theme.
-         */}
         <script
           dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
         />

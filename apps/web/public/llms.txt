@@ -9,6 +9,8 @@ A curated, scenario-based index of public-source intelligence tools and step-by-
 
 ## Sitemap & Directory
 - [OSINT Hub Index](https://www.205044.xyz/) - Core search and index of OSINT tools, filterable by target type, pricing, platform, and difficulty.
+- [Full LLM Knowledge Feed](https://www.205044.xyz/llms-full.txt) - Exhaustive Markdown documentation of all tools and playbooks.
+- [About & Ethics Policy](https://www.205044.xyz/about) - Project mission, E-E-A-T credentials, OPSEC compliance, and citation guidelines.
 - [Guided Investigation Workflows](https://www.205044.xyz/workflows) - Index of step-by-step passive OSINT playbooks with safety and ethical checkpoints.
 - [Search Interface](https://www.205044.xyz/search) - Unified search route to explore tools, categories, and workflows matching specific query parameters.
 - [Username Investigation Workflow](https://www.205044.xyz/workflows/username-investigation) - Passive playbook to trace digital aliases across social networks, forums, and public platforms.
