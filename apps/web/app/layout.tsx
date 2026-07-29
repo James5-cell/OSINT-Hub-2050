@@ -88,6 +88,8 @@ const globalJsonLd = [
   }
 ];
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "G-EGTETEHBWV";
+
 export default function RootLayout({
   children,
 }: {
@@ -97,7 +99,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-355NEKFHVT"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -106,7 +108,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-355NEKFHVT');
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
