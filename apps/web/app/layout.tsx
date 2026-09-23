@@ -8,10 +8,14 @@ import { ThemeProvider, THEME_INIT_SCRIPT } from "@/lib/theme-context";
 
 import JsonLd from "@/components/JsonLd";
 
-const SITE_URL   = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.205044.xyz";
-const SITE_NAME  = "OSINT Hub";
-const DEFAULT_DESCRIPTION =
-  "A scenario-based index of public-source intelligence tools for research, verification, and defensive workflows. 51 tools. 8 guided workflows.";
+import {
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGES,
+  DEFAULT_TWITTER,
+  DEFAULT_OG_IMAGE_URL,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -43,20 +47,12 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     url:         SITE_URL,
     locale:      "en_US",
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} — Operational Intelligence Index`,
-      },
-    ],
+    images:      DEFAULT_OG_IMAGES,
   },
   twitter: {
-    card:        "summary_large_image",
+    ...DEFAULT_TWITTER,
     title:       `${SITE_NAME} — Operational Intelligence Index`,
     description: DEFAULT_DESCRIPTION,
-    images:      ['/og-image.png'],
   },
   icons: {
     icon: [
@@ -113,12 +109,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Explicit Open Graph & Twitter Social Share Meta */}
-        <meta property="og:image" content="/og-image.png" />
+        {/* Explicit Open Graph & Twitter Social Share Meta (Absolute URLs) */}
+        <meta property="og:image" content={DEFAULT_OG_IMAGE_URL} />
+        <meta property="og:image:secure_url" content={DEFAULT_OG_IMAGE_URL} />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/og-image.png" />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE_URL} />
 
         {/* PWA & Touch Icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />

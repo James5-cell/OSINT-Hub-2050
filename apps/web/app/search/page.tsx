@@ -1,16 +1,17 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import SearchClient from "./SearchClient";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Search",
   description:
     "Search OSINT Hub's indexed tools, guided investigation workflows, and investigation categories.",
-  openGraph: {
-    title:       "Search — OSINT Hub",
-    description: "Search tools, workflows, and investigation categories in OSINT Hub.",
-  },
-};
+  path: "/search",
+  ogTitle: "Search — OSINT Hub",
+  ogDescription:
+    "Search tools, workflows, and investigation categories in OSINT Hub.",
+});
 
 export default function SearchPage() {
   return (

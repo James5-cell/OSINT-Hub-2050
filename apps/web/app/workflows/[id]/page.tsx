@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 import { WORKFLOWS, getWorkflowById } from "@/lib/workflows";
 import WorkflowDetailClient from "@/components/WorkflowDetailClient";
 import JsonLd from "@/components/JsonLd";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.205044.xyz";
+import { SITE_URL, buildPageMetadata } from "@/lib/seo";
 
 /* ── Static params ─────────────────────────────────────────── */
 export async function generateStaticParams() {
@@ -13,25 +12,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const wf = getWorkflowById(id);
-  if (!wf) return { title: "Workflow not found" };
-  const canonicalUrl = `${SITE_URL}/workflows/${id}`;
-  return {
-    title:       wf.title,
+  if (!wf) {
+    return buildPageMetadata({
+      title: "Workflow not found",
+      path: `/workflows/${id}`,
+    });
+  }
+
+  return buildPageMetadata({
+    title: `${wf.title} — OSINT Hub`,
     description: wf.summary,
-    alternates: {
-      canonical: canonicalUrl,
-    },
-    openGraph: {
-      title:       `${wf.title} — OSINT Hub`,
-      description: wf.summary,
-      url:         canonicalUrl,
-    },
-    twitter: {
-      card:        "summary",
-      title:       `${wf.title} — OSINT Hub Workflow`,
-      description: wf.summary,
-    },
-  };
+    path: `/workflows/${id}`,
+    ogTitle: `${wf.title} — OSINT Hub`,
+    ogDescription: wf.summary,
+    twitterTitle: `${wf.title} — OSINT Hub Workflow`,
+    twitterDescription: wf.summary,
+  });
 }
 
 /* ── Page ─────────────────────────────────────────────────── */

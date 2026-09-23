@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
+import { SITE_URL, buildPageMetadata } from "@/lib/seo";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.205044.xyz";
-
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "About & Ethics Policy — OSINT Hub",
-  description: "Learn about OSINT Hub's mission, E-E-A-T background, passive reconnaissance standards, legal compliance, and citation guidelines.",
-  alternates: {
-    canonical: `${SITE_URL}/about`,
-  },
-  openGraph: {
-    title: "About & Ethics Policy — OSINT Hub",
-    description: "Learn about OSINT Hub's mission, E-E-A-T background, passive reconnaissance standards, legal compliance, and citation guidelines.",
-    url: `${SITE_URL}/about`,
-  },
-};
+  description:
+    "Learn about OSINT Hub's mission, E-E-A-T background, passive reconnaissance standards, legal compliance, and citation guidelines.",
+  path: "/about",
+  ogTitle: "About & Ethics Policy — OSINT Hub",
+  ogDescription:
+    "Learn about OSINT Hub's mission, E-E-A-T background, passive reconnaissance standards, legal compliance, and citation guidelines.",
+});
 
 export default function AboutPage() {
   const aboutSchema = {
