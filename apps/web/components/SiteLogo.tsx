@@ -16,21 +16,21 @@ export default function SiteLogo({ variant = 'full', className = '' }: SiteLogoP
       height={iconSize}
       className="shrink-0"
     >
-      <circle
-        cx="16"
-        cy="16"
-        r="13"
+      {/* Outer gauge arc (~292 deg sweep, rounded end caps) */}
+      <path
+        d="M 27.5 12.5 A 12 12 0 1 1 17.1 3.9"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.5"
-        strokeDasharray="65 17"
+        strokeWidth="1.8"
         strokeLinecap="round"
-        transform="rotate(-15 16 16)"
       />
-      <circle cx="16" cy="16" r="2.5" fill="#f97316" />
-      <line x1="16" y1="16" x2="21" y2="11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="16" y1="16" x2="11" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="16" y1="16" x2="21.6" y2="20.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Target orange node */}
+      <circle cx="21.4" cy="10.3" r="2.3" fill="#f97316" />
+      {/* Tapered gauge / radar needle pointing to orange node */}
+      <path
+        d="M 12.6 17.5 L 20.8 10.2 A 0.45 0.45 0 0 1 21.4 10.8 L 14.4 19.4 A 1.3 1.3 0 0 1 12.6 17.5 Z"
+        fill="currentColor"
+      />
     </svg>
   );
 

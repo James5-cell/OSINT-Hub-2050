@@ -43,20 +43,35 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     url:         SITE_URL,
     locale:      "en_US",
-    images: [{ url: '/og-image.svg', width: 1200, height: 630 }],
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Operational Intelligence Index`,
+      },
+    ],
   },
   twitter: {
     card:        "summary_large_image",
     title:       `${SITE_NAME} — Operational Intelligence Index`,
     description: DEFAULT_DESCRIPTION,
+    images:      ['/og-image.png'],
   },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
+  manifest: '/manifest.json',
   robots: { index: true, follow: true },
 };
 
@@ -81,7 +96,7 @@ const globalJsonLd = [
     "@id": `${SITE_URL}/#organization`,
     "name": SITE_NAME,
     "url": SITE_URL,
-    "logo": `${SITE_URL}/favicon.svg`,
+    "logo": `${SITE_URL}/icon-512x512.png`,
     "sameAs": [
       "https://github.com/zubair-trabzada/geo-seo-claude"
     ]
@@ -98,6 +113,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Explicit Open Graph & Twitter Social Share Meta */}
+        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/og-image.png" />
+
+        {/* PWA & Touch Icons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
