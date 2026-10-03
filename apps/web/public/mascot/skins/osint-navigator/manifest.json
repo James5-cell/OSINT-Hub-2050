@@ -1,0 +1,84 @@
+{
+  "base": {
+    "dark": "core/body_dark.png",
+    "light": "core/body_light.png"
+  },
+  "penetration_test": {
+    "backgrounds": [
+      "black",
+      "white",
+      "termgreen",
+      "brightyellow"
+    ],
+    "status": "pass"
+  },
+  "pipeline": "mascot_db v1 (Mascot Asset Pipeline Agent)",
+  "situation": "osint-navigator",
+  "slots": [
+    {
+      "anchor": {
+        "right": "-4%",
+        "top": "48%",
+        "transform": "rotate(12deg)",
+        "transform_origin": "50% 80%",
+        "width": "24%",
+        "z_index": 3
+      },
+      "behavior": {
+        "follow_breath": true,
+        "on_click": "lens_scan",
+        "on_shock": "lens_recoil",
+        "on_antic": "trace_follow"
+      },
+      "id": "magnifier",
+      "size": [
+        745,
+        1226
+      ],
+      "src": "skins/osint-navigator/magnifier_clean.png",
+      "src_dark": "skins/osint-navigator/magnifier_dark.png"
+    },
+    {
+      "anchor": {
+        "left": "10%",
+        "top": "8%",
+        "transform": "rotate(-8deg)",
+        "transform_origin": "50% 50%",
+        "width": "16%",
+        "z_index": 4
+      },
+      "behavior": {
+        "follow_breath": true,
+        "on_click": "trail_reveal",
+        "on_shock": "trail_recoil",
+        "on_antic": "trace_follow"
+      },
+      "id": "trail",
+      "size": [
+        1309,
+        974
+      ],
+      "src": "skins/osint-navigator/trail_clean.png",
+      "src_dark": "skins/osint-navigator/trail_dark.png"
+    }
+  ],
+  "states": {
+    "companion": {
+      "bottom_offset": "16px",
+      "idle_timeout": 10
+    },
+    "hiding": {
+      "bottom_offset": "-98px",
+      "show_sprout": true
+    },
+    "scared": {
+      "duration": 0.38,
+      "idle_timeout": 12
+    },
+    "shy": {
+      "blush": true,
+      "duration": 2.5
+    }
+  },
+  "version": "1.0.0"
+}

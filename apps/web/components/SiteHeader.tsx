@@ -14,11 +14,23 @@ export default function SiteHeader() {
   const { dict, locale, setLocale } = useLocale();
   const [panelOpen, setPanelOpen] = useState(false);
 
+  const zh = locale === "zh-TW";
   const NAV_LINKS = [
-    { href: "/",          label: dict.nav.index    },
-    { href: "/workflows", label: dict.nav.workflows },
-    { href: "/search",    label: dict.nav.search   },
-    { href: "/about",     label: "About"           },
+    {
+      href: "/",
+      label: zh ? "找資源" : "Find resources",
+      shortLabel: zh ? "找資源" : "Find",
+    },
+    {
+      href: "/learn",
+      label: zh ? "學習與實作" : "Learn & practise",
+      shortLabel: zh ? "入門" : "Learn",
+    },
+    {
+      href: "/directory",
+      label: zh ? "工具目錄" : "Directory",
+      shortLabel: zh ? "目錄" : "Tools",
+    },
   ];
 
   return (
@@ -26,14 +38,13 @@ export default function SiteHeader() {
       <header
         className="sticky top-0 z-40 border-b"
         style={{
-          background:     "var(--header-bg)",
+          background: "var(--header-bg)",
           backdropFilter: "blur(16px)",
-          borderColor:    "var(--border)",
-          transition:     "background 0.2s ease, border-color 0.2s ease",
+          borderColor: "var(--border)",
+          transition: "background 0.2s ease, border-color 0.2s ease",
         }}
       >
-        <div className="mx-auto max-w-screen-xl px-5 h-12 flex items-center justify-between gap-4">
-
+        <div className="mx-auto max-w-screen-xl px-3 sm:px-5 min-h-16 flex items-center justify-between gap-2">
           {/* ── Wordmark ──────────────────────────── */}
           <Link
             href="/"
@@ -52,33 +63,40 @@ export default function SiteHeader() {
           <div className="flex items-center gap-2">
             <nav aria-label="Primary navigation">
               <ul className="flex items-center gap-0.5 list-none m-0 p-0">
-                {NAV_LINKS.map(({ href, label }) => {
+                {NAV_LINKS.map(({ href, label, shortLabel }) => {
                   const active =
-                    href === "/" ? pathname === "/" : pathname.startsWith(href);
+                    href === "/"
+                      ? pathname === "/" || pathname === "/search"
+                      : pathname.startsWith(href);
                   return (
                     <li key={href}>
                       <Link
                         href={href}
-                        className="px-3 py-1.5 rounded text-xs transition-colors no-underline"
+                        aria-label={label}
+                        className="inline-flex items-center min-h-11 px-2 sm:px-3 rounded text-sm transition-colors no-underline"
                         style={{
-                          color:      active ? "var(--text)" : "var(--muted)",
+                          color: active ? "var(--text)" : "var(--muted)",
                           fontFamily: "var(--font-mono)",
                           background: active ? "var(--surface)" : "transparent",
                         }}
                       >
-                        {label}
+                        <span className="hidden sm:inline">{label}</span>
+                        <span className="sm:hidden">{shortLabel}</span>
                       </Link>
                     </li>
                   );
                 })}
-
               </ul>
             </nav>
 
             {/* Divider */}
             <span
               className="h-4"
-              style={{ width: "1px", background: "var(--border)", flexShrink: 0 }}
+              style={{
+                width: "1px",
+                background: "var(--border)",
+                flexShrink: 0,
+              }}
               aria-hidden="true"
             />
 
@@ -97,19 +115,26 @@ export default function SiteHeader() {
                     type="button"
                     onClick={() => setLocale(l)}
                     aria-pressed={active}
-                    aria-label={l === "en" ? "Switch to English" : "切換至繁體中文"}
-                    className="px-2 py-1 text-xs transition-colors"
+                    aria-label={
+                      l === "en" ? "Switch to English" : "切換至繁體中文"
+                    }
+                    className="px-2 min-h-11 text-sm transition-colors"
                     style={{
-                      fontFamily:  "var(--font-mono)",
-                      background:  active ? "var(--surface)" : "transparent",
-                      color:       active ? "var(--text)"    : "var(--faint)",
-                      borderRight: l === "en" ? "1px solid var(--border)" : undefined,
-                      fontSize:    "0.62rem",
-                      cursor:      "pointer",
-                      lineHeight:  1,
+                      fontFamily: "var(--font-mono)",
+                      background: active ? "var(--surface)" : "transparent",
+                      color: active ? "var(--text)" : "var(--muted)",
+                      borderRight:
+                        l === "en" ? "1px solid var(--border)" : undefined,
+                      fontSize: "0.86rem",
+                      cursor: "pointer",
+                      lineHeight: 1,
                     }}
-                    onMouseOver={(e) => { if (!active) e.currentTarget.style.color = "var(--muted)"; }}
-                    onMouseOut={(e)  => { if (!active) e.currentTarget.style.color = "var(--faint)"; }}
+                    onMouseOver={(e) => {
+                      if (!active) e.currentTarget.style.color = "var(--muted)";
+                    }}
+                    onMouseOut={(e) => {
+                      if (!active) e.currentTarget.style.color = "var(--muted)";
+                    }}
                   >
                     {LOCALE_LABELS[l]}
                   </button>
@@ -123,10 +148,12 @@ export default function SiteHeader() {
               onClick={() => setPanelOpen(true)}
               aria-label={dict.settings.title}
               aria-haspopup="dialog"
-              className="rounded p-1.5 transition-colors"
-              style={{ color: "var(--faint)", cursor: "pointer" }}
-              onMouseOver={(e) => (e.currentTarget.style.color = "var(--muted)")}
-              onMouseOut={(e)  => (e.currentTarget.style.color = "var(--faint)")}
+              className="rounded min-h-11 min-w-11 flex items-center justify-center transition-colors"
+              style={{ color: "var(--muted)", cursor: "pointer" }}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.color = "var(--muted)")
+              }
+              onMouseOut={(e) => (e.currentTarget.style.color = "var(--muted)")}
             >
               <Settings size={15} aria-hidden="true" />
             </button>

@@ -1,168 +1,167 @@
 # OSINT Hub
 
-A scenario-based index of public-source intelligence tools for research,
-verification, and defensive intelligence workflows.
+An OSINT learning and resource navigation site for people who do not know
+which public sources to use. Enter everyday keywords, choose a research goal,
+and find suitable websites with practical first steps and coverage notes.
 
-**51 tools · 8 guided workflows · 11 investigation categories · English + 繁中**
+The site recommends resources. It does not search for actual records about
+an entered person or company, or produce investigative conclusions.
 
----
+## Product experience
 
-## Stack
+- **Find resources**: company, person, username, website, image, email, IP,
+  location, document, blockchain, phone, news, video and academic keywords, in English and Chinese.
+- **Learn OSINT**: short verification lessons and a company research example.
+- **Resource directory**: browse tools with pricing and difficulty filters.
+- **Further reading**: existing investigation playbooks remain available.
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 15 (App Router, `output: "export"`) |
-| Styling | Tailwind CSS v4 |
-| Search | Fuse.js (client-side fuzzy) |
-| Data | Static JSON — `apps/web/data/` |
-| Deployment | Vercel (static export) |
-
----
-
-## Local Development
+## Local development
 
 ```bash
-# 1. Install dependencies
 cd apps/web
 npm install
-
-# 2. Start the dev server
 npm run dev
-# → http://localhost:3000
 ```
 
----
-
-## Build & Static Export
+Open <http://localhost:3000>. The search database is generated automatically
+before development and production builds.
 
 ```bash
-cd apps/web
-
-# Type-check + lint
-npm run lint
-
-# Production build (outputs to apps/web/out/)
+npm run typecheck
+npm run test:search
 npm run build
 ```
 
-The `out/` directory is a fully self-contained static site — no server required.
-Serve it locally for a quick smoke test:
+The production build exports a static website to `apps/web/out/`.
 
-```bash
-npx serve out
+## Static search architecture
+
+Meilisearch inspired the separation of documents, searchable fields,
+keyword aliases, filtering and ranking. No Meilisearch service, server,
+API key or remote search request is required.
+
+```text
+Resource records + input capabilities + keyword intents + goals + usage guides
+                         |
+                Build-time generation
+                         |
+          Resource database + search index JSON
+                         |
+           Local browser matching and ranking
+                         |
+           Resource suggestions + first steps
 ```
 
----
+Search supports Chinese aliases, English word boundaries, exact tool names,
+basic tool-name typo tolerance, input-type detection, research goals,
+coverage regions, free access and beginner-friendly website filters.
 
-## Deploy to Vercel
+Names alone do not establish a research type. Users can choose the subject
+explicitly. Region filters use annotated resource coverage; global coverage
+is not a guarantee that a specific entity is indexed.
 
-1. Push the repository to GitHub.
-2. Import the project in [vercel.com](https://vercel.com).
-3. Set **Root Directory** to `apps/web`.
-4. Vercel auto-detects Next.js — no extra configuration needed.
-5. (Optional) Add the environment variable:
+## Maintaining the database
 
-   | Key | Example value |
-   |---|---|
-   | `NEXT_PUBLIC_SITE_URL` | `https://your-domain.vercel.app` |
+The supported workflow is to curate the local source files, then run
+`npm run search:build` in `apps/web`. No upstream scraping or AI enrichment
+is required to run, build or maintain the website:
 
-   This variable is used for sitemap and robots.txt generation.
-   If omitted, it defaults to `https://osint-hub.vercel.app`.
+| Source | Purpose |
+| --- | --- |
+| `apps/web/data/tools.json` | Tool records and existing review metadata |
+| `apps/web/data/search/capabilities.json` | Accepted inputs, outputs, roles, goals and coverage (editorial mappings) |
+| `apps/web/data/search/intents.json` | Subject aliases, hints and lessons |
+| `apps/web/data/search/goals.json` | Research goals and keyword aliases |
+| `apps/web/data/search/guides.json` | Recommendations, steps and coverage |
+| `apps/web/data/search/tasks.json` | Practical questions, source paths and teaching examples |
 
----
+Generated files live in `apps/web/data/generated/`. Do not edit them directly.
+The generator validates IDs, references, URLs and bilingual guide content.
+It excludes dead, inactive and rejected resources. Subject searches cover
+all matching target types, including resources without usage guides. Reviewed
+or documented guides improve ranking; they do not limit the result set.
+The directory also labels records awaiting review.
 
-## Data
+The browser engine and generator share normalization rules. Search tests
+cover aliases, ranking, goal and region filters, unknown input, coverage
+of supported intents, and resource eligibility.
 
-| File | Description |
-|---|---|
-| `apps/web/data/tools.json` | 51 curated OSINT tools with bilingual descriptions |
-| `apps/web/data/workflows.en.json` | 8 guided investigation workflows (English) |
+See [the optimization notes](docs/product-optimization.md) for the decisions
+and current coverage limits.
 
-### Add a new tool
+## Stack and deployment
 
-Append a record to `tools.json` following the existing schema:
-
-```json
-{
-  "id": "unique-slug",
-  "name": "Tool Name",
-  "url": "https://tool.example.com",
-  "description_en": "One-paragraph English description.",
-  "description_zh_tw": "繁體中文說明。",
-  "use_cases": ["Use case 1", "Use case 2"],
-  "tags": ["tag1", "tag2"],
-  "pricing": "free",
-  "difficulty": "beginner",
-  "target_types": ["domain", "ip"],
-  "platforms": ["web"],
-  "ethical_flag": false,
-  "ethics_note": null,
-  "source_section": "Section Name",
-  "source_permalink": "https://source.url",
-  "review": { "status": "ai_candidate", "reviewed_by": null, "reviewed_at": null, "notes": null },
-  "is_dead_link": false,
-  "is_active": true
-}
-```
-
-### Add a new workflow
-
-Append a record to `workflows.en.json` — see existing entries for the full schema.
-
----
-
-## Data Quality Report
-
-```bash
-python scripts/quality_report.py
-# Add --json flag for machine-readable output
-python scripts/quality_report.py --json
-```
-
----
-
-## ETL & Enrichment Scripts
-
-| Script | Purpose |
-|---|---|
-| `scripts/run_etl.py` | Harvest raw tool records from the source list |
-| `scripts/enrich_tools.py` | Enrich records with LLM-generated descriptions |
-| `scripts/quality_report.py` | Data quality metrics and coverage report |
-
----
+Next.js App Router with static export, React and Tailwind CSS. Deploy the
+`apps/web` project to Vercel, or serve its `out/` directory on a static host.
+Set `NEXT_PUBLIC_SITE_URL` to the site's canonical URL when building.
 
 ## Routes
 
-| Route | Description |
-|---|---|
-| `/` | Investigation Index — category drill-down |
-| `/workflows` | All guided investigation workflows |
-| `/workflows/[id]` | Workflow detail page |
-| `/search?q=...` | Cross-entity search (tools, workflows, categories) |
-| `/sitemap.xml` | Auto-generated sitemap |
-| `/robots.txt` | Auto-generated robots file |
+| Route | Purpose |
+| --- | --- |
+| `/` | Keyword-first starting point |
+| `/search?q=company` | Resource recommendations and guidance |
+| `/learn` | Beginner education |
+| `/directory` | Full available resource directory |
+| `/workflows` | Further reading: detailed playbooks |
+| `/workflows/[id]` | Individual playbook |
+| `/about` | Project purpose, attribution and responsible use |
 
----
+English and Traditional Chinese UI are supported. Simplified Chinese search
+aliases are also accepted. Detailed playbooks are available in English and Traditional Chinese.
 
-## i18n
+## Sources and responsible use
 
-The UI supports **English** (default) and **Traditional Chinese (繁體中文)**.
-The language toggle is in the navigation bar and persists via `localStorage`.
+The tool collection builds on
+[Awesome OSINT For Everything](https://github.com/Astrosp/Awesome-OSINT-For-Everything).
+Source and review metadata remain available in resource details.
 
-- Tool descriptions prefer `description_en` in English mode and `description_zh_tw`
-  in Chinese mode, with automatic fallback.
-- Workflow content is English-only for now; Chinese workflow content can be added
-  by creating `apps/web/data/workflows.zh-TW.json` and extending `lib/workflows.ts`.
+Use lawfully accessible public information, respect privacy and source terms,
+and compare independent sources before drawing conclusions. Resources marked
+with usage cautions retain their existing guidance.
 
----
+Historical import scripts, snapshots and Python tests are archived under
+`archive/legacy-import/`. The old GitHub sync workflow has been removed from
+the active workflows directory. Maintain `apps/web/data` directly; local
+validation and index generation are the supported workflow.
 
-## Ethics Policy
+## Learning and research notes
 
-OSINT Hub is built for **lawful, authorized, public-source research only**.
+The learning page contains six short principles and four interactive judgement
+exercises, linked to existing bilingual workflows. The query builder generates
+Google-specific phrase, domain and PDF queries; a query is sent to Google only
+when the user opens the external search link.
 
-All tools marked with a ⚠ Caution badge require explicit legal mandate or
-authorization before use. Workflows follow a passive-first methodology with
-safety checkpoints at every sensitive step.
+The research note saves its draft in browser localStorage and exports Markdown.
+It records the question, source URLs, access time, observations, limits,
+conclusion and next step. It has no server storage or cross-device sync.
 
-Do not use this index to facilitate unauthorized access, stalking, harassment,
-or any activity that violates local law or platform terms of service.
+Search distinguishes direct inputs, tools needing another clue, analysis and
+research preparation. Unknown region coverage remains visible with a label.
+Capability metadata describes editorial input/output mappings; it does not
+represent a live availability audit. Official documentation references and
+check dates are stored separately in usage guides.
+
+## Practical task paths
+
+`/tasks` connects ten everyday questions to starting sources, alternatives,
+no-result strategies, four research steps and the local research note.
+Company, public professional-profile and image examples contain explicitly
+fictional evidence-comparison exercises; the news example teaches source
+independence. Step completion is session progress, not automatic verification.
+Task references live in `apps/web/data/search/tasks.json`; each referenced
+resource must exist in the generated eligible catalogue.
+
+## Local validation and maintenance report
+
+`npm run search:build` also validates task source references, translations,
+exercise answers, supported inputs and documentation dates before writing
+generated files. Every eligible resource must have capability metadata.
+It writes `apps/web/data/generated/maintenance-report.json` with resources
+missing usage guides, unknown region coverage and pending reviews. This is
+a local maintenance queue, not a live link or availability check.
+
+Exact resource names take priority even when a subject is selected. Optional
+filters can restrict results to directly supported inputs or annotated region
+coverage; unknown coverage remains visible by default. Fact-checking sources
+use editorial region focus, not a restriction on where users can access them.

@@ -1,0 +1,109 @@
+.osint-mascot-boundary { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 35; }
+.osint-mascot-dock {
+  --osint-rest-offset: var(--osint-mobile-rest, 68px);
+  --osint-peek-offset: var(--osint-mobile-peek, 55px);
+  --osint-hidden-offset: var(--osint-mobile-hidden, 160px);
+  position: absolute;
+  z-index: 40;
+  width: var(--osint-mobile-width, 118px);
+  height: var(--osint-mobile-height, 129px);
+  pointer-events: none;
+  user-select: none;
+  transform: translate3d(calc(-50% + var(--osint-x, 0vw)), var(--osint-rest-offset), 0);
+  transition: transform var(--osint-transition-ms, 700ms) cubic-bezier(.22,.72,.22,1);
+  will-change: transform;
+}
+.osint-mascot-dock[data-mode="peek"],
+.osint-mascot-dock[data-mode="alert"] {
+  transform: translate3d(calc(-50% + var(--osint-x, 0vw)), var(--osint-peek-offset), 0);
+}
+.osint-mascot-dock[data-mode="companion"],
+.osint-mascot-dock[data-mode="shock"],
+.osint-mascot-dock[data-mode="shy"] {
+  transform: translate3d(calc(-50% + var(--osint-x, 0vw)), calc(-1 * var(--osint-lift, 16px)), 0);
+}
+.osint-mascot-dock[data-mode="shy_hide"],
+.osint-mascot-dock[data-mode="shy_wait"],
+.osint-mascot-dock[data-mode="guarded"] {
+  transform: translate3d(calc(-50% + var(--osint-x, 0vw)), var(--osint-hidden-offset), 0);
+}
+.osint-mascot-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.osint-mascot-button:focus-visible { outline: 2px solid #8edbc2; outline-offset: 2px; border-radius: 50%; }
+.osint-mascot-dock[data-mode="shy_hide"] .osint-mascot-button,
+.osint-mascot-dock[data-mode="shy_wait"] .osint-mascot-button,
+.osint-mascot-dock[data-mode="guarded"] .osint-mascot-button { pointer-events: none; }
+.osint-mascot-stage,
+.osint-mascot-core { position: absolute; inset: 0; display: block; }
+.osint-mascot-stage { filter: drop-shadow(0 10px 18px rgba(0,0,0,.22)); }
+.osint-mascot-core { transform-origin: 50% 88%; animation: osint-mascot-breathe var(--osint-breath-ms, 3400ms) ease-in-out infinite; }
+.osint-mascot-plate { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+.osint-mascot-sprout { position: absolute; z-index: 2; display: block; animation: osint-mascot-sprout var(--osint-breath-ms, 3400ms) ease-in-out infinite; }
+.osint-mascot-sprout img { display: block; width: 100%; height: auto; opacity: 1; }
+.osint-mascot-slot { position: absolute; pointer-events: none; }
+.osint-mascot-slot img { display: block; width: 100%; height: auto; transform-origin: 50% 80%; }
+.osint-mascot-trail img { opacity: .45; }
+.osint-mascot-eyes { position: absolute; inset: 0; z-index: 6; width: 100%; height: 100%; overflow: visible; }
+.osint-mascot-eye { animation: osint-mascot-blink var(--osint-blink-ms, 5200ms) ease-in-out infinite; }
+.osint-mascot-eye:nth-child(2) { animation-delay: 120ms; }
+.osint-mascot-eye-halo { fill: #f9f8f5; stroke: #242423; stroke-width: 13; }
+.osint-mascot-eye-moon { fill: #111110; }
+.osint-mascot-cheek { position: absolute; z-index: 7; top: 52%; width: 13%; height: 5%; border-radius: 50%; background: #db8b83; filter: blur(2px); opacity: 0; }
+.osint-mascot-cheek-left { left: 23%; }
+.osint-mascot-cheek-right { right: 23%; }
+.osint-mascot-dock[data-theme="light"] .osint-mascot-eye-halo { fill: #242320; stroke: #fbfaf7; }
+.osint-mascot-dock[data-theme="light"] .osint-mascot-eye-moon { fill: #fffdf9; }
+.osint-mascot-dock[data-mode="shy"] .osint-mascot-cheek { animation: osint-mascot-blush var(--osint-action-ms, 980ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="hover_wiggle"] .osint-mascot-stage { animation: osint-mascot-wiggle var(--osint-hover-ms, 560ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="click_react"] .osint-mascot-stage { animation: osint-mascot-hop var(--osint-click-ms, 760ms) cubic-bezier(.2,.8,.22,1) both; }
+.osint-mascot-dock[data-behavior="flinch"] .osint-mascot-stage { animation: osint-mascot-flinch var(--osint-action-ms, 480ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="blush"] .osint-mascot-stage { animation: osint-mascot-shy var(--osint-action-ms, 980ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="peek_curious"] .osint-mascot-stage { animation: osint-mascot-curious var(--osint-action-ms, 1800ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="wander_slide"] .osint-mascot-stage { animation: osint-mascot-waddle 900ms ease-in-out infinite; }
+.osint-mascot-dock[data-behavior="subtle_tilt"] .osint-mascot-stage { animation: osint-mascot-tilt var(--osint-action-ms, 1200ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="sprout_sway"] .osint-mascot-sprout { animation: osint-mascot-sprout-long var(--osint-action-ms, 3500ms) ease-in-out both; }
+
+@keyframes osint-mascot-breathe { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-2px) scale(.994,1.012); } }
+@keyframes osint-mascot-blink { 0%,43%,47%,100% { transform: scaleY(1); } 45% { transform: scaleY(.08); } }
+@keyframes osint-mascot-sprout { 0%,100% { transform: rotate(calc(-1 * var(--osint-sprout-angle, 6deg))); } 50% { transform: rotate(var(--osint-sprout-angle, 6deg)); } }
+@keyframes osint-mascot-sprout-long { 0%,100% { transform: rotate(calc(-1 * var(--osint-sprout-angle, 6deg))); } 30% { transform: rotate(var(--osint-sprout-angle, 6deg)); } 65% { transform: rotate(-4deg); } }
+@keyframes osint-mascot-wiggle { 0%,100% { transform: rotate(0); } 24% { transform: rotate(-25deg); } 48% { transform: rotate(10deg); } 70% { transform: rotate(-9deg); } 86% { transform: rotate(4deg); } }
+@keyframes osint-mascot-hop { 0%,100% { transform: translateY(0) scale(1); } 28% { transform: translateY(-9px) scale(.97,1.04); } 55% { transform: translateY(0) scale(1.03,.96); } 75% { transform: translateY(-2px); } }
+@keyframes osint-mascot-flinch { 0%,100% { transform: scale(1) rotate(0); } 25% { transform: scale(1.07,.88) rotate(-5deg); } 60% { transform: scale(.94,1.06) rotate(5deg); } }
+@keyframes osint-mascot-shy { 0%,100% { transform: rotate(0) scale(1); } 30% { transform: rotate(-5deg) scale(.98,1.02); } 65% { transform: rotate(4deg) scale(1.02,.98); } }
+@keyframes osint-mascot-curious { 0%,100% { transform: rotate(0); } 35%,65% { transform: rotate(3deg); } }
+@keyframes osint-mascot-waddle { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@keyframes osint-mascot-tilt { 0%,100% { transform: rotate(0); } 45% { transform: rotate(-7deg); } 70% { transform: rotate(4deg); } }
+@keyframes osint-mascot-blush { 0%,100% { opacity: 0; } 28%,83% { opacity: .82; } }
+
+@media (min-width: 768px) {
+  .osint-mascot-dock { --osint-rest-offset: var(--osint-desktop-rest, 77px); --osint-peek-offset: var(--osint-desktop-peek, 63px); --osint-hidden-offset: var(--osint-desktop-hidden, 176px); width: var(--osint-desktop-width, 132px); height: var(--osint-desktop-height, 145px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .osint-mascot-dock, .osint-mascot-stage, .osint-mascot-core, .osint-mascot-sprout, .osint-mascot-eye, .osint-mascot-cheek, .osint-mascot-slot img {
+    animation: none !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+.osint-mascot-dock[data-behavior="click_react"] .osint-mascot-magnifier img,
+.osint-mascot-dock[data-behavior="trace_follow"] .osint-mascot-magnifier img { animation: osint-lens-scan var(--osint-action-ms, 760ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="click_react"] .osint-mascot-trail img,
+.osint-mascot-dock[data-behavior="trace_follow"] .osint-mascot-trail img { animation: osint-trail-reveal var(--osint-action-ms, 760ms) ease-in-out both; }
+.osint-mascot-dock[data-behavior="flinch"] .osint-mascot-slot img { animation: osint-slot-recoil var(--osint-action-ms, 480ms) ease-in-out both; }
+@keyframes osint-lens-scan { 0%,100% { transform: rotate(0) translateX(0); } 35% { transform: rotate(-14deg) translateX(-4px); } 70% { transform: rotate(6deg) translateX(2px); } }
+@keyframes osint-trail-reveal { 0%,100% { opacity: .45; transform: translateY(0); } 45% { opacity: .9; transform: translateY(-3px); } }
+@keyframes osint-slot-recoil { 0%,100% { transform: rotate(0); } 30% { transform: rotate(-9deg); } 65% { transform: rotate(6deg); } }
+.osint-mascot-dock[data-mode="sleep"] .osint-mascot-eye { animation: none; transform: scaleY(.16); }
+@media (prefers-reduced-motion: reduce) { .osint-mascot-slot img { animation: none !important; } }

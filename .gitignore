@@ -62,3 +62,10 @@ package-lock.json
 out/
 apps/web/.next/
 apps/web/node_modules/
+
+# TypeScript incremental compiler output
+*.tsbuildinfo
+
+# Preserve exclusions for archived enrichment caches and failure logs.
+archive/legacy-import/data/cache/
+archive/legacy-import/data/enriched/failures.json

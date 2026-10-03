@@ -154,8 +154,8 @@
     "name": "WhatsMyName",
     "url": "https://whatsmyname.app/",
     "raw_description": "This tool allows to enumerate usernames across many websites.",
-    "description_en": "Web-based username enumeration tool that checks a given handle against hundreds of platforms simultaneously. Returns a verified list of active accounts with direct links, making it faster than manual searches for building a cross-platform presence map.",
-    "description_zh_tw": "WhatsMyName 允許使用者在數百個網站上批量查詢特定用戶名是否存在，快速建立目標的數位足跡地圖。",
+    "description_en": "Candidate account pages or public account context, not verified identity.",
+    "description_zh_tw": "候選帳號頁面或公開帳號背景，並非已核實身份。",
     "use_cases": [
       "Check a username across hundreds of platforms in one query",
       "Build a starting list of confirmed social accounts for a person of interest",
@@ -446,8 +446,8 @@
     "name": "Have I Been Pwned",
     "url": "https://haveibeenpwned.com/",
     "raw_description": "Check if your email has been compromised in a data breach.",
-    "description_en": "The definitive breach notification service. Enter an email address or phone number to check if it has appeared in any known data breach. Maintained by security researcher Troy Hunt with verified, de-duplicated breach data from hundreds of incidents.",
-    "description_zh_tw": "Have I Been Pwned 是由資安研究員 Troy Hunt 維護的免費服務，可查詢電子郵件或電話號碼是否出現在已知資料洩露事件中，是個人隱私監控與帳號安全評估的標準工具。",
+    "description_en": "Exposure or candidate account signals; these do not identify the current owner.",
+    "description_zh_tw": "外洩或候選帳號訊號；不能確認目前使用者。",
     "use_cases": [
       "Quickly confirm whether a target email appeared in known breach databases",
       "Assess historical account exposure risk during a phishing investigation",
@@ -587,8 +587,8 @@
     "name": "ExifTool",
     "url": "https://exiftool.org/",
     "raw_description": "Read, Write and Edit Meta Information in image and other file types.",
-    "description_en": "Gold-standard metadata extraction tool supporting hundreds of image, video, and document formats. Reads EXIF, IPTC, and XMP metadata including GPS coordinates, device fingerprints, and timestamps. Essential for image verification and document attribution.",
-    "description_zh_tw": "ExifTool 是功能最完整的元資料讀寫工具，支援數百種圖片、影片與文件格式的 EXIF 等元資料操作，在 OSINT 調查中常用於從圖片中提取 GPS 座標、拍攝裝置及時間戳記等資訊。",
+    "description_en": "File metadata that may be missing or altered.",
+    "description_zh_tw": "可能缺失或被修改的檔案中繼資料。",
     "use_cases": [
       "Extract GPS coordinates from an uploaded image to determine the shoot location",
       "Analyze document metadata to identify author names, software, and modification history",
@@ -637,8 +637,8 @@
     "name": "Sherlock",
     "url": "https://github.com/sherlock-project/sherlock",
     "raw_description": "Hunt down social media accounts by username across social networks.",
-    "description_en": "CLI tool that searches for a given username across 400+ social networks and platforms. Outputs confirmed account URLs with minimal false positives. The standard starting tool for username-based investigations.",
-    "description_zh_tw": "Sherlock 是一款熱門的開源工具，可在 400 多個社交網路上搜尋特定用戶名是否存在，命令列介面簡潔高效，是社交媒體帳號調查的標準入門工具。",
+    "description_en": "Candidate account pages or public account context, not verified identity.",
+    "description_zh_tw": "候選帳號頁面或公開帳號背景，並非已核實身份。",
     "use_cases": [
       "Search a username across hundreds of platforms to confirm account presence",
       "Track a scammer or harasser's cross-platform activity trail",
@@ -1620,8 +1620,8 @@
     "name": "Yandex Images",
     "url": "https://yandex.com/images/",
     "raw_description": "Reverse image search by Yandex, particularly strong for Eastern European and Russian content.",
-    "description_en": "Yandex's reverse image search is widely considered superior to Google for identifying people in photographs, especially in Eastern European and Russian contexts. Often surfaces social profile matches that Google misses, making it essential for international identity verification.",
-    "description_zh_tw": "Yandex 的反向圖片搜尋在識別照片中的人物方面被廣泛認為優於 Google，尤其是在東歐和俄語情境中，常常能找到 Google 錯過的社交個人資料匹配。",
+    "description_en": "Candidate matching images and source pages; compare dates and context.",
+    "description_zh_tw": "候選相似圖片與來源頁；比較日期與上下文。",
     "use_cases": [
       "Perform reverse image search for persons when Google returns insufficient results",
       "Identify Eastern European or Russian social media profiles from a photograph",
@@ -2966,8 +2966,8 @@
     "name": "AI Image Detector (Hive)",
     "url": "https://hivemoderation.com/ai-generated-content-detection",
     "raw_description": "AI-generated image and text detection by Hive Moderation.",
-    "description_en": "Hive Moderation's free AI-generated content detector that classifies images and text as AI-generated or human-created. Supports detection of outputs from Stable Diffusion, DALL-E, Midjourney, and GPT models. Useful for fact-checking synthetic media, profile photo verification, and disinformation research.",
-    "description_zh_tw": "Hive Moderation 的免費 AI 生成內容偵測器，可判斷圖像和文字是否由 AI 生成，支援偵測 Stable Diffusion、DALL-E、Midjourney 及 GPT 的輸出，適用於合成媒體事實核查。",
+    "description_en": "Image analysis signals; these do not independently establish authenticity.",
+    "description_zh_tw": "影像分析訊號；不能單獨判定真偽。",
     "use_cases": [
       "Determine whether a profile photo was generated by an AI image model",
       "Scan text passages to detect if they were written by a large language model",
@@ -3721,8 +3721,8 @@
     "name": "Tails OS",
     "url": "https://tails.boum.org/",
     "raw_description": "Live amnesic operating system for privacy and anonymity.",
-    "description_en": "Live USB operating system that routes all traffic through Tor by default and leaves no traces on the host computer. Boots from USB stick, stores nothing on disk, and terminates cleanly. Standard recommendation for journalists, activists, and investigators who need strong anonymity and plausible deniability in high-risk environments.",
-    "description_zh_tw": "Tails 是從 USB 隨身碟啟動的隱身作業系統，預設將所有流量路由經過 Tor，且不在主機留下任何痕跡，是記者、活動人士和高風險環境調查人員的標準匿名工具。",
+    "description_en": "Research environment or communication support; not a subject lookup.",
+    "description_zh_tw": "研究環境或通訊輔助，並非對象查詢。",
     "use_cases": [
       "Conduct sensitive OSINT research from a clean, amnesic environment",
       "Prevent host machine from logging investigation activities or visited sites",
@@ -3917,8 +3917,8 @@
     "name": "Signal",
     "url": "https://signal.org/",
     "raw_description": "End-to-end encrypted private messaging and voice app.",
-    "description_en": "End-to-end encrypted messaging, voice, and video app using the Signal Protocol — the gold standard for secure communications. Used by journalists, lawyers, human rights workers, and investigators to protect source communications and sensitive coordination. Messages are not stored on Signal's servers.",
-    "description_zh_tw": "Signal 是使用 Signal 協議的端對端加密即時通訊、語音和視訊應用，是安全通訊的黃金標準，廣泛用於記者、律師、人權工作者和調查人員保護線人通訊和敏感協調。",
+    "description_en": "Research environment or communication support; not a subject lookup.",
+    "description_zh_tw": "研究環境或通訊輔助，並非對象查詢。",
     "use_cases": [
       "Securely communicate with sources and collaborators during sensitive investigations",
       "Enable disappearing messages to prevent evidence accumulation on devices",
@@ -4951,8 +4951,8 @@
     "name": "Chainalysis Reactor",
     "url": "https://www.chainalysis.com/chainalysis-reactor/",
     "raw_description": "Enterprise blockchain investigation and transaction tracing platform.",
-    "description_en": "Chainalysis Reactor is the industry-standard enterprise blockchain investigation platform, used by law enforcement agencies, regulators, and financial institutions across 70+ countries. Traces fund flows, de-anonymizes wallets through proprietary clustering, and links on-chain activity to off-chain identities from exchange KYC data. Paid enterprise licensing required; included here as a reference standard.",
-    "description_zh_tw": "Chainalysis Reactor 是被 70+ 國執法機構、監管機構和金融機構使用的行業標準企業級區塊鏈調查平台，追蹤資金流動、通過專有叢集化去匿名化錢包，並將鏈上活動與交易所 KYC 數據中的真實身份關聯。需企業授權，此處收錄作為行業參考標準。",
+    "description_en": "Network-specific public transaction or attribution leads, not proven real identities.",
+    "description_zh_tw": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。",
     "use_cases": [
       "Conduct court-admissible blockchain tracing with full audit trail for law enforcement use",
       "Access proprietary exchange attribution data to identify where illicit funds were cashed out",
@@ -5977,5 +5977,267 @@
       "尋找使用特定 JavaScript 追蹤 ID 的所有網站，以映射實體的網站基礎設施",
       "識別共享特定程式碼片段的網站，以偵測惡意植入活動"
     ]
+  },
+  {
+    "id": "gsxt",
+    "name": "国家企业信用信息公示系统 (GSXT)",
+    "url": "https://www.gsxt.gov.cn/",
+    "raw_description": "China enterprise public information system.",
+    "description_en": "China enterprise public information system.",
+    "description_zh_tw": "中國大陸企業公開資訊查詢入口。",
+    "use_cases": [
+      "Look up public company registration information"
+    ],
+    "use_cases_zh_tw": [
+      "查閱企業公開登記資料"
+    ],
+    "tags": [
+      "company",
+      "registry",
+      "public-records",
+      "cn"
+    ],
+    "pricing": "unknown",
+    "difficulty": "beginner",
+    "target_types": [
+      "organization"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "ethical_flag": false,
+    "ethics_note": null,
+    "source_section": "Official company registries",
+    "source_permalink": "https://hnsggzyjy.henan.gov.cn/jyxx/002002/002002001/20260305/f294e07c-bfb6-4c63-bdd8-60f7b405ef58.html",
+    "review": {
+      "status": "ai_candidate",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes": "Official source documentation identified on 2026-10-03. Full service flow and data accuracy have not been independently tested."
+    },
+    "is_dead_link": false,
+    "is_active": true
+  },
+  {
+    "id": "taiwan-findbiz",
+    "name": "經濟部商工登記公示資料查詢 (FindBiz)",
+    "url": "https://findbiz.nat.gov.tw/",
+    "raw_description": "Taiwan public company and business registration search.",
+    "description_en": "Taiwan public company and business registration search.",
+    "description_zh_tw": "台灣公司及商業登記公開資料查詢入口。",
+    "use_cases": [
+      "Look up public company registration information"
+    ],
+    "use_cases_zh_tw": [
+      "查閱企業公開登記資料"
+    ],
+    "tags": [
+      "company",
+      "registry",
+      "public-records",
+      "tw"
+    ],
+    "pricing": "unknown",
+    "difficulty": "beginner",
+    "target_types": [
+      "organization"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "ethical_flag": false,
+    "ethics_note": null,
+    "source_section": "Official company registries",
+    "source_permalink": "https://findbiz.nat.gov.tw/",
+    "review": {
+      "status": "ai_candidate",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes": "Official source documentation identified on 2026-10-03. Full service flow and data accuracy have not been independently tested."
+    },
+    "is_dead_link": false,
+    "is_active": true
+  },
+  {
+    "id": "hong-kong-companies-registry",
+    "name": "香港公司註冊處電子查冊 (Hong Kong Companies Registry)",
+    "url": "https://www.e-services.cr.gov.hk/",
+    "raw_description": "Official Hong Kong company registration search service.",
+    "description_en": "Official Hong Kong company registration search service.",
+    "description_zh_tw": "香港公司註冊處的官方公司登記查冊服務。",
+    "use_cases": [
+      "Look up public company registration information"
+    ],
+    "use_cases_zh_tw": [
+      "查閱企業公開登記資料"
+    ],
+    "tags": [
+      "company",
+      "registry",
+      "public-records",
+      "hk"
+    ],
+    "pricing": "freemium",
+    "difficulty": "beginner",
+    "target_types": [
+      "organization"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "ethical_flag": false,
+    "ethics_note": null,
+    "source_section": "Official company registries",
+    "source_permalink": "https://www.cr.gov.hk/en/electronic/e-servicesportal/faq/e-search.htm",
+    "review": {
+      "status": "ai_candidate",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "notes": "Official source documentation identified on 2026-10-03. Full service flow and data accuracy have not been independently tested."
+    },
+    "is_dead_link": false,
+    "is_active": true
+  },
+  {
+    "id": "google-search",
+    "name": "Google Search",
+    "url": "https://www.google.com/advanced_search",
+    "raw_description": "Find indexed pages with keywords and search operators.",
+    "description_en": "Find indexed pages with keywords and search operators.",
+    "description_zh_tw": "使用關鍵詞與搜尋運算符找已索引的網頁。",
+    "target_types": [
+      "person",
+      "organization",
+      "domain",
+      "document"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "pricing": "free",
+    "difficulty": "beginner",
+    "ethical_flag": false,
+    "is_active": true,
+    "review": {
+      "status": "manually_reviewed",
+      "reviewed_at": "2026-10-03",
+      "notes": "Official documentation checked for listed search capabilities; not an exhaustive service audit."
+    }
+  },
+  {
+    "id": "google-scholar",
+    "name": "Google Scholar",
+    "url": "https://scholar.google.com/",
+    "raw_description": "Find scholarly publications, versions and citations; full text may require access.",
+    "description_en": "Find scholarly publications, versions and citations; full text may require access.",
+    "description_zh_tw": "查找研究文獻、不同版本及引用；全文可能需要訂閱。",
+    "target_types": [
+      "document",
+      "person"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "pricing": "free",
+    "difficulty": "beginner",
+    "ethical_flag": false,
+    "is_active": true,
+    "review": {
+      "status": "manually_reviewed",
+      "reviewed_at": "2026-10-03",
+      "notes": "Official documentation checked for listed search capabilities; not an exhaustive service audit."
+    }
+  },
+  {
+    "id": "fact-check-explorer",
+    "name": "Google Fact Check Explorer",
+    "url": "https://toolbox.google.com/factcheck/explorer",
+    "raw_description": "Find published fact checks about a claim; inspect their evidence and dates.",
+    "description_en": "Find published fact checks about a claim; inspect their evidence and dates.",
+    "description_zh_tw": "查找已發布的事實查核，並閱讀證據與日期。",
+    "target_types": [
+      "document"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "pricing": "free",
+    "difficulty": "beginner",
+    "ethical_flag": false,
+    "is_active": true,
+    "review": {
+      "status": "manually_reviewed",
+      "reviewed_at": "2026-10-03",
+      "notes": "Official documentation checked for listed search capabilities; not an exhaustive service audit."
+    }
+  },
+  {
+    "id": "full-fact",
+    "name": "Full Fact",
+    "url": "https://fullfact.org/",
+    "raw_description": "Read published fact checks and their cited sources, with a UK focus.",
+    "description_en": "Read published fact checks and their cited sources, with a UK focus.",
+    "description_zh_tw": "閱讀已發布查核及其引用來源，以英國議題為主。",
+    "target_types": [
+      "document"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "pricing": "free",
+    "difficulty": "beginner",
+    "ethical_flag": false,
+    "is_active": true,
+    "review": {
+      "status": "manually_reviewed",
+      "reviewed_at": "2026-10-03",
+      "notes": "Official site checked for published checks and cited evidence; not exhaustive topic coverage."
+    }
+  },
+  {
+    "id": "taiwan-factcheck",
+    "name": "台灣事實查核中心 / Taiwan FactCheck Center",
+    "url": "https://tfc-taiwan.org.tw/",
+    "raw_description": "Find Chinese-language fact checks and inspect the supporting evidence.",
+    "description_en": "Find Chinese-language fact checks and inspect the supporting evidence.",
+    "description_zh_tw": "查找中文事實查核並閱讀支持證據。",
+    "target_types": [
+      "document"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "pricing": "free",
+    "difficulty": "beginner",
+    "ethical_flag": false,
+    "is_active": true,
+    "review": {
+      "status": "manually_reviewed",
+      "reviewed_at": "2026-10-03",
+      "notes": "Official site checked for published checks and cited evidence; not exhaustive topic coverage."
+    }
+  },
+  {
+    "id": "osint-link",
+    "name": "OSINT.link — Book companion resource directory",
+    "url": "https://osint.link/",
+    "raw_description": "Companion resource directory cited in Open Source Intelligence Methods and Tools.",
+    "description_en": "Explore a topic-organised directory of external OSINT resources and tutorials. Individual links require their own checks.",
+    "description_zh_tw": "參考書所列的配套資源目錄，依主題整理外部網站與教程；個別連結需另外核對。",
+    "target_types": [
+      "other"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "pricing": "free",
+    "difficulty": "beginner",
+    "ethical_flag": false,
+    "is_active": true,
+    "review": {
+      "status": "manually_reviewed",
+      "reviewed_at": "2026-10-03",
+      "notes": "Directory page checked; listed third-party tools were not individually verified."
+    }
   }
 ]

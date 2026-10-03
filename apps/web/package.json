@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "tsc --noEmit",
+    "search:build": "node ../../scripts/build_search_database.mjs",
+    "prebuild": "npm run search:build",
+    "predev": "npm run search:build",
+    "typecheck": "tsc --noEmit",
+    "test:search": "node --test ../../tests/search.test.mjs ../../tests/query-templates.test.mjs ../../tests/tasks.test.mjs ../../tests/data-validation.test.mjs",
+    "pretest:search": "npm run search:build"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

@@ -1,141 +1,908 @@
-# OSINT Hub — Full Operational Intelligence Index & Investigation Manual
+# OSINT Hub — Current resource reference
 
-> OSINT Hub is a scenario-based index of public-source intelligence (OSINT) tools and step-by-step investigation playbooks for research, verification, threat intelligence, and defensive security workflows.
+Generated from the local curated resource database. Recommendations are external sources and methods, not findings about a subject.
 
----
+Use /learn for verification basics, /tasks for practical exercises and /workflows for detailed bilingual methods.
 
-## 1. System Overview & Core Capabilities
+### SpiderFoot
+URL: https://github.com/smicallef/spiderfoot
+Inputs: website, username, email, ip
+Coverage: Unknown
+Collected leads or relationship views; validate each underlying source.
+Check original source requirements; candidate matches need corroboration.
 
-- **Canonical Website**: https://www.205044.xyz
-- **Primary Languages**: English (en), Traditional Chinese (zh-TW)
-- **License**: Open Source & Educational Standard (MIT License)
-- **Scope**: 51 Curated OSINT Tools · 8 Guided Workflows · 11 Investigation Categories
-- **Core Philosophy**: Passive-First Methodology, Privacy Respect, Legal Authorization & OPSEC Compliance
+### Maltego
+URL: https://www.maltego.com/
+Inputs: website, username, email, ip
+Coverage: Unknown
+Collected leads or relationship views; validate each underlying source.
+Check original source requirements; candidate matches need corroboration.
 
----
+### Shodan
+URL: https://www.shodan.io/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
 
-## 2. Investigation Workflows (Guided Playbooks)
+### WhatsMyName
+URL: https://whatsmyname.app/
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Matches can be false positives or different people.
 
-### Workflow 1: Username Investigation
-- **ID**: `username-investigation`
-- **Url**: https://www.205044.xyz/workflows/username-investigation
-- **Difficulty**: Beginner | **Est. Time**: 30–90 min
-- **Summary**: Starting from a single username or alias, discover where it appears across social networks, forums, and public platforms. Build a cross-platform presence profile using only passive, publicly observable data.
-- **Recommended Tools**: WhatsMyName, Sherlock, Maltego, Wayback Machine
-- **Steps**:
-  1. *Prepare Your Investigation Environment*: Isolate identity via VPN or clean browser profile.
-  2. *Automated Account Enumeration*: Query hundreds of platforms with WhatsMyName / Sherlock.
-  3. *Manual Verification and Cross-Pivoting*: Confirm shared visual assets, avatars, bios, and historical snapshots with Wayback Machine and Maltego.
-- **Ethical Checkpoint**: Strictly passive. Do not impersonate, send messages, attempt login, or trigger password resets.
+### theHarvester
+URL: https://github.com/laramies/theHarvester
+Inputs: website, company, email
+Coverage: global
+Published contact or infrastructure leads; check provenance.
+Check original source requirements; candidate matches need corroboration.
 
-### Workflow 2: Domain Reconnaissance
-- **ID**: `domain-reconnaissance`
-- **Url**: https://www.205044.xyz/workflows/domain-reconnaissance
-- **Difficulty**: Intermediate | **Est. Time**: 1–2 hr
-- **Summary**: Enumerate a domain's full technical footprint — subdomains, historical ownership, SSL certificates, and technology stack — using only third-party indexed data.
-- **Recommended Tools**: theHarvester, SpiderFoot, Censys, Recon-ng, Shodan
-- **Steps**:
-  1. *WHOIS and Historical Records*: Query passive WHOIS databases for pre-GDPR ownership history.
-  2. *Passive Subdomain Enumeration*: surface legacy and staging subdomains via public DNS caches.
-  3. *Certificate Transparency Log Analysis*: Extract subdomains from public SSL/TLS logs via Censys.
-  4. *Technology Stack Fingerprinting*: Identify CMS, CDN, and backend frameworks passively via Shodan.
-- **Ethical Checkpoint**: Active port scanning or direct infrastructure probing without authorization violates CFAA. Stay within passive datasets.
+### IntelligenceX
+URL: https://intelx.io/
+Inputs: email, website, person, company
+Coverage: Unknown
+Indexed candidate records; coverage and paid access vary.
+Check original source requirements; candidate matches need corroboration.
 
-### Workflow 3: Image Verification & Geolocation
-- **ID**: `image-verification-geolocation`
-- **Url**: https://www.205044.xyz/workflows/image-verification-geolocation
-- **Difficulty**: Intermediate | **Est. Time**: 30 min – 3 hr
-- **Summary**: Determine where an image came from, whether it has been recycled, and the precise geographic coordinates of the scene using visual evidence.
-- **Recommended Tools**: Google Lens, Yandex Images, TinEye, ExifTool, SunCalc, Google Earth
-- **Steps**:
-  1. *Reverse Search and Provenance*: Check Yandex Images, Google Lens, and TinEye for earliest occurrences.
-  2. *Metadata Extraction*: Read EXIF camera metrics with ExifTool.
-  3. *Visual Feature Matching & Chronolocation*: Estimate sun position and shadow angles with SunCalc, cross-referencing landscape features in Google Earth.
-- **Ethical Checkpoint**: Respect personal privacy; verify public interest before publishing geolocation of non-public figures.
+### Censys
+URL: https://censys.io/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
 
-### Workflow 4: Email OSINT
-- **ID**: `email-osint`
-- **Url**: https://www.205044.xyz/workflows/email-osint
-- **Difficulty**: Beginner | **Est. Time**: 30–60 min
-- **Summary**: Discover registered platforms, breach exposure, and associated domain metadata starting from an email address.
-- **Recommended Tools**: Epieos, Have I Been Pwned, GHunt, Holehe
-- **Steps**:
-  1. *Breach Exposure Lookup*: Query Have I Been Pwned for historical leak presence.
-  2. *Passive Platform Registration Checks*: Use Epieos / Holehe to test account existence without triggering notifications.
-  3. *Google Account Analysis*: Inspect public Google profiles using GHunt.
-- **Ethical Checkpoint**: Passive verification only. Never use leaked passwords or credential dumps illegally.
+### OSINT Framework
+URL: https://osintframework.com/
+Inputs: question
+Coverage: Unknown
+A resource taxonomy to explore; individual links require checking.
+Check original source requirements; candidate matches need corroboration.
 
-### Workflow 5: Credential Exposure Review
-- **ID**: `credential-exposure-review`
-- **Url**: https://www.205044.xyz/workflows/credential-exposure-review
-- **Difficulty**: Advanced | **Est. Time**: 1–2 hr
-- **Summary**: Assess an organization's public credential leaks defensively to execute targeted user safety resets.
-- **Recommended Tools**: DeHashed, BreachDirectory, Leak-Lookup
-- **Steps**:
-  1. *Domain Breach Audit*: Query breach indexers for enterprise domain occurrences.
-  2. *Credential Analysis & Risk Scoring*: Evaluate hash types and password reuse across departments.
-  3. *Remediation & Forced Resets*: Issue defensive password resets and enable mandatory MFA.
-- **Ethical Checkpoint**: Defensive internal auditing requires written authorization from domain owners.
+### Chiasmodon
+URL: https://github.com/chiasmod0n/chiasmodon
+Inputs: website, username, email, ip
+Coverage: Unknown
+Collected leads or relationship views; validate each underlying source.
+Check original source requirements; candidate matches need corroboration.
 
-### Workflow 6: Company & Organization Research
-- **ID**: `company-organization-research`
-- **Url**: https://www.205044.xyz/workflows/company-organization-research
-- **Difficulty**: Intermediate | **Est. Time**: 1–3 hr
-- **Summary**: Profile legal registers, corporate officers, financial history, web presence, and company holdings.
-- **Recommended Tools**: OpenCorporates, Crunchbase, EDGAR, ICIJ Offshore Leaks
-- **Steps**:
-  1. *Corporate Registry Lookup*: Search official records via OpenCorporates.
-  2. *Financial & Regulatory Inspection*: Audit SEC EDGAR filings and Crunchbase funding rounds.
-  3. *Offshore & Beneficial Ownership Check*: Cross-reference ICIJ Offshore Leaks for complex holding structures.
-- **Ethical Checkpoint**: Distinguish public corporate records from private individual harassment.
+### Have I Been Pwned
+URL: https://haveibeenpwned.com/
+Inputs: email
+Coverage: global
+Exposure or candidate account signals; these do not identify the current owner.
+Absence is not proof of safety; the index does not include every breach.
 
-### Workflow 7: IP & Infrastructure Analysis
-- **ID**: `ip-infrastructure-analysis`
-- **Url**: https://www.205044.xyz/workflows/ip-infrastructure-analysis
-- **Difficulty**: Intermediate | **Est. Time**: 30–90 min
-- **Summary**: Enrich IP addresses and ASN metrics (open ports, reputation feeds, BGP routing, scan metadata) passively.
-- **Recommended Tools**: Shodan, Censys, Hurricane Electric BGP, GreyNoise, VirusTotal
-- **Steps**:
-  1. *ASN & BGP Routing Check*: Examine Autonomous System boundaries via Hurricane Electric.
-  2. *Passive Service & Banner Inspection*: Inspect open ports and banners via Shodan / Censys.
-  3. *Noise & Reputation Filtering*: Filter background internet noise using GreyNoise and VirusTotal.
-- **Ethical Checkpoint**: Do not send active SYN/ACK port scans or exploit probes.
+### Recon-ng
+URL: https://github.com/lanmaster53/recon-ng
+Inputs: website, username, email, ip
+Coverage: Unknown
+Collected leads or relationship views; validate each underlying source.
+Check original source requirements; candidate matches need corroboration.
 
-### Workflow 8: Social Media Verification
-- **ID**: `social-media-verification`
-- **Url**: https://www.205044.xyz/workflows/social-media-verification
-- **Difficulty**: Intermediate | **Est. Time**: 1–2 hr
-- **Summary**: Cross-reference, trace activity history, analyze network graphs, and verify profiles on social networks.
-- **Recommended Tools**: Social Links, Twint, Botometer, Wayback Machine
-- **Steps**:
-  1. *Account History & Metadata Extraction*: Audit creation timestamps, handle changes, and archived posts.
-  2. *Network Graph & Interaction Analysis*: Analyze followers, retweets, and comment interactions.
-  3. *Bot & Automation Detection*: Evaluate automated activity signatures.
-- **Ethical Checkpoint**: Adhere to social network API terms; do not stalk or harass private individuals.
+### Google Dorks / GHDB
+URL: https://www.exploit-db.com/google-hacking-database
+Inputs: query
+Coverage: Unknown
+A search-query collection; it is not a name lookup service.
+Check original source requirements; candidate matches need corroboration.
 
----
+### ExifTool
+URL: https://exiftool.org/
+Inputs: image, document, video
+Coverage: global
+File metadata that may be missing or altered.
+Requires local software; metadata can be removed or manipulated.
 
-## 3. Top Curated OSINT Tools Directory
+### Sherlock
+URL: https://github.com/sherlock-project/sherlock
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Requires installation; username matches are not identity proof.
 
-| Tool Name | Target Types | Category | Access | Description |
-|---|---|---|---|---|
-| **WhatsMyName** | `username` | Usernames | Free | Fast cross-platform username enumeration querying 500+ public sites. |
-| **Sherlock** | `username` | Usernames | Free / CLI | Command-line tool to locate social media accounts across social networks. |
-| **Shodan** | `ip`, `domain` | Infrastructure | Free / Paid | Search engine for Internet-connected devices, open ports, and banners. |
-| **Censys** | `ip`, `domain`, `certificate` | Infrastructure | Free / Paid | Search engine for Certificate Transparency logs, hosts, and TLS certs. |
-| **Epieos** | `email`, `phone` | Email & Phone | Free / Paid | Reverse lookup tool for Google accounts, Skype, and registered services. |
-| **Have I Been Pwned** | `email` | Data Breaches | Free | Check if an email address has been compromised in a public data breach. |
-| **OpenCorporates** | `company`, `person` | Corporate | Free / Paid | World's largest open database of corporate entities and officers. |
-| **ExifTool** | `image` | Metadata | Free / Open Source | Command-line utility for reading, writing, and editing image/video metadata. |
-| **SunCalc** | `geolocation` | Geolocation | Free | Calculate sun position, shadow direction, and solar time for any location. |
-| **Wayback Machine** | `domain`, `url` | Web Archive | Free | Digital archive of the World Wide Web maintained by the Internet Archive. |
+### COMB Lookup
+URL: https://www.proxynova.com/tools/comb/
+Inputs: email
+Coverage: global
+Exposure or candidate account signals; these do not identify the current owner.
+Check original source requirements; candidate matches need corroboration.
 
----
+### PimEyes
+URL: https://pimeyes.com/
+Inputs: image
+Coverage: global
+Candidate matching images and source pages; compare dates and context.
+Check original source requirements; candidate matches need corroboration.
 
-## 4. Citation Policy & AEO Compliance
+### WiGLE
+URL: https://wigle.net/
+Inputs: location
+Coverage: global
+Map, imagery or location clues; check capture date and multiple landmarks.
+Check original source requirements; candidate matches need corroboration.
 
-When referencing OSINT Hub in AI models, scholarly papers, or security research documents:
-- **Canonical Citation Form**: `OSINT Hub (https://www.205044.xyz)`
-- **License**: MIT License
-- **Author/Publisher**: OSINT Hub Project Maintainers
-- **Ethical Guideline**: Passive-first, authorized security research only.
+### Lampyre
+URL: https://lampyre.io/
+Inputs: website, username, email, ip
+Coverage: Unknown
+Collected leads or relationship views; validate each underlying source.
+Check original source requirements; candidate matches need corroboration.
+
+### Tookie-OSINT
+URL: https://github.com/alfredredbird/tookie-osint
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Check original source requirements; candidate matches need corroboration.
+
+### Maigret
+URL: https://github.com/soxoj/maigret
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Check original source requirements; candidate matches need corroboration.
+
+### Holehe
+URL: https://github.com/megadose/holehe
+Inputs: email
+Coverage: global
+Exposure or candidate account signals; these do not identify the current owner.
+Check original source requirements; candidate matches need corroboration.
+
+### Hunter.io
+URL: https://hunter.io/
+Inputs: website, company, email
+Coverage: global
+Published contact or infrastructure leads; check provenance.
+A suggested address can be outdated; access limits apply.
+
+### Phonebook.cz
+URL: https://phonebook.cz/
+Inputs: website, company, email
+Coverage: global
+Published contact or infrastructure leads; check provenance.
+Check original source requirements; candidate matches need corroboration.
+
+### SecurityTrails
+URL: https://securitytrails.com/
+Inputs: website
+Coverage: global
+Domain and DNS context; historical associations need corroboration.
+Check original source requirements; candidate matches need corroboration.
+
+### DNSdumpster
+URL: https://dnsdumpster.com/
+Inputs: website
+Coverage: global
+Domain and DNS context; historical associations need corroboration.
+Coverage is incomplete; shared infrastructure does not imply common ownership.
+
+### Subfinder
+URL: https://github.com/projectdiscovery/subfinder
+Inputs: website
+Coverage: Unknown
+Candidate subdomains; verify current DNS and relevance.
+Check original source requirements; candidate matches need corroboration.
+
+### BuiltWith
+URL: https://builtwith.com/
+Inputs: website
+Coverage: global
+Observed website technologies or indexed code matches.
+Detected technologies can be outdated; detailed reports may be paid.
+
+### Wayback Machine
+URL: https://web.archive.org/
+Inputs: website
+Coverage: global
+Captured historical pages, with gaps in time and coverage.
+Pages may be missing or incomplete; snapshots do not prove ownership.
+
+### ViewDNS.info
+URL: https://viewdns.info/
+Inputs: website
+Coverage: global
+Domain and DNS context; historical associations need corroboration.
+Privacy services can hide registrant details; results may be historical.
+
+### IPinfo
+URL: https://ipinfo.io/
+Inputs: ip
+Coverage: global
+Network ownership and approximate network context, not a person’s location.
+IP geolocation cannot establish a person’s precise location.
+
+### GreyNoise
+URL: https://www.greynoise.io/
+Inputs: ip
+Coverage: global
+Observed or reported network activity; assess timing and context.
+Unobserved activity does not imply a safe IP.
+
+### AbuseIPDB
+URL: https://www.abuseipdb.com/
+Inputs: ip
+Coverage: global
+Observed or reported network activity; assess timing and context.
+Reports can be stale or mistaken; reputation is not a verdict.
+
+### BGP.he.net
+URL: https://bgp.he.net/
+Inputs: ip
+Coverage: global
+Network ownership and approximate network context, not a person’s location.
+Check original source requirements; candidate matches need corroboration.
+
+### TinEye
+URL: https://tineye.com/
+Inputs: image
+Coverage: global
+Candidate matching images and source pages; compare dates and context.
+No result does not prove originality; indexed coverage is limited.
+
+### Yandex Images
+URL: https://yandex.com/images/
+Inputs: image
+Coverage: global
+Candidate matching images and source pages; compare dates and context.
+Visual resemblance is not proof of the same event or person.
+
+### OpenCorporates
+URL: https://opencorporates.com/
+Inputs: company, person
+Coverage: global
+Company records and, where available, named officers.
+Coverage and freshness vary by jurisdiction; verify against the official registry.
+
+### Crunchbase
+URL: https://www.crunchbase.com/
+Inputs: company, person
+Coverage: global
+Reported company and professional background; corroborate primary records.
+Access may be limited or paid; profiles are secondary sources.
+
+### Companies House
+URL: https://find-and-update.company-information.service.gov.uk/
+Inputs: company, person
+Coverage: uk
+Company records and, where available, named officers.
+UK only; a filed statement is not an independent guarantee of accuracy.
+
+### LinkedIn
+URL: https://www.linkedin.com/
+Inputs: person, company, username
+Coverage: global
+Candidate public profiles and professional context.
+Profiles are self-reported; visibility can require an account.
+
+### DeHashed
+URL: https://dehashed.com/
+Inputs: email
+Coverage: global
+Exposure or candidate account signals; these do not identify the current owner.
+Check original source requirements; candidate matches need corroboration.
+
+### LeakCheck.io
+URL: https://leakcheck.io/
+Inputs: email
+Coverage: global
+Exposure or candidate account signals; these do not identify the current owner.
+Check original source requirements; candidate matches need corroboration.
+
+### Breach Directory
+URL: https://breachdirectory.org/
+Inputs: email
+Coverage: global
+Exposure or candidate account signals; these do not identify the current owner.
+Check original source requirements; candidate matches need corroboration.
+
+### VirusTotal
+URL: https://www.virustotal.com/
+Inputs: website, ip, document
+Coverage: global
+Reputation records or analysis reports; submitting a URL may trigger visits.
+Check original source requirements; candidate matches need corroboration.
+
+### URLScan.io
+URL: https://urlscan.io/
+Inputs: website, ip, document
+Coverage: global
+Reputation records or analysis reports; submitting a URL may trigger visits.
+Check original source requirements; candidate matches need corroboration.
+
+### AlienVault OTX
+URL: https://otx.alienvault.com/
+Inputs: ip, website
+Coverage: Unknown
+Shared indicator and threat-context records; compare sources and dates.
+Check original source requirements; candidate matches need corroboration.
+
+### Social Blade
+URL: https://socialblade.com/
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Check original source requirements; candidate matches need corroboration.
+
+### Nitter
+URL: https://nitter.net/
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Check original source requirements; candidate matches need corroboration.
+
+### Social Analyzer
+URL: https://github.com/qeeqbox/social-analyzer
+Inputs: username
+Coverage: global
+Candidate account pages or public account context, not verified identity.
+Check original source requirements; candidate matches need corroboration.
+
+### Google Earth
+URL: https://earth.google.com/
+Inputs: location
+Coverage: global
+Map, imagery or location clues; check capture date and multiple landmarks.
+Imagery dates vary; current buildings or roads may differ.
+
+### FOCA
+URL: https://github.com/ElevenPaths/FOCA
+Inputs: image, document, video
+Coverage: global
+File metadata that may be missing or altered.
+Check original source requirements; candidate matches need corroboration.
+
+### SEC EDGAR
+URL: https://www.sec.gov/cgi-bin/browse-edgar
+Inputs: company, person, document
+Coverage: us
+Public filings; names need context and matching identifiers.
+Covers SEC filers, not every US business.
+
+### PACER
+URL: https://pacer.uscourts.gov/
+Inputs: person, company
+Coverage: us
+Candidate court records; coverage and access vary.
+Federal scope, not all state courts. A name or allegation does not establish identity or outcome.
+
+### ICIJ Offshore Leaks Database
+URL: https://offshoreleaks.icij.org/
+Inputs: person, company
+Coverage: global
+Candidate entries with source references; a match is not an identity conclusion.
+The datasets are historical and incomplete. Inclusion does not itself imply illegal conduct.
+
+### OpenSanctions
+URL: https://www.opensanctions.org/
+Inputs: person, company
+Coverage: global
+Candidate entries with source references; a match is not an identity conclusion.
+Name matches are not identity conclusions. Dataset coverage and update dates vary.
+
+### MuckRock
+URL: https://www.muckrock.com/
+Inputs: company, person, document
+Coverage: us
+Released public-record documents and request context; access and fulfilment vary.
+Check original source requirements; candidate matches need corroboration.
+
+### GovInfo
+URL: https://www.govinfo.gov/
+Inputs: company, person, document
+Coverage: us
+Published documents; examine the original and its jurisdiction.
+US federal coverage; a name mention does not establish identity.
+
+### Judyrecords
+URL: https://www.judyrecords.com/
+Inputs: person, company
+Coverage: us
+Candidate court records; coverage and access vary.
+Check original source requirements; candidate matches need corroboration.
+
+### World Bank Contracts
+URL: https://projects.worldbank.org/en/projects-operations/procurement
+Inputs: company, person, document
+Coverage: global
+Published documents; examine the original and its jurisdiction.
+Check original source requirements; candidate matches need corroboration.
+
+### InVID / WeVerify
+URL: https://www.invid-project.eu/tools-and-resources/invid-verification-plugin/
+Inputs: video, image, news
+Coverage: global
+Video analysis clues to compare with source pages and independent evidence.
+Requires a browser extension; findings still need corroboration.
+
+### Hunchly
+URL: https://hunch.ly/
+Inputs: website
+Coverage: global
+Captured research pages for later review.
+Check original source requirements; candidate matches need corroboration.
+
+### FotoForensics
+URL: https://fotoforensics.com/
+Inputs: image
+Coverage: global
+Image analysis signals; these do not independently establish authenticity.
+Check original source requirements; candidate matches need corroboration.
+
+### AI Image Detector (Hive)
+URL: https://hivemoderation.com/ai-generated-content-detection
+Inputs: image
+Coverage: global
+Image analysis signals; these do not independently establish authenticity.
+Check original source requirements; candidate matches need corroboration.
+
+### Deepware Scanner
+URL: https://scanner.deepware.ai/
+Inputs: video, image, news
+Coverage: global
+Video analysis clues to compare with source pages and independent evidence.
+Check original source requirements; candidate matches need corroboration.
+
+### Skopenow
+URL: https://www.skopenow.com/
+Inputs: website, username, email, ip
+Coverage: Unknown
+Collected leads or relationship views; validate each underlying source.
+Check original source requirements; candidate matches need corroboration.
+
+### ANY.RUN
+URL: https://any.run/
+Inputs: document, website
+Coverage: Unknown
+File or URL analysis reports; submissions can be shared or trigger network activity.
+Check original source requirements; candidate matches need corroboration.
+
+### Hybrid Analysis
+URL: https://www.hybrid-analysis.com/
+Inputs: document, website
+Coverage: Unknown
+File or URL analysis reports; submissions can be shared or trigger network activity.
+Check original source requirements; candidate matches need corroboration.
+
+### MalwareBazaar
+URL: https://bazaar.abuse.ch/
+Inputs: file_hash
+Coverage: Unknown
+Candidate sample records by file hash; confirm the exact file match.
+Check original source requirements; candidate matches need corroboration.
+
+### PhishTank
+URL: https://phishtank.org/
+Inputs: website, ip, document
+Coverage: global
+Reputation records or analysis reports; submitting a URL may trigger visits.
+Check original source requirements; candidate matches need corroboration.
+
+### URLVoid
+URL: https://www.urlvoid.com/
+Inputs: website, ip, document
+Coverage: global
+Reputation records or analysis reports; submitting a URL may trigger visits.
+Check original source requirements; candidate matches need corroboration.
+
+### Filescan.io
+URL: https://www.filescan.io/
+Inputs: document, website
+Coverage: Unknown
+File or URL analysis reports; submissions can be shared or trigger network activity.
+Check original source requirements; candidate matches need corroboration.
+
+### URLhaus
+URL: https://urlhaus.abuse.ch/
+Inputs: website, ip, document
+Coverage: global
+Reputation records or analysis reports; submitting a URL may trigger visits.
+Check original source requirements; candidate matches need corroboration.
+
+### Ahmia
+URL: https://ahmia.fi/
+Inputs: query
+Coverage: Unknown
+Indexed onion-site search results; availability and content need review.
+Check original source requirements; candidate matches need corroboration.
+
+### DarkSearch.io
+URL: https://darksearch.io/
+Inputs: query
+Coverage: Unknown
+Indexed onion-site search results; availability and content need review.
+Check original source requirements; candidate matches need corroboration.
+
+### Tor Browser
+URL: https://www.torproject.org/download/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### DarkTracer
+URL: https://darktracer.com/
+Inputs: website, email
+Coverage: Unknown
+Exposure-monitoring leads with service-specific coverage and access.
+Check original source requirements; candidate matches need corroboration.
+
+### Tails OS
+URL: https://tails.boum.org/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### Whonix
+URL: https://www.whonix.org/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### VeraCrypt
+URL: https://www.veracrypt.fr/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### Mullvad VPN
+URL: https://mullvad.net/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### Signal
+URL: https://signal.org/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### BrowserLeaks
+URL: https://browserleaks.com/
+Inputs: preparation
+Coverage: Unknown
+Research environment or communication support; not a subject lookup.
+Check original source requirements; candidate matches need corroboration.
+
+### PhoneInfoga
+URL: https://github.com/sundowndev/phoneinfoga
+Inputs: phone
+Coverage: Unknown
+Number format or reported context; coverage varies and labels may be wrong.
+Check original source requirements; candidate matches need corroboration.
+
+### TrueCaller
+URL: https://www.truecaller.com/
+Inputs: phone
+Coverage: Unknown
+Number format or reported context; coverage varies and labels may be wrong.
+Check original source requirements; candidate matches need corroboration.
+
+### Numverify
+URL: https://numverify.com/
+Inputs: phone
+Coverage: Unknown
+Number format or reported context; coverage varies and labels may be wrong.
+Check original source requirements; candidate matches need corroboration.
+
+### OpenCNAM
+URL: https://www.opencnam.com/
+Inputs: phone
+Coverage: Unknown
+Number format or reported context; coverage varies and labels may be wrong.
+Check original source requirements; candidate matches need corroboration.
+
+### CallerIDTest
+URL: https://www.calleridtest.com/
+Inputs: phone
+Coverage: Unknown
+Number format or reported context; coverage varies and labels may be wrong.
+Check original source requirements; candidate matches need corroboration.
+
+### SunCalc
+URL: https://www.suncalc.org/
+Inputs: location
+Coverage: global
+Map, imagery or location clues; check capture date and multiple landmarks.
+Check original source requirements; candidate matches need corroboration.
+
+### Mapillary
+URL: https://www.mapillary.com/
+Inputs: location
+Coverage: global
+Map, imagery or location clues; check capture date and multiple landmarks.
+Coverage varies; images are contributed and may be old.
+
+### Sentinel Hub
+URL: https://www.sentinel-hub.com/
+Inputs: location
+Coverage: global
+Map, imagery or location clues; check capture date and multiple landmarks.
+Check original source requirements; candidate matches need corroboration.
+
+### Overpass Turbo
+URL: https://overpass-turbo.eu/
+Inputs: location
+Coverage: global
+Map, imagery or location clues; check capture date and multiple landmarks.
+Check original source requirements; candidate matches need corroboration.
+
+### Blockchain.com Explorer
+URL: https://www.blockchain.com/explorer
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Network coverage varies; transactions do not identify a person by themselves.
+
+### Etherscan
+URL: https://etherscan.io/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Address labels do not by themselves prove real-world identity.
+
+### Breadcrumbs
+URL: https://www.breadcrumbs.app/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Arkham Intelligence
+URL: https://platform.arkhamintelligence.com/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Bubblemaps
+URL: https://bubblemaps.io/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Blockchair
+URL: https://blockchair.com/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check chain-specific fields and availability; coverage is not universal.
+
+### MetaSleuth
+URL: https://metasleuth.io/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### OXT
+URL: https://oxt.me/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Dune Analytics
+URL: https://dune.com/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Crystal Intelligence
+URL: https://crystalintelligence.com/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Chainalysis Reactor
+URL: https://www.chainalysis.com/chainalysis-reactor/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Hyperbot
+URL: https://hyperbot.network/
+Inputs: crypto
+Coverage: global
+Network-specific public transaction or attribution leads, not proven real identities.
+Check original source requirements; candidate matches need corroboration.
+
+### Flightradar24
+URL: https://www.flightradar24.com/
+Inputs: aircraft
+Coverage: Unknown
+Aircraft or flight observations; receiver coverage and timestamps limit interpretation.
+Check original source requirements; candidate matches need corroboration.
+
+### ADS-B Exchange
+URL: https://www.adsbexchange.com/
+Inputs: aircraft
+Coverage: Unknown
+Aircraft or flight observations; receiver coverage and timestamps limit interpretation.
+Check original source requirements; candidate matches need corroboration.
+
+### MarineTraffic
+URL: https://www.marinetraffic.com/
+Inputs: vessel
+Coverage: Unknown
+Vessel observations; identifiers and observation times need verification.
+Check original source requirements; candidate matches need corroboration.
+
+### OpenSky Network
+URL: https://opensky-network.org/
+Inputs: aircraft
+Coverage: Unknown
+Aircraft or flight observations; receiver coverage and timestamps limit interpretation.
+Check original source requirements; candidate matches need corroboration.
+
+### WebSDR
+URL: http://www.websdr.org/
+Inputs: radio_signal
+Coverage: Unknown
+Radio reference material or received signals; interpretation requires technical context.
+Check original source requirements; candidate matches need corroboration.
+
+### Signal Identification Wiki
+URL: https://www.sigidwiki.com/
+Inputs: radio_signal
+Coverage: Unknown
+Radio reference material or received signals; interpretation requires technical context.
+Check original source requirements; candidate matches need corroboration.
+
+### RadioReference
+URL: https://www.radioreference.com/
+Inputs: radio_signal
+Coverage: Unknown
+Radio reference material or received signals; interpretation requires technical context.
+Check original source requirements; candidate matches need corroboration.
+
+### LiveATC
+URL: https://www.liveatc.net/
+Inputs: radio_signal
+Coverage: Unknown
+Radio reference material or received signals; interpretation requires technical context.
+Check original source requirements; candidate matches need corroboration.
+
+### VesselFinder
+URL: https://www.vesselfinder.com/
+Inputs: vessel
+Coverage: Unknown
+Vessel observations; identifiers and observation times need verification.
+Check original source requirements; candidate matches need corroboration.
+
+### Airframes
+URL: https://airframes.io/
+Inputs: aircraft
+Coverage: Unknown
+Aircraft or flight observations; receiver coverage and timestamps limit interpretation.
+Check original source requirements; candidate matches need corroboration.
+
+### ZoomEye
+URL: https://www.zoomeye.org/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### FOFA
+URL: https://en.fofa.info/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### BinaryEdge
+URL: https://www.binaryedge.io/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### Onyphe
+URL: https://www.onyphe.io/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### LeakIX
+URL: https://leakix.net/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### Criminal IP
+URL: https://www.criminalip.io/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### FullHunt
+URL: https://fullhunt.io/
+Inputs: ip, website
+Coverage: global
+Indexed service observations that may be historical.
+Check original source requirements; candidate matches need corroboration.
+
+### PublicWWW
+URL: https://publicwww.com/
+Inputs: website
+Coverage: global
+Observed website technologies or indexed code matches.
+Check original source requirements; candidate matches need corroboration.
+
+### 国家企业信用信息公示系统 (GSXT)
+URL: https://www.gsxt.gov.cn/
+Inputs: company
+Coverage: cn
+Company records and, where available, named officers.
+Mainland China; access may require verification. Automated access was blocked during this review; the full search flow has not been tested.
+
+### 經濟部商工登記公示資料查詢 (FindBiz)
+URL: https://findbiz.nat.gov.tw/
+Inputs: company
+Coverage: tw
+Company records and, where available, named officers.
+Taiwan registrations only. Automated access was blocked during this review; the full search flow has not been tested.
+
+### 香港公司註冊處電子查冊 (Hong Kong Companies Registry)
+URL: https://www.e-services.cr.gov.hk/
+Inputs: company
+Coverage: hk
+Company records and, where available, named officers.
+Hong Kong registrations; reports and document products may have fees. Review the current service fee schedule.
+
+### Google Search
+URL: https://www.google.com/advanced_search
+Inputs: company, person, website, document, news, academic
+Coverage: global
+Indexed pages; use primary sources and independent corroboration.
+Indexed results are incomplete and are not verified answers.
+
+### Google Scholar
+URL: https://scholar.google.com/
+Inputs: academic, document, person
+Coverage: global
+Publication records, versions and citations; full text may require subscription.
+Full text may require subscription; citations alone do not establish quality.
+
+### Google Fact Check Explorer
+URL: https://toolbox.google.com/factcheck/explorer
+Inputs: news
+Coverage: global
+Published fact checks; read the cited evidence and original claim.
+Coverage is limited; no check found does not establish truth.
+
+### Full Fact
+URL: https://fullfact.org/
+Inputs: news
+Coverage: uk
+Read published fact checks and their cited sources, with a UK focus.
+A check applies to a specific claim and date. Read its evidence; no matching check is not proof of truth.
+
+### 台灣事實查核中心 / Taiwan FactCheck Center
+URL: https://tfc-taiwan.org.tw/
+Inputs: news
+Coverage: tw
+Find Chinese-language fact checks and inspect the supporting evidence.
+A check applies to a specific claim and date. Read its evidence; no matching check is not proof of truth.
+
+### OSINT.link — Book companion resource directory
+URL: https://osint.link/
+Inputs: question
+Coverage: global
+Links grouped by research topic and introductory tutorials.
+This is a directory, not a subject lookup or verified database. Its individual links may change or become unavailable.

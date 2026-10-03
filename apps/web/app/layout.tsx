@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
+import OsintMascot from "@/components/mascot/Mascot";
 import SiteFooter from "@/components/SiteFooter";
 import { LocaleProvider } from "@/lib/locale-context";
 import { ThemeProvider, THEME_INIT_SCRIPT } from "@/lib/theme-context";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "./",
   },
   title: {
-    default:  `${SITE_NAME} — Operational Intelligence Index`,
+    default:  `${SITE_NAME} — Public Information Resource Navigator`,
     template: `%s — ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type:        "website",
     siteName:    SITE_NAME,
-    title:       `${SITE_NAME} — Operational Intelligence Index`,
+    title:       `${SITE_NAME} — Public Information Resource Navigator`,
     description: DEFAULT_DESCRIPTION,
     url:         SITE_URL,
     locale:      "en_US",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     ...DEFAULT_TWITTER,
-    title:       `${SITE_NAME} — Operational Intelligence Index`,
+    title:       `${SITE_NAME} — Public Information Resource Navigator`,
     description: DEFAULT_DESCRIPTION,
   },
   icons: {
@@ -155,6 +156,7 @@ export default function RootLayout({
             <SiteHeader />
             {children}
             <SiteFooter />
+            <OsintMascot />
           </LocaleProvider>
         </ThemeProvider>
       </body>

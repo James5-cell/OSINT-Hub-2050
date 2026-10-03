@@ -6,11 +6,11 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Search",
   description:
-    "Search OSINT Hub's indexed tools, guided investigation workflows, and investigation categories.",
+    "Find suitable public-source research resources using everyday keywords, with practical first steps and verification guidance.",
   path: "/search",
   ogTitle: "Search — OSINT Hub",
   ogDescription:
-    "Search tools, workflows, and investigation categories in OSINT Hub.",
+    "Find public research resources and learn how to use them.",
 });
 
 export default function SearchPage() {

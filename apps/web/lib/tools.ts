@@ -4,7 +4,8 @@
  */
 
 import type { Tool, Pricing, Difficulty, TargetType, Platform, CurationStatus, MaintenanceStatus } from "./types";
-import rawData from "../data/tools.json";
+import database from "../data/generated/resource-database.json";
+const rawData = database.resources;
 
 /** Coerce a raw JSON record to the canonical Tool shape. */
 function adaptTool(raw: Record<string, unknown>): Tool {

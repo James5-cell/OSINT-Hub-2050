@@ -1,0 +1,923 @@
+[
+  {
+    "id": "company",
+    "title": {
+      "en": "Where is this company registered?",
+      "zh-TW": "這家公司在哪裡登記？"
+    },
+    "intent": "company",
+    "goal": "registration",
+    "primary": [
+      "companies-house",
+      "gsxt",
+      "taiwan-findbiz",
+      "hong-kong-companies-registry"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Full legal name, jurisdiction and any company number.",
+      "zh-TW": "完整公司名稱、登記地區與已知公司編號。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Use the registry for the registration jurisdiction; compare number, name, status and filing date.",
+          "zh-TW": "選擇登記地區的登記庫，比較編號、名稱、狀態與申報日期。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare the official website or original filings against the registry identifier.",
+          "zh-TW": "將官網或原始申報資料的識別編號與登記記錄核對。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Try former names, spelling variants or the company number. A registry in another jurisdiction may not cover it.",
+      "zh-TW": "改用舊名、其他拼寫或公司編號；不同地區登記庫可能不涵蓋。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: two company records",
+        "zh-TW": "虛構：兩筆公司資料"
+      },
+      "evidence": [
+        {
+          "en": "Registry record R-104 lists Example Studio Ltd in jurisdiction A, active as of the recorded date.",
+          "zh-TW": "登記記錄 R-104 列出 A 地區的示例工作室，記錄日期顯示有效。"
+        },
+        {
+          "en": "A website names Example Studio but does not provide a matching registration number.",
+          "zh-TW": "某網站自稱示例工作室，但沒有提供可匹配的登記編號。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The website is trustworthy.",
+          "zh-TW": "網站值得信任。"
+        },
+        {
+          "en": "Record R-104 confirms the registered entity, but its connection to this website remains uncertain.",
+          "zh-TW": "R-104 能確認登記主體，但它與這個網站的關係尚未確定。"
+        }
+      ],
+      "correct": 1,
+      "feedback": {
+        "en": "Next, seek a matching legal identifier on original terms or filings. Keep website affiliation and trust separate.",
+        "zh-TW": "下一步在原始條款或申報資料中找相同法律識別碼，分開處理網站歸屬與可信度。"
+      }
+    }
+  },
+  {
+    "id": "person",
+    "title": {
+      "en": "Does this public profile match the person?",
+      "zh-TW": "這個公開檔案是否對應同一個人？"
+    },
+    "intent": "person",
+    "goal": "professional",
+    "primary": [
+      "linkedin"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Public name plus employer, profession or relevant time period.",
+      "zh-TW": "公開姓名，加上機構、職業或相關時間。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Find a candidate public professional profile; record its URL and stated employer.",
+          "zh-TW": "尋找候選公開職業檔案，記下網址與其聲稱的機構。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare an original institutional page and dates; explain any employer mismatch.",
+          "zh-TW": "比較原始機構頁面與日期，釐清單位不同的原因。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Try alternate spelling, name order or an institutional staff page; do not infer identity from a name alone.",
+      "zh-TW": "嘗試不同拼寫、姓名順序或機構成員頁；不要只憑姓名確認身份。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: a public career timeline",
+        "zh-TW": "虛構：公開職涯時間線"
+      },
+      "evidence": [
+        {
+          "en": "An institutional page lists Example Researcher at Institute A in 2020.",
+          "zh-TW": "機構頁面在 2020 年列出示例研究者任職 A 機構。"
+        },
+        {
+          "en": "A second institutional announcement identifies the same researcher moving from A to B in 2022.",
+          "zh-TW": "另一份機構公告明確說明該研究者於 2022 年從 A 轉到 B。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The original announcement supports a career change; record its source and dates.",
+          "zh-TW": "原始公告支持職涯變動；應記錄來源與日期。"
+        },
+        {
+          "en": "Different employers always prove different people.",
+          "zh-TW": "單位不同一定代表不同的人。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "This is stronger than a shared name because the announcement explicitly connects the institutions. Do not infer unrelated private details.",
+        "zh-TW": "證據比同名更充分，因公告明確連結兩個機構；不要推導無關的私人資料。"
+      }
+    }
+  },
+  {
+    "id": "image",
+    "title": {
+      "en": "Was this image used before this event?",
+      "zh-TW": "這張圖片是否在事件之前出現過？"
+    },
+    "intent": "image",
+    "goal": "image-source",
+    "primary": [
+      "tineye",
+      "yandex-images"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Image, claimed event and claimed date.",
+      "zh-TW": "圖片、聲稱的事件與日期。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Search for matching copies; inspect the pages containing them, not just thumbnails.",
+          "zh-TW": "找相同副本並打開來源頁，不只看縮圖。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare older copies with their publication context and independent event evidence.",
+          "zh-TW": "比較較早副本的發布背景與獨立事件資料。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Try another engine or a distinctive crop. No match does not establish originality.",
+      "zh-TW": "換搜尋來源或以明顯局部重試；無匹配不能證明原創。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: an old image with a new caption",
+        "zh-TW": "虛構：舊照片與新說明"
+      },
+      "evidence": [
+        {
+          "en": "A dated original report shows the same scene in 2019.",
+          "zh-TW": "有日期的原始報導在 2019 年展示相同場景。"
+        },
+        {
+          "en": "A 2025 post claims the image was captured at a new event.",
+          "zh-TW": "2025 年貼文聲稱圖片拍攝於一個新事件。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The old report identifies the photographer and proves the new event never happened.",
+          "zh-TW": "舊報導證明攝影者身份，也證明新事件沒有發生。"
+        },
+        {
+          "en": "The earlier matching report contradicts the claimed capture date, but does not identify the creator or disprove the event.",
+          "zh-TW": "較早的匹配報導與聲稱拍攝日期矛盾，但不能確認作者或否定事件。"
+        }
+      ],
+      "correct": 1,
+      "feedback": {
+        "en": "Trace the original report and compare the actual image. The supported conclusion concerns this image’s context, not every claim about the event.",
+        "zh-TW": "追溯原報導並核對圖片；目前能支持的是這張圖片的背景判斷，不是對事件所有說法的判斷。"
+      }
+    }
+  },
+  {
+    "id": "news",
+    "title": {
+      "en": "Where did this claim come from?",
+      "zh-TW": "這個說法最初來自哪裡？"
+    },
+    "intent": "news",
+    "goal": "claim-check",
+    "primary": [
+      "fact-check-explorer",
+      "taiwan-factcheck",
+      "full-fact"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Exact claim, named source and event date.",
+      "zh-TW": "原句、聲稱的來源與事件日期。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Look for a relevant published check, then read its cited evidence.",
+          "zh-TW": "找相關查核，並閱讀其中引用的證據。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Trace original statements or documents; copied stories count as one source family.",
+          "zh-TW": "追溯原始聲明或文件；轉載同一材料只算一組來源。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Search a distinctive phrase and language variants. No published check is not a truth verdict.",
+      "zh-TW": "搜尋有辨識度的原句與其他語言；沒有查核不代表說法真實。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: three copies of one source",
+        "zh-TW": "虛構：一份材料的三個轉載"
+      },
+      "evidence": [
+        {
+          "en": "Three pages repeat the same original statement, without additional evidence.",
+          "zh-TW": "三個頁面重複同一份原始聲明，沒有額外證據。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "Count them as three independent sources.",
+          "zh-TW": "算成三個獨立來源。"
+        },
+        {
+          "en": "Trace the original and seek independent corroboration.",
+          "zh-TW": "追溯原件，再找獨立佐證。"
+        }
+      ],
+      "correct": 1,
+      "feedback": {
+        "en": "Repeats help trace dissemination, but do not add independent evidence. Record the source relationship.",
+        "zh-TW": "轉載可以幫助追溯傳播，但沒有增加獨立證據；記錄來源之間的關係。"
+      }
+    }
+  },
+  {
+    "id": "website",
+    "title": {
+      "en": "Has this website changed its claims?",
+      "zh-TW": "這個網站是否改過說法？"
+    },
+    "intent": "website",
+    "goal": "history",
+    "primary": [
+      "wayback-machine"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Exact URL and approximate time range.",
+      "zh-TW": "完整網址與大致時間範圍。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Compare captured versions and note capture timestamps separately from event dates.",
+          "zh-TW": "比較保存版本，將保存時間與事件日期分開記錄。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare current content and independent records; snapshots do not establish ownership.",
+          "zh-TW": "比較目前內容與獨立記錄；保存頁面不能直接證明擁有者。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Try the canonical URL, http/https variants or referenced original documents. Archive gaps are normal.",
+      "zh-TW": "嘗試正式網址、http/https 版本或所引用原件；存檔可能有缺口。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: what can this evidence establish?",
+        "zh-TW": "虛構：這筆證據能支持什麼？"
+      },
+      "evidence": [
+        {
+          "en": "One archive capture contains a statement; there are no captures for the following year.",
+          "zh-TW": "一個存檔版本含某項聲明，隔年沒有保存版本。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The statement appears in this captured version. The archive gap cannot establish what the website said the following year.",
+          "zh-TW": "這項聲明出現在該保存版本；存檔缺口不能證明網站隔年說了什麼。"
+        },
+        {
+          "en": "One matching result proves the entire claim.",
+          "zh-TW": "一筆匹配結果能證明整個說法。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "Seek another dated capture or original document before claiming when a change occurred.",
+        "zh-TW": "先找其他有日期的保存版本或原始文件，才能判斷何時發生變更。"
+      }
+    }
+  },
+  {
+    "id": "merchant",
+    "title": {
+      "en": "How can I check a merchant’s background?",
+      "zh-TW": "如何核實商家的公開背景？"
+    },
+    "intent": "company",
+    "goal": "background",
+    "primary": [
+      "opencorporates",
+      "google-search"
+    ],
+    "fallback": "wayback-machine",
+    "inputs": {
+      "en": "Legal entity, claimed address and website; distinguish a brand from its operator.",
+      "zh-TW": "法律主體、聲稱地址與網站；分清品牌與經營主體。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Identify the operator, then choose the appropriate official registry.",
+          "zh-TW": "先確認經營主體，再選擇適用的官方登記庫。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare dated records and independent reports. One review or registration is not a reliability verdict.",
+          "zh-TW": "比較有日期的記錄與獨立報導；一則評論或登記不能判定可信度。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Look for the legal name in terms, receipts or public contact pages; a brand may differ from a registered name.",
+      "zh-TW": "從條款、收據或公開聯絡頁找法律名稱；品牌不一定是登記名稱。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: what can this evidence establish?",
+        "zh-TW": "虛構：這筆證據能支持什麼？"
+      },
+      "evidence": [
+        {
+          "en": "A company record matches the merchant’s number; there is no evidence about service quality.",
+          "zh-TW": "公司記錄與商家編號一致，但沒有服務品質的證據。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The number connects the merchant to a registered entity. Service quality remains unverified.",
+          "zh-TW": "編號能將商家與登記主體連結，服務品質仍未核實。"
+        },
+        {
+          "en": "One matching result proves the entire claim.",
+          "zh-TW": "一筆匹配結果能證明整個說法。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "Check independent dated reports about the specific service question; do not turn registration into a trust score.",
+        "zh-TW": "找與具體服務問題相關的獨立、有日期資料；不要把登記轉成信任評分。"
+      }
+    }
+  },
+  {
+    "id": "document",
+    "title": {
+      "en": "Can I trace this public document?",
+      "zh-TW": "能否追溯這份公開文件？"
+    },
+    "intent": "document",
+    "goal": "document-records",
+    "primary": [
+      "google-search",
+      "govinfo"
+    ],
+    "fallback": "google-scholar",
+    "inputs": {
+      "en": "Title, issuing organisation, publication date and original file if available.",
+      "zh-TW": "標題、發布機構、日期，以及可取得的原始檔案。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Find the issuer’s original publication or an applicable official repository.",
+          "zh-TW": "找發布機構的原始頁面或適用的官方資料庫。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare revisions, issuing body and passages. Metadata alone cannot establish authenticity.",
+          "zh-TW": "比較修訂版本、發布機構及原文；中繼資料不能單獨證明真偽。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Try an exact title fragment, another language or filetype:pdf; check geographic coverage.",
+      "zh-TW": "嘗試標題片段、其他語言或 filetype:pdf，並注意地區範圍。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: what can this evidence establish?",
+        "zh-TW": "虛構：這筆證據能支持什麼？"
+      },
+      "evidence": [
+        {
+          "en": "The issuer publishes version 2; a shared file is labelled version 1.",
+          "zh-TW": "發布機構提供第二版，流傳檔案標示第一版。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "Version 2 is published by the issuer. Differences from the shared version 1 still need comparison.",
+          "zh-TW": "發布機構已提供第二版；它與流傳第一版的差異仍需比較。"
+        },
+        {
+          "en": "One matching result proves the entire claim.",
+          "zh-TW": "一筆匹配結果能證明整個說法。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "Read both versions and revision notes; an older version is not automatically fabricated.",
+        "zh-TW": "閱讀兩個版本與修訂說明；較舊版本不一定是偽造。"
+      }
+    }
+  },
+  {
+    "id": "academic",
+    "title": {
+      "en": "What research supports this statement?",
+      "zh-TW": "有什麼研究支持這個說法？"
+    },
+    "intent": "academic",
+    "goal": "academic-records",
+    "primary": [
+      "google-scholar"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Research question, topic terms and approximate period.",
+      "zh-TW": "研究問題、主題詞與大致期間。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Find relevant publications; inspect the original abstract, methods and limitations.",
+          "zh-TW": "找相關出版文獻，閱讀原始摘要、方法與限制。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare independent studies and populations; citation counts are not proof of a claim.",
+          "zh-TW": "比較獨立研究及研究對象；引用數不能證明說法。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Use field terminology, referenced works or other versions; distinguish paywalls from no records.",
+      "zh-TW": "改用領域用語、參考文獻或其他版本；付費牆不等於不存在。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: what can this evidence establish?",
+        "zh-TW": "虛構：這筆證據能支持什麼？"
+      },
+      "evidence": [
+        {
+          "en": "A study reports results for one small sample and states its limitations.",
+          "zh-TW": "研究針對一個小樣本報告結果，並列出限制。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The reported findings apply to the study’s sample and methods. Wider applicability is unresolved.",
+          "zh-TW": "報告結果適用於研究的樣本與方法，更廣泛的適用性尚未確定。"
+        },
+        {
+          "en": "One matching result proves the entire claim.",
+          "zh-TW": "一筆匹配結果能證明整個說法。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "Compare populations, methods and independent studies, including conflicting results.",
+        "zh-TW": "比較研究對象、方法與獨立研究，也記錄相反結果。"
+      }
+    }
+  },
+  {
+    "id": "video",
+    "title": {
+      "en": "Does this video fit the claimed event?",
+      "zh-TW": "這段影片是否符合聲稱的事件？"
+    },
+    "intent": "video",
+    "goal": "video-context",
+    "primary": [
+      "invid-weverify"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Public video URL or file, claimed place and date.",
+      "zh-TW": "公開影片網址或檔案、聲稱地點與日期。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Extract useful frames using supported features and inspect the original upload context.",
+          "zh-TW": "按工具支援功能擷取關鍵畫面，閱讀原始上傳背景。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Compare earlier uploads, visible landmarks and independent event records.",
+          "zh-TW": "比較較早上傳、可見地標與獨立事件記錄。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Reverse-search distinct frames or search captions. A failed automated check is not proof.",
+      "zh-TW": "以明顯畫面反向搜尋或搜尋字幕；自動分析失敗不能證明真偽。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: what can this evidence establish?",
+        "zh-TW": "虛構：這筆證據能支持什麼？"
+      },
+      "evidence": [
+        {
+          "en": "A matching frame exists, but its source page gives no capture date.",
+          "zh-TW": "找到相同畫面，但來源頁沒有拍攝日期。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "A matching frame is a source lead. The claimed capture date has not been established.",
+          "zh-TW": "相同畫面是來源線索，聲稱的拍攝日期尚未確認。"
+        },
+        {
+          "en": "One matching result proves the entire claim.",
+          "zh-TW": "一筆匹配結果能證明整個說法。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "Find dated original uploads and event evidence; an upload date and a capture date are different.",
+        "zh-TW": "尋找有日期的原始上傳與事件證據；上傳日期不等於拍攝日期。"
+      }
+    }
+  },
+  {
+    "id": "location",
+    "title": {
+      "en": "Can I verify the place shown in a photo?",
+      "zh-TW": "能否核實照片中的地點？"
+    },
+    "intent": "location",
+    "goal": "map-context",
+    "primary": [
+      "google-earth",
+      "mapillary"
+    ],
+    "fallback": "google-search",
+    "inputs": {
+      "en": "Visible landmarks, roads and terrain; approximate area if known.",
+      "zh-TW": "可見地標、道路與地形；已知時補充大致區域。"
+    },
+    "steps": [
+      {
+        "title": {
+          "en": "Define the question",
+          "zh-TW": "限定問題"
+        },
+        "text": {
+          "en": "Write one checkable question and record the clues you already have.",
+          "zh-TW": "寫下一個可以核對的問題，記錄目前已有線索。"
+        }
+      },
+      {
+        "title": {
+          "en": "Collect from a suitable source",
+          "zh-TW": "選擇來源並收集"
+        },
+        "text": {
+          "en": "Compare several visible features with map or street-level imagery.",
+          "zh-TW": "將多個可見特徵與地圖或街景影像比較。"
+        }
+      },
+      {
+        "title": {
+          "en": "Compare and explain differences",
+          "zh-TW": "比較並解釋差異"
+        },
+        "text": {
+          "en": "Check spatial relationships and imagery dates, not just one similar building.",
+          "zh-TW": "核對空間關係與影像日期，不只看一棟相似建築。"
+        }
+      },
+      {
+        "title": {
+          "en": "Write a bounded conclusion",
+          "zh-TW": "寫出有範圍的結論"
+        },
+        "text": {
+          "en": "Link the evidence supporting your answer. Separate observations, hypotheses and unresolved questions.",
+          "zh-TW": "連結支持答案的證據，分開寫觀察、推測與尚未解決的問題。"
+        }
+      }
+    ],
+    "no_result": {
+      "en": "Broaden the area or try older imagery. Missing map coverage does not disprove a location.",
+      "zh-TW": "擴大區域或找較舊影像；缺少涵蓋不能否定地點。"
+    },
+    "exercise": {
+      "title": {
+        "en": "Fictional: what can this evidence establish?",
+        "zh-TW": "虛構：這筆證據能支持什麼？"
+      },
+      "evidence": [
+        {
+          "en": "One building resembles the photo, but the road layout differs.",
+          "zh-TW": "一棟建築與照片相似，但道路配置不同。"
+        }
+      ],
+      "choices": [
+        {
+          "en": "The building is a candidate clue, but the conflicting roads do not support a confirmed location.",
+          "zh-TW": "建築是候選線索，但道路衝突不足以支持已確認地點。"
+        },
+        {
+          "en": "One matching result proves the entire claim.",
+          "zh-TW": "一筆匹配結果能證明整個說法。"
+        }
+      ],
+      "correct": 0,
+      "feedback": {
+        "en": "Check imagery dates and several spatial relationships before deciding whether to discard or retain the candidate.",
+        "zh-TW": "先核對影像日期與多個空間關係，再決定是否保留候選地點。"
+      }
+    }
+  }
+]

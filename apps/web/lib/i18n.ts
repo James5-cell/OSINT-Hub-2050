@@ -514,8 +514,8 @@ const en: Dict = {
     }
   },
   seo: {
-    title:       "OSINT Hub — Operational Intelligence Index",
-    description: "A scenario-based index of public-source intelligence tools for research, verification, and defensive workflows. 51 tools. 8 guided workflows."
+    title:       "OSINT Hub — Public Information Resource Navigator",
+    description: "Find public research resources with everyday keywords. Learn OSINT basics and get practical guidance for your next step."
   }
 };
 
@@ -834,8 +834,8 @@ const zhTW: Dict = {
     }
   },
   seo: {
-    title:       "OSINT Hub — 開源情報工具與調查流程索引",
-    description: "基於調查情境的開源情報工具索引，適用於公開來源研究、事實核查與防禦性情報工作流。收錄 51 個工具，8 個調查流程。"
+    title:       "OSINT Hub — 公開資訊查證與資源導航",
+    description: "用日常關鍵詞找到公開資訊查證資源，學習 OSINT 基礎，了解適合的網站和第一步操作。"
   }
 };
 

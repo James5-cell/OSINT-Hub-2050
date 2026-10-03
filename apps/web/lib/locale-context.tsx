@@ -7,6 +7,7 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 import { DEFAULT_LOCALE, DICT, type Locale } from "./i18n";
 import type { Tool } from "./types";
 
@@ -45,6 +46,7 @@ const Ctx = createContext<LocaleCtx>({
 
 /* ── Provider ────────────────────────────────────────────────── */
 export function LocaleProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
   const [locale,   setLocaleState]   = useState<Locale>(DEFAULT_LOCALE);
   const [settings, setSettingsState] = useState<AppSettings>(DEFAULT_SETTINGS);
 
@@ -76,9 +78,19 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   // Update dynamic SEO headers on locale switches
   useEffect(() => {
     try {
+      document.documentElement.lang = locale;
       const d = DICT[locale];
       if (d && d.seo) {
-        document.title = d.seo.title;
+        const titles: Record<string, { en: string; "zh-TW": string }> = {
+          "/": { en: d.seo.title, "zh-TW": d.seo.title },
+          "/search": { en: "Find resources — OSINT Hub", "zh-TW": "找資源 — OSINT Hub" },
+          "/directory": { en: "Resource directory — OSINT Hub", "zh-TW": "工具目錄 — OSINT Hub" },
+          "/tasks": { en: "Research tasks — OSINT Hub", "zh-TW": "查證任務 — OSINT Hub" },
+          "/learn": { en: "Learn OSINT — OSINT Hub", "zh-TW": "認識 OSINT — OSINT Hub" },
+          "/about": { en: "About — OSINT Hub", "zh-TW": "關於 — OSINT Hub" },
+        };
+        if (!titles[pathname]) return;
+        document.title = titles[pathname][locale];
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
           metaDesc.setAttribute("content", d.seo.description);
@@ -87,7 +99,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     } catch {
       // localStorage/document not available in SSR context
     }
-  }, [locale]);
+  }, [locale, pathname]);
 
   function updateSettings(patch: Partial<AppSettings>) {
     setSettingsState((prev) => {

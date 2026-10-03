@@ -1,0 +1,445 @@
+[
+  {
+    "id": "company",
+    "label": {
+      "en": "Company",
+      "zh-TW": "公司"
+    },
+    "aliases": [
+      "公司",
+      "企业",
+      "企業",
+      "工商",
+      "company",
+      "companies",
+      "business",
+      "corporation",
+      "企业背景",
+      "公司背景"
+    ],
+    "targets": [
+      "organization"
+    ],
+    "hint": {
+      "en": "Start with the country of registration and the full legal name.",
+      "zh-TW": "先確認登記地區，盡量使用完整公司名稱。"
+    },
+    "lesson": {
+      "en": "A registry establishes legal registration; it does not prove financial health. Compare filings with other sources.",
+      "zh-TW": "企業登記能核實註冊資訊，不能證明經營狀況。請與其他來源交叉查證。"
+    },
+    "goals": [
+      "registration",
+      "filings",
+      "background"
+    ]
+  },
+  {
+    "id": "person",
+    "label": {
+      "en": "Person",
+      "zh-TW": "人名"
+    },
+    "aliases": [
+      "人名",
+      "姓名",
+      "人物",
+      "个人",
+      "個人",
+      "person",
+      "people",
+      "name",
+      "人物背景"
+    ],
+    "targets": [
+      "person"
+    ],
+    "hint": {
+      "en": "Add a profession, employer or location to distinguish people with the same name.",
+      "zh-TW": "補充職業、機構或地區，區分同名人物。"
+    },
+    "lesson": {
+      "en": "A matching name or photo is a lead, not proof of identity. Compare independent public sources.",
+      "zh-TW": "姓名或照片相同只是線索，不能證明身份相同。請比較獨立公開來源。"
+    },
+    "goals": [
+      "professional",
+      "public-records"
+    ]
+  },
+  {
+    "id": "username",
+    "label": {
+      "en": "Username",
+      "zh-TW": "使用者名稱"
+    },
+    "aliases": [
+      "用户名",
+      "用戶名",
+      "使用者名稱",
+      "网名",
+      "網名",
+      "username",
+      "handle",
+      "账号",
+      "帳號"
+    ],
+    "targets": [
+      "username",
+      "social-media"
+    ],
+    "hint": {
+      "en": "Use the exact handle; check the profile yourself after a match.",
+      "zh-TW": "使用完整帳號名稱，找到結果後再核對個人檔案。"
+    },
+    "lesson": {
+      "en": "The same handle on two platforms may belong to different people.",
+      "zh-TW": "不同平台的相同帳號名稱，可能屬於不同的人。"
+    },
+    "goals": [
+      "profiles"
+    ]
+  },
+  {
+    "id": "website",
+    "label": {
+      "en": "Website",
+      "zh-TW": "網站"
+    },
+    "aliases": [
+      "网站",
+      "網站",
+      "网址",
+      "網址",
+      "域名",
+      "網域",
+      "website",
+      "domain",
+      "url",
+      "web history",
+      "网页历史",
+      "網頁歷史"
+    ],
+    "targets": [
+      "domain"
+    ],
+    "hint": {
+      "en": "Use a domain or full URL, then choose history, registration or technology.",
+      "zh-TW": "輸入網域或完整網址，再選擇歷史、登記或技術資訊。"
+    },
+    "lesson": {
+      "en": "An archived page shows a captured version, not necessarily the current page or its owner.",
+      "zh-TW": "存檔頁面反映某次保存的版本，不一定代表現在內容或網站擁有者。"
+    },
+    "goals": [
+      "history",
+      "domain-records",
+      "technology"
+    ]
+  },
+  {
+    "id": "image",
+    "label": {
+      "en": "Image",
+      "zh-TW": "圖片"
+    },
+    "aliases": [
+      "图片",
+      "圖片",
+      "照片",
+      "图像",
+      "圖像",
+      "image",
+      "photo",
+      "reverse image",
+      "图片来源",
+      "圖片來源"
+    ],
+    "targets": [
+      "image"
+    ],
+    "hint": {
+      "en": "Start with reverse image search, then compare dates and context.",
+      "zh-TW": "先以圖搜圖，再比較日期和上下文。"
+    },
+    "lesson": {
+      "en": "An older matching image is a useful clue, but the earliest indexed result may not be the original.",
+      "zh-TW": "較早出現的相同圖片是線索，但最早被索引的結果不一定是原始來源。"
+    },
+    "goals": [
+      "image-source",
+      "image-context"
+    ]
+  },
+  {
+    "id": "email",
+    "label": {
+      "en": "Email",
+      "zh-TW": "電子郵件"
+    },
+    "aliases": [
+      "邮箱",
+      "郵箱",
+      "邮件",
+      "郵件",
+      "電子郵件",
+      "email",
+      "e-mail",
+      "泄露",
+      "洩漏"
+    ],
+    "targets": [
+      "email"
+    ],
+    "hint": {
+      "en": "Decide whether you are checking your own exposure or looking for a published business contact.",
+      "zh-TW": "先區分查自己的外洩狀況，或查找已公開的企業聯絡方式。"
+    },
+    "lesson": {
+      "en": "A breach result reports historical exposure; it does not establish who currently controls an address.",
+      "zh-TW": "外洩記錄表示曾經暴露，不能證明目前由誰使用該信箱。"
+    },
+    "goals": [
+      "exposure",
+      "business-contact"
+    ]
+  },
+  {
+    "id": "ip",
+    "label": {
+      "en": "IP address",
+      "zh-TW": "IP 位址"
+    },
+    "aliases": [
+      "ip",
+      "ip address",
+      "IP地址",
+      "IP位址",
+      "网络地址",
+      "網路位址"
+    ],
+    "targets": [
+      "ip"
+    ],
+    "hint": {
+      "en": "Look up network ownership and reputation separately.",
+      "zh-TW": "分別查網路歸屬和信譽記錄。"
+    },
+    "lesson": {
+      "en": "IP locations are approximate and usually identify a network, not a person.",
+      "zh-TW": "IP 地理位置通常只是估計，往往代表網路，而非某個人的位置。"
+    },
+    "goals": [
+      "network",
+      "reputation"
+    ]
+  },
+  {
+    "id": "location",
+    "label": {
+      "en": "Location",
+      "zh-TW": "地點"
+    },
+    "aliases": [
+      "地理",
+      "地理位置",
+      "地图",
+      "地圖",
+      "地点",
+      "地點",
+      "位置",
+      "location",
+      "geolocation",
+      "map"
+    ],
+    "targets": [
+      "geolocation"
+    ],
+    "hint": {
+      "en": "Compare visible landmarks, roads and terrain with maps.",
+      "zh-TW": "對照地標、道路和地形，再縮小範圍。"
+    },
+    "lesson": {
+      "en": "One matching landmark is insufficient; look for several consistent features.",
+      "zh-TW": "單一相似地標不足以確認位置，請找多個一致的特徵。"
+    },
+    "goals": [
+      "map-context"
+    ]
+  },
+  {
+    "id": "document",
+    "label": {
+      "en": "Document",
+      "zh-TW": "文件"
+    },
+    "aliases": [
+      "文件",
+      "文档",
+      "文檔",
+      "document",
+      "pdf",
+      "metadata",
+      "元数据",
+      "中繼資料"
+    ],
+    "targets": [
+      "document"
+    ],
+    "hint": {
+      "en": "Separate the document content from its metadata and publication history.",
+      "zh-TW": "分開核對文件內容、中繼資料和發布歷史。"
+    },
+    "lesson": {
+      "en": "Metadata can be edited or removed. Preserve the original and corroborate findings.",
+      "zh-TW": "中繼資料可能被修改或移除。保留原件，並用其他來源佐證。"
+    },
+    "goals": [
+      "document-records",
+      "metadata"
+    ]
+  },
+  {
+    "id": "crypto",
+    "label": {
+      "en": "Blockchain",
+      "zh-TW": "區塊鏈"
+    },
+    "aliases": [
+      "加密货币",
+      "加密貨幣",
+      "区块链",
+      "區塊鏈",
+      "钱包",
+      "錢包",
+      "bitcoin",
+      "ethereum",
+      "blockchain",
+      "crypto"
+    ],
+    "targets": [
+      "cryptocurrency"
+    ],
+    "hint": {
+      "en": "Choose the network before searching an address or transaction hash.",
+      "zh-TW": "先確認所屬鏈，再搜尋地址或交易雜湊。"
+    },
+    "lesson": {
+      "en": "Public transactions do not by themselves reveal the real identity of a wallet owner.",
+      "zh-TW": "公開交易本身不能證明錢包擁有者的真實身份。"
+    },
+    "goals": [
+      "transactions"
+    ]
+  },
+  {
+    "id": "news",
+    "label": {
+      "en": "News & claims",
+      "zh-TW": "新聞與說法"
+    },
+    "aliases": [
+      "新闻",
+      "新聞",
+      "事实核查",
+      "事實查核",
+      "news",
+      "fact check",
+      "謠言",
+      "谣言"
+    ],
+    "targets": [],
+    "goals": [
+      "claim-check"
+    ],
+    "hint": {
+      "en": "Choose a question and check the source, date and coverage.",
+      "zh-TW": "先選擇具體問題，再核對來源、日期與涵蓋範圍。"
+    },
+    "lesson": {
+      "en": "A matching record is a lead. No result does not prove absence.",
+      "zh-TW": "匹配記錄只是線索；查無結果不代表不存在。"
+    }
+  },
+  {
+    "id": "video",
+    "label": {
+      "en": "Video",
+      "zh-TW": "影片"
+    },
+    "aliases": [
+      "视频",
+      "影片",
+      "視頻",
+      "video"
+    ],
+    "targets": [],
+    "goals": [
+      "video-context"
+    ],
+    "hint": {
+      "en": "Choose a question and check the source, date and coverage.",
+      "zh-TW": "先選擇具體問題，再核對來源、日期與涵蓋範圍。"
+    },
+    "lesson": {
+      "en": "A matching record is a lead. No result does not prove absence.",
+      "zh-TW": "匹配記錄只是線索；查無結果不代表不存在。"
+    }
+  },
+  {
+    "id": "academic",
+    "label": {
+      "en": "Academic research",
+      "zh-TW": "學術資料"
+    },
+    "aliases": [
+      "学术",
+      "學術",
+      "论文",
+      "論文",
+      "academic",
+      "research paper"
+    ],
+    "targets": [],
+    "goals": [
+      "academic-records"
+    ],
+    "hint": {
+      "en": "Choose a question and check the source, date and coverage.",
+      "zh-TW": "先選擇具體問題，再核對來源、日期與涵蓋範圍。"
+    },
+    "lesson": {
+      "en": "A matching record is a lead. No result does not prove absence.",
+      "zh-TW": "匹配記錄只是線索；查無結果不代表不存在。"
+    }
+  },
+  {
+    "id": "phone",
+    "label": {
+      "en": "Phone number",
+      "zh-TW": "電話號碼"
+    },
+    "aliases": [
+      "电话",
+      "電話",
+      "电话号码",
+      "電話號碼",
+      "phone",
+      "telephone"
+    ],
+    "targets": [
+      "phone"
+    ],
+    "goals": [
+      "phone-context"
+    ],
+    "hint": {
+      "en": "Choose a question and check the source, date and coverage.",
+      "zh-TW": "先選擇具體問題，再核對來源、日期與涵蓋範圍。"
+    },
+    "lesson": {
+      "en": "A matching record is a lead. No result does not prove absence.",
+      "zh-TW": "匹配記錄只是線索；查無結果不代表不存在。"
+    }
+  }
+]

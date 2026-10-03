@@ -1,0 +1,274 @@
+[
+  {
+    "id": "registration",
+    "label": {
+      "en": "Legal registration",
+      "zh-TW": "企業登記"
+    },
+    "aliases": [
+      "注册",
+      "註冊",
+      "登记",
+      "登記",
+      "registration",
+      "registry"
+    ]
+  },
+  {
+    "id": "filings",
+    "label": {
+      "en": "Public filings",
+      "zh-TW": "公開披露"
+    },
+    "aliases": [
+      "财报",
+      "財報",
+      "披露",
+      "filings",
+      "financial"
+    ]
+  },
+  {
+    "id": "background",
+    "label": {
+      "en": "Company background",
+      "zh-TW": "公司背景"
+    },
+    "aliases": [
+      "背景",
+      "background"
+    ]
+  },
+  {
+    "id": "professional",
+    "label": {
+      "en": "Professional background",
+      "zh-TW": "職業背景"
+    },
+    "aliases": [
+      "职业",
+      "職業",
+      "professional",
+      "employment"
+    ]
+  },
+  {
+    "id": "public-records",
+    "label": {
+      "en": "Public records",
+      "zh-TW": "公開記錄"
+    },
+    "aliases": [
+      "公开记录",
+      "公開記錄",
+      "public records"
+    ]
+  },
+  {
+    "id": "profiles",
+    "label": {
+      "en": "Public profiles",
+      "zh-TW": "公開帳號"
+    },
+    "aliases": [
+      "profiles"
+    ]
+  },
+  {
+    "id": "history",
+    "label": {
+      "en": "Historical pages",
+      "zh-TW": "歷史頁面"
+    },
+    "aliases": [
+      "历史",
+      "歷史",
+      "archive",
+      "history",
+      "wayback"
+    ]
+  },
+  {
+    "id": "domain-records",
+    "label": {
+      "en": "Domain records",
+      "zh-TW": "網域記錄"
+    },
+    "aliases": [
+      "dns",
+      "whois",
+      "domain records"
+    ]
+  },
+  {
+    "id": "technology",
+    "label": {
+      "en": "Website technology",
+      "zh-TW": "網站技術"
+    },
+    "aliases": [
+      "技术",
+      "技術",
+      "technology",
+      "builtwith"
+    ]
+  },
+  {
+    "id": "image-source",
+    "label": {
+      "en": "Image source",
+      "zh-TW": "圖片來源"
+    },
+    "aliases": [
+      "来源",
+      "來源",
+      "reverse image",
+      "image source"
+    ]
+  },
+  {
+    "id": "image-context",
+    "label": {
+      "en": "Image context",
+      "zh-TW": "圖片上下文"
+    },
+    "aliases": [
+      "context"
+    ]
+  },
+  {
+    "id": "exposure",
+    "label": {
+      "en": "My breach exposure",
+      "zh-TW": "我的外洩狀況"
+    },
+    "aliases": [
+      "泄露",
+      "洩漏",
+      "breach",
+      "exposure"
+    ]
+  },
+  {
+    "id": "business-contact",
+    "label": {
+      "en": "Published business contact",
+      "zh-TW": "公開企業聯絡方式"
+    },
+    "aliases": [
+      "contact",
+      "联络",
+      "聯絡"
+    ]
+  },
+  {
+    "id": "network",
+    "label": {
+      "en": "Network ownership",
+      "zh-TW": "網路歸屬"
+    },
+    "aliases": [
+      "network",
+      "ownership"
+    ]
+  },
+  {
+    "id": "reputation",
+    "label": {
+      "en": "IP reputation",
+      "zh-TW": "IP 信譽"
+    },
+    "aliases": [
+      "reputation",
+      "信譽",
+      "信誉"
+    ]
+  },
+  {
+    "id": "map-context",
+    "label": {
+      "en": "Map comparison",
+      "zh-TW": "地圖對照"
+    },
+    "aliases": [
+      "map"
+    ]
+  },
+  {
+    "id": "document-records",
+    "label": {
+      "en": "Published documents",
+      "zh-TW": "公開文件"
+    },
+    "aliases": [
+      "published documents"
+    ]
+  },
+  {
+    "id": "metadata",
+    "label": {
+      "en": "File metadata",
+      "zh-TW": "文件中繼資料"
+    },
+    "aliases": [
+      "metadata",
+      "元数据",
+      "中繼資料"
+    ]
+  },
+  {
+    "id": "transactions",
+    "label": {
+      "en": "Public transactions",
+      "zh-TW": "公開交易"
+    },
+    "aliases": [
+      "transaction",
+      "交易"
+    ]
+  },
+  {
+    "id": "claim-check",
+    "label": {
+      "en": "Trace and check a claim",
+      "zh-TW": "追溯與核實說法"
+    },
+    "aliases": [
+      "trace and check a claim",
+      "追溯與核實說法"
+    ]
+  },
+  {
+    "id": "video-context",
+    "label": {
+      "en": "Check video context",
+      "zh-TW": "核實影片背景"
+    },
+    "aliases": [
+      "check video context",
+      "核實影片背景"
+    ]
+  },
+  {
+    "id": "academic-records",
+    "label": {
+      "en": "Find research publications",
+      "zh-TW": "查找研究文獻"
+    },
+    "aliases": [
+      "find research publications",
+      "查找研究文獻"
+    ]
+  },
+  {
+    "id": "phone-context",
+    "label": {
+      "en": "Check number context",
+      "zh-TW": "查號碼格式與背景"
+    },
+    "aliases": [
+      "check number context",
+      "查號碼格式與背景"
+    ]
+  }
+]

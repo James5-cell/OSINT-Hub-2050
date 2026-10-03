@@ -7,6 +7,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.205044.xyz";
 
   const staticPages: MetadataRoute.Sitemap = [
+    ...["learn", "directory", "tasks"].map(path => ({
+      url: `${baseUrl}/${path}`,
+      lastModified: new Date("2026-10-03"),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
     {
       url: `${baseUrl}/`,
       lastModified: new Date("2026-05-20"),

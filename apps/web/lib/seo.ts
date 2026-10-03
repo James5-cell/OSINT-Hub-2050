@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.205044.xyz";
 export const SITE_NAME = "OSINT Hub";
 export const DEFAULT_DESCRIPTION =
-  "A scenario-based index of public-source intelligence tools for research, verification, and defensive workflows. 51 tools. 8 guided workflows.";
+  "Find public-source research resources with everyday keywords. Learn OSINT basics, choose suitable websites and understand how to start.";
 
 export const DEFAULT_OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
@@ -12,14 +12,14 @@ export const DEFAULT_OG_IMAGES = [
     url: DEFAULT_OG_IMAGE_URL,
     width: 1200,
     height: 630,
-    alt: `${SITE_NAME} — Operational Intelligence Index`,
+    alt: `${SITE_NAME} — Public Information Resource Navigator`,
     type: "image/png",
   },
 ];
 
 export const DEFAULT_TWITTER = {
   card: "summary_large_image" as const,
-  title: `${SITE_NAME} — Operational Intelligence Index`,
+  title: `${SITE_NAME} — Public Information Resource Navigator`,
   description: DEFAULT_DESCRIPTION,
   images: [DEFAULT_OG_IMAGE_URL],
 };

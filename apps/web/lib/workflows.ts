@@ -2,9 +2,7 @@
  * lib/workflows.ts
  *
  * Canonical workflow loader.
- * English (workflows.en.json) is the authoritative source.
- * zh-TW overlay (workflows.zh-TW.json) can override presentational
- * fields (title, subtitle, summary) for locale-aware rendering.
+ * Each locale supplies complete workflow definitions, including steps.
  */
 
 import type { WorkflowDef } from "./workflow-types";

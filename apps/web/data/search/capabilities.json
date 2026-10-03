@@ -1,0 +1,3401 @@
+[
+  {
+    "tool_id": "linkedin",
+    "accepted_inputs": [
+      "person",
+      "company",
+      "username"
+    ],
+    "goals": [
+      "professional",
+      "profiles",
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "platform",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate public profiles and professional context.",
+      "zh-TW": "候選公開檔案與職業背景。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "person",
+      "company",
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "opencorporates",
+    "accepted_inputs": [
+      "company",
+      "person"
+    ],
+    "goals": [
+      "registration",
+      "public-records"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Company records and, where available, named officers.",
+      "zh-TW": "公司記錄，以及部分來源提供的負責人資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "companies-house",
+    "accepted_inputs": [
+      "company",
+      "person"
+    ],
+    "goals": [
+      "registration",
+      "public-records"
+    ],
+    "regions": [
+      "uk"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Company records and, where available, named officers.",
+      "zh-TW": "公司記錄，以及部分來源提供的負責人資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "gsxt",
+    "accepted_inputs": [
+      "company"
+    ],
+    "goals": [
+      "registration",
+      "public-records"
+    ],
+    "regions": [
+      "cn"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Company records and, where available, named officers.",
+      "zh-TW": "公司記錄，以及部分來源提供的負責人資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "taiwan-findbiz",
+    "accepted_inputs": [
+      "company"
+    ],
+    "goals": [
+      "registration",
+      "public-records"
+    ],
+    "regions": [
+      "tw"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Company records and, where available, named officers.",
+      "zh-TW": "公司記錄，以及部分來源提供的負責人資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "hong-kong-companies-registry",
+    "accepted_inputs": [
+      "company"
+    ],
+    "goals": [
+      "registration",
+      "public-records"
+    ],
+    "regions": [
+      "hk"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Company records and, where available, named officers.",
+      "zh-TW": "公司記錄，以及部分來源提供的負責人資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "sec-edgar",
+    "accepted_inputs": [
+      "company",
+      "person",
+      "document"
+    ],
+    "goals": [
+      "filings",
+      "document-records",
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Public filings; names need context and matching identifiers.",
+      "zh-TW": "公開申報文件；姓名需搭配其他識別資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "pacer",
+    "accepted_inputs": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate court records; coverage and access vary.",
+      "zh-TW": "候選法院記錄；涵蓋範圍與存取条件不同。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "judyrecords",
+    "accepted_inputs": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate court records; coverage and access vary.",
+      "zh-TW": "候選法院記錄；涵蓋範圍與存取条件不同。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "opensanctions",
+    "accepted_inputs": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records",
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate entries with source references; a match is not an identity conclusion.",
+      "zh-TW": "含出處的候選條目；匹配不等於身份確認。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "icij-offshore-leaks",
+    "accepted_inputs": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records",
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate entries with source references; a match is not an identity conclusion.",
+      "zh-TW": "含出處的候選條目；匹配不等於身份確認。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "govinfo",
+    "accepted_inputs": [
+      "company",
+      "person",
+      "document"
+    ],
+    "goals": [
+      "document-records",
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Published documents; examine the original and its jurisdiction.",
+      "zh-TW": "公開文件；需閱讀原件並核對管轄範圍。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "muckrock",
+    "accepted_inputs": [
+      "company",
+      "person",
+      "document"
+    ],
+    "goals": [
+      "document-records",
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Released public-record documents and request context; access and fulfilment vary.",
+      "zh-TW": "已公開的公共記錄文件與申請背景；存取及申請結果不同。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Region-specific scope; verify the relevant database and dates.",
+      "zh-TW": "有指定地區範圍；需核對適用資料庫與日期。"
+    }
+  },
+  {
+    "tool_id": "world-bank-contracts",
+    "accepted_inputs": [
+      "company",
+      "person",
+      "document"
+    ],
+    "goals": [
+      "document-records",
+      "public-records"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Published documents; examine the original and its jurisdiction.",
+      "zh-TW": "公開文件；需閱讀原件並核對管轄範圍。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "crunchbase",
+    "accepted_inputs": [
+      "company",
+      "person"
+    ],
+    "goals": [
+      "background",
+      "professional"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Reported company and professional background; corroborate primary records.",
+      "zh-TW": "彙整的公司與職業背景；需與原始記錄核對。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "whatsmyname",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "sherlock",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "maigret",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "social-analyzer",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "tookie-osint",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "socialblade",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "nitter",
+    "accepted_inputs": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate account pages or public account context, not verified identity.",
+      "zh-TW": "候選帳號頁面或公開帳號背景，並非已核實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "username"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "tineye",
+    "accepted_inputs": [
+      "image"
+    ],
+    "goals": [
+      "image-source"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate matching images and source pages; compare dates and context.",
+      "zh-TW": "候選相似圖片與來源頁；比較日期與上下文。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "yandex-images",
+    "accepted_inputs": [
+      "image"
+    ],
+    "goals": [
+      "image-source"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate matching images and source pages; compare dates and context.",
+      "zh-TW": "候選相似圖片與來源頁；比較日期與上下文。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "pimeyes",
+    "accepted_inputs": [
+      "image"
+    ],
+    "goals": [
+      "image-source"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate matching images and source pages; compare dates and context.",
+      "zh-TW": "候選相似圖片與來源頁；比較日期與上下文。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "exiftool",
+    "accepted_inputs": [
+      "image",
+      "document",
+      "video"
+    ],
+    "goals": [
+      "metadata"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "File metadata that may be missing or altered.",
+      "zh-TW": "可能缺失或被修改的檔案中繼資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image",
+      "document",
+      "video"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "foca",
+    "accepted_inputs": [
+      "image",
+      "document",
+      "video"
+    ],
+    "goals": [
+      "metadata"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "File metadata that may be missing or altered.",
+      "zh-TW": "可能缺失或被修改的檔案中繼資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image",
+      "document",
+      "video"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "fotoforensics",
+    "accepted_inputs": [
+      "image"
+    ],
+    "goals": [
+      "image-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Image analysis signals; these do not independently establish authenticity.",
+      "zh-TW": "影像分析訊號；不能單獨判定真偽。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "ai-image-detector",
+    "accepted_inputs": [
+      "image"
+    ],
+    "goals": [
+      "image-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Image analysis signals; these do not independently establish authenticity.",
+      "zh-TW": "影像分析訊號；不能單獨判定真偽。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "image"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "invid-weverify",
+    "accepted_inputs": [
+      "video",
+      "image",
+      "news"
+    ],
+    "goals": [
+      "video-context",
+      "claim-check",
+      "image-context",
+      "image-source"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Video analysis clues to compare with source pages and independent evidence.",
+      "zh-TW": "影片分析線索；需與來源頁及獨立證據核對。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "video",
+      "image",
+      "news"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "deepware-scanner",
+    "accepted_inputs": [
+      "video",
+      "image",
+      "news"
+    ],
+    "goals": [
+      "video-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Video analysis clues to compare with source pages and independent evidence.",
+      "zh-TW": "影片分析線索；需與來源頁及獨立證據核對。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "video",
+      "image",
+      "news"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "haveibeenpwned",
+    "accepted_inputs": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure or candidate account signals; these do not identify the current owner.",
+      "zh-TW": "外洩或候選帳號訊號；不能確認目前使用者。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "holehe",
+    "accepted_inputs": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure or candidate account signals; these do not identify the current owner.",
+      "zh-TW": "外洩或候選帳號訊號；不能確認目前使用者。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "dehashed",
+    "accepted_inputs": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure or candidate account signals; these do not identify the current owner.",
+      "zh-TW": "外洩或候選帳號訊號；不能確認目前使用者。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "leakcheck",
+    "accepted_inputs": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure or candidate account signals; these do not identify the current owner.",
+      "zh-TW": "外洩或候選帳號訊號；不能確認目前使用者。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "breachdirectory",
+    "accepted_inputs": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure or candidate account signals; these do not identify the current owner.",
+      "zh-TW": "外洩或候選帳號訊號；不能確認目前使用者。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "comb",
+    "accepted_inputs": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure or candidate account signals; these do not identify the current owner.",
+      "zh-TW": "外洩或候選帳號訊號；不能確認目前使用者。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "hunter",
+    "accepted_inputs": [
+      "website",
+      "company",
+      "email"
+    ],
+    "goals": [
+      "business-contact"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Published contact or infrastructure leads; check provenance.",
+      "zh-TW": "公開聯絡或基礎設施線索；核對出處。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "company",
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "phonebook-cz",
+    "accepted_inputs": [
+      "website",
+      "company",
+      "email"
+    ],
+    "goals": [
+      "business-contact"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Published contact or infrastructure leads; check provenance.",
+      "zh-TW": "公開聯絡或基礎設施線索；核對出處。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "company",
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "theHarvester",
+    "accepted_inputs": [
+      "website",
+      "company",
+      "email"
+    ],
+    "goals": [
+      "business-contact"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Published contact or infrastructure leads; check provenance.",
+      "zh-TW": "公開聯絡或基礎設施線索；核對出處。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "company",
+      "email"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "securitytrails",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [
+      "domain-records",
+      "history"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Domain and DNS context; historical associations need corroboration.",
+      "zh-TW": "網域與 DNS 背景；歷史關聯需佐證。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "dnsdumpster",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [
+      "domain-records",
+      "history"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Domain and DNS context; historical associations need corroboration.",
+      "zh-TW": "網域與 DNS 背景；歷史關聯需佐證。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "viewdns",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [
+      "domain-records",
+      "history"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Domain and DNS context; historical associations need corroboration.",
+      "zh-TW": "網域與 DNS 背景；歷史關聯需佐證。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "builtwith",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Observed website technologies or indexed code matches.",
+      "zh-TW": "網站技術觀察或已索引的程式碼匹配。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "publicwww",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Observed website technologies or indexed code matches.",
+      "zh-TW": "網站技術觀察或已索引的程式碼匹配。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "wayback-machine",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [
+      "history"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Captured historical pages, with gaps in time and coverage.",
+      "zh-TW": "歷史保存頁面，時間與涵蓋範圍可能有缺口。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "ipinfo",
+    "accepted_inputs": [
+      "ip"
+    ],
+    "goals": [
+      "network"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network ownership and approximate network context, not a person’s location.",
+      "zh-TW": "網路歸屬與概略背景，並非個人的位置。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "bgp-he-net",
+    "accepted_inputs": [
+      "ip"
+    ],
+    "goals": [
+      "network"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network ownership and approximate network context, not a person’s location.",
+      "zh-TW": "網路歸屬與概略背景，並非個人的位置。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "greynoise",
+    "accepted_inputs": [
+      "ip"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Observed or reported network activity; assess timing and context.",
+      "zh-TW": "觀察或回報的網路活動；需評估時間與背景。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "abuseipdb",
+    "accepted_inputs": [
+      "ip"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Observed or reported network activity; assess timing and context.",
+      "zh-TW": "觀察或回報的網路活動；需評估時間與背景。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "virustotal",
+    "accepted_inputs": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Reputation records or analysis reports; submitting a URL may trigger visits.",
+      "zh-TW": "信譽記錄或分析報告；提交網址可能觸發網站訪問。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "urlscan",
+    "accepted_inputs": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Reputation records or analysis reports; submitting a URL may trigger visits.",
+      "zh-TW": "信譽記錄或分析報告；提交網址可能觸發網站訪問。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "urlvoid",
+    "accepted_inputs": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Reputation records or analysis reports; submitting a URL may trigger visits.",
+      "zh-TW": "信譽記錄或分析報告；提交網址可能觸發網站訪問。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "phishtank",
+    "accepted_inputs": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Reputation records or analysis reports; submitting a URL may trigger visits.",
+      "zh-TW": "信譽記錄或分析報告；提交網址可能觸發網站訪問。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "urlhaus",
+    "accepted_inputs": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "Reputation records or analysis reports; submitting a URL may trigger visits.",
+      "zh-TW": "信譽記錄或分析報告；提交網址可能觸發網站訪問。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "ip",
+      "document"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "shodan",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "censys",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "zoomeye",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "fofa",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "binaryedge",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "onyphe",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "leakix",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "criminalip",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "fullhunt",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "network",
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed service observations that may be historical.",
+      "zh-TW": "已索引的服務觀察，可能是歷史資料。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "google-earth",
+    "accepted_inputs": [
+      "location"
+    ],
+    "goals": [
+      "map-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Map, imagery or location clues; check capture date and multiple landmarks.",
+      "zh-TW": "地圖、影像或地點線索；核對拍攝日期與多個地標。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "location"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "mapillary",
+    "accepted_inputs": [
+      "location"
+    ],
+    "goals": [
+      "map-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Map, imagery or location clues; check capture date and multiple landmarks.",
+      "zh-TW": "地圖、影像或地點線索；核對拍攝日期與多個地標。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "location"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "sentinel-hub",
+    "accepted_inputs": [
+      "location"
+    ],
+    "goals": [
+      "map-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Map, imagery or location clues; check capture date and multiple landmarks.",
+      "zh-TW": "地圖、影像或地點線索；核對拍攝日期與多個地標。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "location"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "overpass-turbo",
+    "accepted_inputs": [
+      "location"
+    ],
+    "goals": [
+      "map-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Map, imagery or location clues; check capture date and multiple landmarks.",
+      "zh-TW": "地圖、影像或地點線索；核對拍攝日期與多個地標。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "location"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "wigle",
+    "accepted_inputs": [
+      "location"
+    ],
+    "goals": [
+      "map-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Map, imagery or location clues; check capture date and multiple landmarks.",
+      "zh-TW": "地圖、影像或地點線索；核對拍攝日期與多個地標。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "location"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "suncalc",
+    "accepted_inputs": [
+      "location"
+    ],
+    "goals": [
+      "map-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Map, imagery or location clues; check capture date and multiple landmarks.",
+      "zh-TW": "地圖、影像或地點線索；核對拍攝日期與多個地標。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "location"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "phoneinfoga",
+    "accepted_inputs": [
+      "phone"
+    ],
+    "goals": [
+      "phone-context"
+    ],
+    "regions": [],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Number format or reported context; coverage varies and labels may be wrong.",
+      "zh-TW": "號碼格式或回報背景；涵蓋範圍不同，標籤可能有誤。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "phone"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "truecaller",
+    "accepted_inputs": [
+      "phone"
+    ],
+    "goals": [
+      "phone-context"
+    ],
+    "regions": [],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Number format or reported context; coverage varies and labels may be wrong.",
+      "zh-TW": "號碼格式或回報背景；涵蓋範圍不同，標籤可能有誤。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "phone"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "numverify",
+    "accepted_inputs": [
+      "phone"
+    ],
+    "goals": [
+      "phone-context"
+    ],
+    "regions": [],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Number format or reported context; coverage varies and labels may be wrong.",
+      "zh-TW": "號碼格式或回報背景；涵蓋範圍不同，標籤可能有誤。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "phone"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "opencnam",
+    "accepted_inputs": [
+      "phone"
+    ],
+    "goals": [
+      "phone-context"
+    ],
+    "regions": [],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Number format or reported context; coverage varies and labels may be wrong.",
+      "zh-TW": "號碼格式或回報背景；涵蓋範圍不同，標籤可能有誤。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "phone"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "calleridtest",
+    "accepted_inputs": [
+      "phone"
+    ],
+    "goals": [
+      "phone-context"
+    ],
+    "regions": [],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Number format or reported context; coverage varies and labels may be wrong.",
+      "zh-TW": "號碼格式或回報背景；涵蓋範圍不同，標籤可能有誤。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "phone"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "blockchain-explorer",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "etherscan",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "breadcrumbs",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "arkham-intelligence",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "bubblemaps",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "blockchair",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "metasleuth",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "oxt",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "dune-analytics",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "crystal-intelligence",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "chainalysis-reactor",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "hyperbot-network",
+    "accepted_inputs": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Network-specific public transaction or attribution leads, not proven real identities.",
+      "zh-TW": "特定鏈的公開交易或歸屬線索，並非已證實的真實身份。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "crypto"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "maltego",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "lampyre",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "spiderfoot",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "recon-ng",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "chiasmodon",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "skopenow",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "osint-surveillance",
+    "accepted_inputs": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "analyze",
+    "output": {
+      "en": "Collected leads or relationship views; validate each underlying source.",
+      "zh-TW": "彙整線索或關係視圖；需逐項核實底層來源。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website",
+      "username",
+      "email",
+      "ip"
+    ],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "hunchly",
+    "accepted_inputs": [
+      "website"
+    ],
+    "goals": [],
+    "regions": [
+      "global"
+    ],
+    "kind": "software",
+    "stage": "collect",
+    "output": {
+      "en": "Captured research pages for later review.",
+      "zh-TW": "保存的研究頁面，供之後核對。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "website"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "tails-os",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "whonix",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "veracrypt",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "mullvad-vpn",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "signal",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "browserleaks",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "tor-browser",
+    "accepted_inputs": [
+      "preparation"
+    ],
+    "goals": [],
+    "regions": [],
+    "kind": "software",
+    "stage": "prepare",
+    "output": {
+      "en": "Research environment or communication support; not a subject lookup.",
+      "zh-TW": "研究環境或通訊輔助，並非對象查詢。"
+    },
+    "verification": "editorial",
+    "intents": [],
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "google-search",
+    "accepted_inputs": [
+      "company",
+      "person",
+      "website",
+      "document",
+      "news",
+      "academic"
+    ],
+    "goals": [
+      "background",
+      "professional",
+      "document-records",
+      "claim-check"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "search",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed pages; use primary sources and independent corroboration.",
+      "zh-TW": "已索引網頁；優先原始來源並獨立佐證。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "company",
+      "person",
+      "website",
+      "document",
+      "news",
+      "academic"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "google-scholar",
+    "accepted_inputs": [
+      "academic",
+      "document",
+      "person"
+    ],
+    "goals": [
+      "academic-records",
+      "document-records",
+      "professional"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Publication records, versions and citations; full text may require subscription.",
+      "zh-TW": "研究出版記錄、版本與引用；全文可能需訂閱。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "academic",
+      "document",
+      "person"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "fact-check-explorer",
+    "accepted_inputs": [
+      "news"
+    ],
+    "goals": [
+      "claim-check"
+    ],
+    "regions": [
+      "global"
+    ],
+    "kind": "database",
+    "stage": "verify",
+    "output": {
+      "en": "Published fact checks; read the cited evidence and original claim.",
+      "zh-TW": "已發布的事實查核；閱讀所引用證據與原始說法。"
+    },
+    "verification": "editorial",
+    "intents": [
+      "news"
+    ],
+    "coverage_note": {
+      "en": "Cross-region use; indexed or contributed records may be incomplete.",
+      "zh-TW": "可跨地區使用；索引或提供的記錄可能不完整。"
+    }
+  },
+  {
+    "tool_id": "intelx",
+    "accepted_inputs": [
+      "email",
+      "website",
+      "person",
+      "company"
+    ],
+    "intents": [
+      "email",
+      "website",
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records",
+      "background",
+      "exposure"
+    ],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed candidate records; coverage and paid access vary.",
+      "zh-TW": "已索引的候選記錄；涵蓋範圍與付費存取条件不同。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "osint-framework",
+    "accepted_inputs": [
+      "question"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "directory",
+    "stage": "prepare",
+    "output": {
+      "en": "A resource taxonomy to explore; individual links require checking.",
+      "zh-TW": "可探索的資源分類；個別連結需要核對。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "google-dorks",
+    "accepted_inputs": [
+      "query"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "method",
+    "stage": "prepare",
+    "output": {
+      "en": "A search-query collection; it is not a name lookup service.",
+      "zh-TW": "搜尋語句集，並非姓名查詢服務。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "subfinder",
+    "accepted_inputs": [
+      "website"
+    ],
+    "intents": [
+      "website"
+    ],
+    "goals": [
+      "domain-records"
+    ],
+    "regions": [],
+    "kind": "software",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate subdomains; verify current DNS and relevance.",
+      "zh-TW": "候選子網域；核對目前 DNS 與相關性。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "alienvault-otx",
+    "accepted_inputs": [
+      "ip",
+      "website"
+    ],
+    "intents": [
+      "ip",
+      "website"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Shared indicator and threat-context records; compare sources and dates.",
+      "zh-TW": "共享的指標與威脅背景記錄；比較來源與日期。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "any-run",
+    "accepted_inputs": [
+      "document",
+      "website"
+    ],
+    "intents": [
+      "document",
+      "website"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "File or URL analysis reports; submissions can be shared or trigger network activity.",
+      "zh-TW": "檔案或網址分析報告；提交可能被公開或觸發網路活動。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "hybrid-analysis",
+    "accepted_inputs": [
+      "document",
+      "website"
+    ],
+    "intents": [
+      "document",
+      "website"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "File or URL analysis reports; submissions can be shared or trigger network activity.",
+      "zh-TW": "檔案或網址分析報告；提交可能被公開或觸發網路活動。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "filescan-io",
+    "accepted_inputs": [
+      "document",
+      "website"
+    ],
+    "intents": [
+      "document",
+      "website"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [],
+    "kind": "software",
+    "stage": "verify",
+    "output": {
+      "en": "File or URL analysis reports; submissions can be shared or trigger network activity.",
+      "zh-TW": "檔案或網址分析報告；提交可能被公開或觸發網路活動。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "malwarebazaar",
+    "accepted_inputs": [
+      "file_hash"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Candidate sample records by file hash; confirm the exact file match.",
+      "zh-TW": "依檔案雜湊取得候選樣本記錄；確認是否為相同檔案。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "ahmia",
+    "accepted_inputs": [
+      "query"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed onion-site search results; availability and content need review.",
+      "zh-TW": "已索引的 onion 網站搜尋結果；需核對可用性與內容。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "dark-tracer",
+    "accepted_inputs": [
+      "website",
+      "email"
+    ],
+    "intents": [
+      "website",
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Exposure-monitoring leads with service-specific coverage and access.",
+      "zh-TW": "外洩監測線索；涵蓋範圍與存取依服務而異。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "flightradar24",
+    "accepted_inputs": [
+      "aircraft"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Aircraft or flight observations; receiver coverage and timestamps limit interpretation.",
+      "zh-TW": "航空器或航班觀察；接收涵蓋範圍與時間會影響判讀。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "adsbexchange",
+    "accepted_inputs": [
+      "aircraft"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Aircraft or flight observations; receiver coverage and timestamps limit interpretation.",
+      "zh-TW": "航空器或航班觀察；接收涵蓋範圍與時間會影響判讀。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "opensky-network",
+    "accepted_inputs": [
+      "aircraft"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Aircraft or flight observations; receiver coverage and timestamps limit interpretation.",
+      "zh-TW": "航空器或航班觀察；接收涵蓋範圍與時間會影響判讀。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "airframes-io",
+    "accepted_inputs": [
+      "aircraft"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Aircraft or flight observations; receiver coverage and timestamps limit interpretation.",
+      "zh-TW": "航空器或航班觀察；接收涵蓋範圍與時間會影響判讀。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "marinetraffic",
+    "accepted_inputs": [
+      "vessel"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Vessel observations; identifiers and observation times need verification.",
+      "zh-TW": "船舶觀察；需核對識別碼與觀察時間。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "vesselfinder",
+    "accepted_inputs": [
+      "vessel"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Vessel observations; identifiers and observation times need verification.",
+      "zh-TW": "船舶觀察；需核對識別碼與觀察時間。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "websdr",
+    "accepted_inputs": [
+      "radio_signal"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Radio reference material or received signals; interpretation requires technical context.",
+      "zh-TW": "無線電參考資料或接收訊號；判讀需要技術背景。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "sigidwiki",
+    "accepted_inputs": [
+      "radio_signal"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Radio reference material or received signals; interpretation requires technical context.",
+      "zh-TW": "無線電參考資料或接收訊號；判讀需要技術背景。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "radioreference",
+    "accepted_inputs": [
+      "radio_signal"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Radio reference material or received signals; interpretation requires technical context.",
+      "zh-TW": "無線電參考資料或接收訊號；判讀需要技術背景。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "liveatc",
+    "accepted_inputs": [
+      "radio_signal"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Radio reference material or received signals; interpretation requires technical context.",
+      "zh-TW": "無線電參考資料或接收訊號；判讀需要技術背景。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "darksearch",
+    "accepted_inputs": [
+      "query"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [],
+    "kind": "database",
+    "stage": "discover",
+    "output": {
+      "en": "Indexed onion-site search results; availability and content need review.",
+      "zh-TW": "已索引的 onion 網站搜尋結果；需核對可用性與內容。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region coverage has not been confirmed.",
+      "zh-TW": "地區涵蓋範圍尚未確認。"
+    }
+  },
+  {
+    "tool_id": "full-fact",
+    "accepted_inputs": [
+      "news"
+    ],
+    "intents": [
+      "news"
+    ],
+    "goals": [
+      "claim-check"
+    ],
+    "regions": [
+      "uk"
+    ],
+    "kind": "database",
+    "stage": "verify",
+    "output": {
+      "en": "Read published fact checks and their cited sources, with a UK focus.",
+      "zh-TW": "閱讀已發布查核及其引用來源，以英國議題為主。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region describes editorial focus, not where users may access the website; claim coverage is incomplete.",
+      "zh-TW": "地區表示編輯重點，不限制網站使用者所在地；說法涵蓋範圍不完整。"
+    }
+  },
+  {
+    "tool_id": "taiwan-factcheck",
+    "accepted_inputs": [
+      "news"
+    ],
+    "intents": [
+      "news"
+    ],
+    "goals": [
+      "claim-check"
+    ],
+    "regions": [
+      "tw"
+    ],
+    "kind": "database",
+    "stage": "verify",
+    "output": {
+      "en": "Find Chinese-language fact checks and inspect the supporting evidence.",
+      "zh-TW": "查找中文事實查核並閱讀支持證據。"
+    },
+    "verification": "editorial",
+    "coverage_note": {
+      "en": "Region describes editorial focus, not where users may access the website; claim coverage is incomplete.",
+      "zh-TW": "地區表示編輯重點，不限制網站使用者所在地；說法涵蓋範圍不完整。"
+    }
+  },
+  {
+    "tool_id": "osint-link",
+    "accepted_inputs": [
+      "question"
+    ],
+    "intents": [],
+    "goals": [],
+    "regions": [
+      "global"
+    ],
+    "kind": "directory",
+    "stage": "prepare",
+    "output": {
+      "en": "Links grouped by research topic and introductory tutorials.",
+      "zh-TW": "按研究主題分類的連結與入門教程。"
+    },
+    "coverage_note": {
+      "en": "A cross-region directory; inclusion is not proof of availability or complete coverage.",
+      "zh-TW": "跨地區目錄；收錄不代表可用性或完整涵蓋已核實。"
+    },
+    "verification": "editorial"
+  }
+]

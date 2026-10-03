@@ -1,0 +1,990 @@
+[
+  {
+    "tool_id": "opencorporates",
+    "intents": [
+      "company"
+    ],
+    "goals": [
+      "registration"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find company registry records across jurisdictions.",
+      "zh-TW": "查找不同司法管轄區的企業登記線索。"
+    },
+    "start": {
+      "en": "Search the full legal name and narrow by jurisdiction; follow the original registry link.",
+      "zh-TW": "搜尋完整公司名稱並限定登記地區，再查看原始登記來源。"
+    },
+    "limitations": {
+      "en": "Coverage and freshness vary by jurisdiction; verify against the official registry.",
+      "zh-TW": "地區覆蓋和更新速度不同，請回到官方登記資料核實。"
+    }
+  },
+  {
+    "tool_id": "companies-house",
+    "intents": [
+      "company"
+    ],
+    "goals": [
+      "registration",
+      "filings"
+    ],
+    "regions": [
+      "uk"
+    ],
+    "reason": {
+      "en": "Look up official UK company registration and filings.",
+      "zh-TW": "查詢英國官方公司登記和申報資料。"
+    },
+    "start": {
+      "en": "Search the company name or number, then compare status and filing history.",
+      "zh-TW": "搜尋公司名稱或編號，查看狀態和申報歷史。"
+    },
+    "limitations": {
+      "en": "UK only; a filed statement is not an independent guarantee of accuracy.",
+      "zh-TW": "僅適用英國；申報內容並非獨立核實的準確性保證。"
+    }
+  },
+  {
+    "tool_id": "sec-edgar",
+    "intents": [
+      "company",
+      "document"
+    ],
+    "goals": [
+      "filings",
+      "document-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "reason": {
+      "en": "Read disclosures filed with the US SEC.",
+      "zh-TW": "閱讀提交至美國 SEC 的公開披露。"
+    },
+    "start": {
+      "en": "Search the company name or ticker; check filing type and reporting date.",
+      "zh-TW": "搜尋公司名稱或股票代碼，確認申報類型及日期。"
+    },
+    "limitations": {
+      "en": "Covers SEC filers, not every US business.",
+      "zh-TW": "涵蓋 SEC 申報主體，不涵蓋所有美國企業。"
+    }
+  },
+  {
+    "tool_id": "crunchbase",
+    "intents": [
+      "company"
+    ],
+    "goals": [
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find company, funding and industry background.",
+      "zh-TW": "了解公司、融資和產業背景。"
+    },
+    "start": {
+      "en": "Search the company name and compare its website and location before using the profile.",
+      "zh-TW": "搜尋公司名稱，先核對官網和所在地，再使用該檔案。"
+    },
+    "limitations": {
+      "en": "Access may be limited or paid; profiles are secondary sources.",
+      "zh-TW": "存取可能受限或收費，檔案屬於二手來源。"
+    }
+  },
+  {
+    "tool_id": "linkedin",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "professional",
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find publicly shared professional and company profiles.",
+      "zh-TW": "查找公開分享的職業及公司檔案。"
+    },
+    "start": {
+      "en": "Combine the name with an employer or profession; compare profile details.",
+      "zh-TW": "以姓名加上機構或職業搜尋，核對檔案細節。"
+    },
+    "limitations": {
+      "en": "Profiles are self-reported; visibility can require an account.",
+      "zh-TW": "檔案由使用者自行填寫，部分內容需要登入。"
+    }
+  },
+  {
+    "tool_id": "govinfo",
+    "intents": [
+      "document",
+      "company",
+      "person"
+    ],
+    "goals": [
+      "document-records",
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "reason": {
+      "en": "Search published US federal government documents.",
+      "zh-TW": "搜尋美國聯邦政府公開文件。"
+    },
+    "start": {
+      "en": "Search an exact name or phrase and check the document date and issuing body.",
+      "zh-TW": "搜尋完整名稱或片語，確認文件日期和發布機構。"
+    },
+    "limitations": {
+      "en": "US federal coverage; a name mention does not establish identity.",
+      "zh-TW": "以美國聯邦資料為主，名字出現並不代表身份相同。"
+    }
+  },
+  {
+    "tool_id": "whatsmyname",
+    "intents": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Check where a username appears on supported public platforms.",
+      "zh-TW": "查看帳號名稱在哪些支援的平台出現。"
+    },
+    "start": {
+      "en": "Enter the exact username, open candidate profiles and compare public details.",
+      "zh-TW": "輸入完整帳號名稱，打開候選檔案並核對公開細節。"
+    },
+    "limitations": {
+      "en": "Matches can be false positives or different people.",
+      "zh-TW": "匹配可能是誤報，或屬於不同的人。"
+    }
+  },
+  {
+    "tool_id": "sherlock",
+    "intents": [
+      "username"
+    ],
+    "goals": [
+      "profiles"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Check public username matches using a command-line tool.",
+      "zh-TW": "使用命令列查找公開帳號名稱的匹配。"
+    },
+    "start": {
+      "en": "Install using the project instructions, search a handle, then verify candidate links.",
+      "zh-TW": "依專案說明安裝，搜尋帳號名稱，再核實候選連結。"
+    },
+    "limitations": {
+      "en": "Requires installation; username matches are not identity proof.",
+      "zh-TW": "需要安裝；帳號名稱匹配不是身份證明。"
+    }
+  },
+  {
+    "tool_id": "wayback-machine",
+    "intents": [
+      "website",
+      "company",
+      "document"
+    ],
+    "goals": [
+      "history",
+      "background",
+      "document-records"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Compare older versions of a publicly archived website.",
+      "zh-TW": "比較網站公開存檔的較早版本。"
+    },
+    "start": {
+      "en": "Paste the website URL, choose a snapshot date and compare content across dates.",
+      "zh-TW": "貼上網址，選擇存檔日期，對照不同日期的內容。"
+    },
+    "limitations": {
+      "en": "Pages may be missing or incomplete; snapshots do not prove ownership.",
+      "zh-TW": "頁面可能缺失或不完整，存檔不能證明擁有權。"
+    }
+  },
+  {
+    "tool_id": "viewdns",
+    "intents": [
+      "website"
+    ],
+    "goals": [
+      "domain-records"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Explore available domain registration and DNS information.",
+      "zh-TW": "查看可取得的網域登記和 DNS 資訊。"
+    },
+    "start": {
+      "en": "Enter a domain into the appropriate lookup and note the date of the record.",
+      "zh-TW": "在適合的查詢功能輸入網域，記錄資料日期。"
+    },
+    "limitations": {
+      "en": "Privacy services can hide registrant details; results may be historical.",
+      "zh-TW": "隱私服務可能隱藏登記人，結果也可能是歷史資料。"
+    }
+  },
+  {
+    "tool_id": "dnsdumpster",
+    "intents": [
+      "website"
+    ],
+    "goals": [
+      "domain-records"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Explore published DNS and related host information.",
+      "zh-TW": "查看公開 DNS 和相關主機資訊。"
+    },
+    "start": {
+      "en": "Search the domain and inspect the returned DNS records as leads.",
+      "zh-TW": "搜尋網域，把返回的 DNS 記錄作為後續線索。"
+    },
+    "limitations": {
+      "en": "Coverage is incomplete; shared infrastructure does not imply common ownership.",
+      "zh-TW": "覆蓋不完整，共用基礎設施不代表相同擁有者。"
+    }
+  },
+  {
+    "tool_id": "builtwith",
+    "intents": [
+      "website",
+      "company"
+    ],
+    "goals": [
+      "technology"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Identify technologies observed on a website.",
+      "zh-TW": "了解網站被觀察到使用的技術。"
+    },
+    "start": {
+      "en": "Enter a domain and compare the reported stack with the current site.",
+      "zh-TW": "輸入網域，將技術報告與目前網站比較。"
+    },
+    "limitations": {
+      "en": "Detected technologies can be outdated; detailed reports may be paid.",
+      "zh-TW": "技術偵測可能過時，詳細報告可能收費。"
+    }
+  },
+  {
+    "tool_id": "tineye",
+    "intents": [
+      "image"
+    ],
+    "goals": [
+      "image-source"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find indexed copies of an image.",
+      "zh-TW": "尋找已被索引的相同或相近圖片。"
+    },
+    "start": {
+      "en": "Upload an image or paste its URL; compare source pages and dates.",
+      "zh-TW": "上傳圖片或貼上圖片網址，核對來源頁面和日期。"
+    },
+    "limitations": {
+      "en": "No result does not prove originality; indexed coverage is limited.",
+      "zh-TW": "沒有結果不能證明原創，索引覆蓋有限。"
+    }
+  },
+  {
+    "tool_id": "yandex-images",
+    "intents": [
+      "image"
+    ],
+    "goals": [
+      "image-source",
+      "image-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Look for visually similar images and possible source pages.",
+      "zh-TW": "尋找視覺相似圖片及可能的來源頁面。"
+    },
+    "start": {
+      "en": "Use image search with an image or URL, then inspect matching pages.",
+      "zh-TW": "以圖片或網址使用圖片搜尋，再核對匹配頁面。"
+    },
+    "limitations": {
+      "en": "Visual resemblance is not proof of the same event or person.",
+      "zh-TW": "視覺相似不代表同一事件或人物。"
+    }
+  },
+  {
+    "tool_id": "invid-weverify",
+    "intents": [
+      "image",
+      "video",
+      "news"
+    ],
+    "goals": [
+      "image-context",
+      "image-source",
+      "video-context",
+      "claim-check"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Inspect media and extract frames for further verification.",
+      "zh-TW": "檢查媒體並擷取畫面，進行後續查證。"
+    },
+    "start": {
+      "en": "Install the extension and use extracted frames for reverse image searches.",
+      "zh-TW": "安裝擴充套件，再以擷取畫面進行反向圖片搜尋。"
+    },
+    "limitations": {
+      "en": "Requires a browser extension; findings still need corroboration.",
+      "zh-TW": "需要瀏覽器擴充套件，發現仍需其他來源佐證。"
+    },
+    "source_status": "documented",
+    "source_url": "https://www.invid-project.eu/tools-and-services/invid-verification-plugin/",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "exiftool",
+    "intents": [
+      "image",
+      "document"
+    ],
+    "goals": [
+      "metadata"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Read metadata embedded in local files.",
+      "zh-TW": "讀取本機文件內嵌的中繼資料。"
+    },
+    "start": {
+      "en": "Keep an original copy and follow ExifTool instructions to read its metadata.",
+      "zh-TW": "保留原始副本，依 ExifTool 說明讀取中繼資料。"
+    },
+    "limitations": {
+      "en": "Requires local software; metadata can be removed or manipulated.",
+      "zh-TW": "需要本機軟體，中繼資料可能被移除或修改。"
+    }
+  },
+  {
+    "tool_id": "haveibeenpwned",
+    "intents": [
+      "email"
+    ],
+    "goals": [
+      "exposure"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Check whether your email appears in indexed breach records.",
+      "zh-TW": "檢查自己的信箱是否出現在已收錄的外洩記錄。"
+    },
+    "start": {
+      "en": "Enter your own email and review the listed breaches and dates.",
+      "zh-TW": "輸入自己的信箱，查看列出的外洩事件和日期。"
+    },
+    "limitations": {
+      "en": "Absence is not proof of safety; the index does not include every breach.",
+      "zh-TW": "查無結果不代表安全，資料庫不涵蓋所有外洩事件。"
+    }
+  },
+  {
+    "tool_id": "hunter",
+    "intents": [
+      "email",
+      "company"
+    ],
+    "goals": [
+      "business-contact"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find published business email leads associated with a domain.",
+      "zh-TW": "查找與企業網域相關的公開商務信箱線索。"
+    },
+    "start": {
+      "en": "Search a company domain and inspect the cited sources for each address.",
+      "zh-TW": "搜尋企業網域，核對每個信箱附帶的來源。"
+    },
+    "limitations": {
+      "en": "A suggested address can be outdated; access limits apply.",
+      "zh-TW": "建議地址可能過時，也可能有使用額度限制。"
+    }
+  },
+  {
+    "tool_id": "ipinfo",
+    "intents": [
+      "ip"
+    ],
+    "goals": [
+      "network"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Look up IP network ownership and approximate location.",
+      "zh-TW": "查詢 IP 網路歸屬和估計位置。"
+    },
+    "start": {
+      "en": "Enter an IP and compare the network, ASN and location fields.",
+      "zh-TW": "輸入 IP，查看網路、ASN 和位置欄位。"
+    },
+    "limitations": {
+      "en": "IP geolocation cannot establish a person’s precise location.",
+      "zh-TW": "IP 地理定位無法確認個人的精確位置。"
+    }
+  },
+  {
+    "tool_id": "abuseipdb",
+    "intents": [
+      "ip"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Review community reports associated with an IP.",
+      "zh-TW": "查看與 IP 相關的社群舉報。"
+    },
+    "start": {
+      "en": "Look up an IP, checking report dates and categories rather than just a score.",
+      "zh-TW": "查詢 IP，查看舉報日期和類型，不只看分數。"
+    },
+    "limitations": {
+      "en": "Reports can be stale or mistaken; reputation is not a verdict.",
+      "zh-TW": "舉報可能過時或有誤，信譽分數不是定論。"
+    }
+  },
+  {
+    "tool_id": "greynoise",
+    "intents": [
+      "ip"
+    ],
+    "goals": [
+      "reputation"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Add context to observed internet scanning activity.",
+      "zh-TW": "了解被觀察到的網際網路掃描活動。"
+    },
+    "start": {
+      "en": "Search an IP and compare the observation dates and activity labels.",
+      "zh-TW": "搜尋 IP，核對觀察日期和活動標籤。"
+    },
+    "limitations": {
+      "en": "Unobserved activity does not imply a safe IP.",
+      "zh-TW": "未觀察到活動不代表 IP 安全。"
+    }
+  },
+  {
+    "tool_id": "google-earth",
+    "intents": [
+      "location",
+      "image"
+    ],
+    "goals": [
+      "map-context",
+      "image-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Compare landmarks and terrain with satellite imagery.",
+      "zh-TW": "以衛星影像對照地標和地形。"
+    },
+    "start": {
+      "en": "Start from a candidate area and compare several visible features.",
+      "zh-TW": "從候選區域開始，對照多個可見特徵。"
+    },
+    "limitations": {
+      "en": "Imagery dates vary; current buildings or roads may differ.",
+      "zh-TW": "影像日期不同，現有建築或道路可能已改變。"
+    }
+  },
+  {
+    "tool_id": "mapillary",
+    "intents": [
+      "location",
+      "image"
+    ],
+    "goals": [
+      "map-context",
+      "image-context"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Compare scenes with contributed street-level imagery.",
+      "zh-TW": "以使用者提供的街景影像對照場景。"
+    },
+    "start": {
+      "en": "Search a candidate location and check the capture date of nearby images.",
+      "zh-TW": "搜尋候選位置，確認附近影像的拍攝日期。"
+    },
+    "limitations": {
+      "en": "Coverage varies; images are contributed and may be old.",
+      "zh-TW": "覆蓋不同，影像由使用者提供，也可能過時。"
+    }
+  },
+  {
+    "tool_id": "etherscan",
+    "intents": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Read public Ethereum transactions and address activity.",
+      "zh-TW": "閱讀以太坊公開交易及地址活動。"
+    },
+    "start": {
+      "en": "Choose Ethereum, paste an address or transaction hash and inspect the record.",
+      "zh-TW": "確認為以太坊，貼上地址或交易雜湊，查看記錄。"
+    },
+    "limitations": {
+      "en": "Address labels do not by themselves prove real-world identity.",
+      "zh-TW": "地址標籤本身不能證明現實身份。"
+    }
+  },
+  {
+    "tool_id": "blockchain-explorer",
+    "intents": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Inspect supported public blockchain transactions.",
+      "zh-TW": "查看支援鏈上的公開交易。"
+    },
+    "start": {
+      "en": "Confirm the network, then search an address or transaction hash.",
+      "zh-TW": "確認所屬鏈，再搜尋地址或交易雜湊。"
+    },
+    "limitations": {
+      "en": "Network coverage varies; transactions do not identify a person by themselves.",
+      "zh-TW": "支援的链不同，交易本身不能識別個人身份。"
+    }
+  },
+  {
+    "tool_id": "blockchair",
+    "intents": [
+      "crypto"
+    ],
+    "goals": [
+      "transactions"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Explore transactions across supported blockchains.",
+      "zh-TW": "查閱支援的多條區塊鏈上的交易。"
+    },
+    "start": {
+      "en": "Select the correct blockchain before entering an address or hash.",
+      "zh-TW": "先選擇正確區塊鏈，再輸入地址或雜湊。"
+    },
+    "limitations": {
+      "en": "Check chain-specific fields and availability; coverage is not universal.",
+      "zh-TW": "需核對各鏈欄位及可用性，並非支援所有鏈。"
+    }
+  },
+  {
+    "tool_id": "gsxt",
+    "intents": [
+      "company"
+    ],
+    "goals": [
+      "registration"
+    ],
+    "regions": [
+      "cn"
+    ],
+    "reason": {
+      "en": "China enterprise public information system.",
+      "zh-TW": "中國大陸企業公開資訊查詢入口。"
+    },
+    "start": {
+      "en": "Search the company name or unified social credit code in the public information search.",
+      "zh-TW": "在企業資訊查詢中輸入完整公司名稱或統一社會信用代碼。"
+    },
+    "limitations": {
+      "en": "Mainland China; access may require verification. Automated access was blocked during this review; the full search flow has not been tested.",
+      "zh-TW": "適用中國大陸，存取可能需要驗證。本次自動存取被阻擋，尚未測試完整查詢流程。"
+    },
+    "source_status": "documented",
+    "source_url": "https://hnsggzyjy.henan.gov.cn/jyxx/002002/002002001/20260305/f294e07c-bfb6-4c63-bdd8-60f7b405ef58.html",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "taiwan-findbiz",
+    "intents": [
+      "company"
+    ],
+    "goals": [
+      "registration"
+    ],
+    "regions": [
+      "tw"
+    ],
+    "reason": {
+      "en": "Taiwan public company and business registration search.",
+      "zh-TW": "台灣公司及商業登記公開資料查詢入口。"
+    },
+    "start": {
+      "en": "Choose name or registration number search, then enter the company name or unified business number.",
+      "zh-TW": "選擇名稱或編號查詢，再輸入公司名稱或統一編號。"
+    },
+    "limitations": {
+      "en": "Taiwan registrations only. Automated access was blocked during this review; the full search flow has not been tested.",
+      "zh-TW": "僅適用台灣登記主體。本次自動存取被阻擋，尚未測試完整查詢流程。"
+    },
+    "source_status": "documented",
+    "source_url": "https://findbiz.nat.gov.tw/",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "hong-kong-companies-registry",
+    "intents": [
+      "company"
+    ],
+    "goals": [
+      "registration"
+    ],
+    "regions": [
+      "hk"
+    ],
+    "reason": {
+      "en": "Official Hong Kong company registration search service.",
+      "zh-TW": "香港公司註冊處的官方公司登記查冊服務。"
+    },
+    "start": {
+      "en": "Enter as a registered or unregistered online user and choose e-Search for the company name or business registration number.",
+      "zh-TW": "以已註冊或未註冊線上使用者進入，選擇電子查冊，以公司名稱或商業登記號碼查詢。"
+    },
+    "limitations": {
+      "en": "Hong Kong registrations; reports and document products may have fees. Review the current service fee schedule.",
+      "zh-TW": "適用香港登記主體，報告和文件產品可能收費，請確認當前收費表。"
+    },
+    "source_status": "documented",
+    "source_url": "https://www.cr.gov.hk/en/electronic/e-servicesportal/faq/e-search.htm",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "google-search",
+    "intents": [
+      "company",
+      "person",
+      "website",
+      "document",
+      "news"
+    ],
+    "goals": [
+      "background",
+      "professional",
+      "document-records",
+      "claim-check"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Use a general search to discover original pages and name variants.",
+      "zh-TW": "用通用搜尋尋找原始頁面與名稱變體。"
+    },
+    "start": {
+      "en": "Combine an exact phrase with a relevant organisation or domain.",
+      "zh-TW": "將完整名稱或說法搭配機構或網域搜尋。"
+    },
+    "limitations": {
+      "en": "Indexed results are incomplete and are not verified answers.",
+      "zh-TW": "索引結果不完整，也不是已核實答案。"
+    },
+    "source_status": "documented",
+    "source_url": "https://support.google.com/websearch/answer/2466433",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "google-scholar",
+    "intents": [
+      "academic",
+      "document",
+      "person"
+    ],
+    "goals": [
+      "academic-records",
+      "document-records",
+      "professional"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find publications and compare their authors, dates and versions.",
+      "zh-TW": "找出版文獻，並比較作者、日期與版本。"
+    },
+    "start": {
+      "en": "Search a title, topic or author, then inspect the original publication.",
+      "zh-TW": "搜尋標題、主題或作者，再閱讀原始出版資料。"
+    },
+    "limitations": {
+      "en": "Full text may require subscription; citations alone do not establish quality.",
+      "zh-TW": "全文可能需訂閱；引用次數本身不能證明品質。"
+    },
+    "source_status": "documented",
+    "source_url": "https://scholar.google.com/intl/en/scholar/help.html",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "fact-check-explorer",
+    "intents": [
+      "news"
+    ],
+    "goals": [
+      "claim-check"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Look for existing checks of a specific claim.",
+      "zh-TW": "找特定說法的既有查核。"
+    },
+    "start": {
+      "en": "Search the key phrase and read the evidence behind a relevant check.",
+      "zh-TW": "搜尋關鍵說法，再閱讀相關查核背後的證據。"
+    },
+    "limitations": {
+      "en": "Coverage is limited; no check found does not establish truth.",
+      "zh-TW": "涵蓋範圍有限；找不到查核不能證明說法真實。"
+    },
+    "source_status": "documented",
+    "source_url": "https://toolbox.google.com/factcheck/explorer",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "full-fact",
+    "intents": [
+      "news"
+    ],
+    "goals": [
+      "claim-check"
+    ],
+    "regions": [
+      "uk"
+    ],
+    "reason": {
+      "en": "Read published fact checks and their cited sources, with a UK focus.",
+      "zh-TW": "閱讀已發布查核及其引用來源，以英國議題為主。"
+    },
+    "start": {
+      "en": "Search a distinctive phrase, then inspect the checked claim, publication date and evidence links.",
+      "zh-TW": "搜尋有辨識度的原句，再核對查核對象、發布日期與證據連結。"
+    },
+    "limitations": {
+      "en": "A check applies to a specific claim and date. Read its evidence; no matching check is not proof of truth.",
+      "zh-TW": "查核針對特定說法與日期；需閱讀證據，找不到查核不能證明真實。"
+    },
+    "source_status": "documented",
+    "source_url": "https://fullfact.org/about/",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "taiwan-factcheck",
+    "intents": [
+      "news"
+    ],
+    "goals": [
+      "claim-check"
+    ],
+    "regions": [
+      "tw"
+    ],
+    "reason": {
+      "en": "Find Chinese-language fact checks and inspect the supporting evidence.",
+      "zh-TW": "查找中文事實查核並閱讀支持證據。"
+    },
+    "start": {
+      "en": "Search a claim keyword and compare the original wording, report date and cited evidence.",
+      "zh-TW": "搜尋說法中的關鍵詞，比較原句、報告日期及引用證據。"
+    },
+    "limitations": {
+      "en": "A check applies to a specific claim and date. Read its evidence; no matching check is not proof of truth.",
+      "zh-TW": "查核針對特定說法與日期；需閱讀證據，找不到查核不能證明真實。"
+    },
+    "source_status": "documented",
+    "source_url": "https://tfc-taiwan.org.tw/",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "opensanctions",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records",
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Find candidate named entries with dataset provenance.",
+      "zh-TW": "查找具有資料集出處的候選名稱條目。"
+    },
+    "start": {
+      "en": "Search a name, inspect its dataset and identifiers, then open the referenced source.",
+      "zh-TW": "搜尋名稱，核對資料集與識別資料，再打開引用來源。"
+    },
+    "limitations": {
+      "en": "Name matches are not identity conclusions. Dataset coverage and update dates vary.",
+      "zh-TW": "同名匹配不能確認身份；資料集涵蓋範圍與更新日期不同。"
+    },
+    "source_status": "documented",
+    "source_url": "https://www.opensanctions.org/docs/",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "icij-offshore-leaks",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records",
+      "background"
+    ],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "Explore names and entities within the published offshore datasets.",
+      "zh-TW": "在已發布的離岸資料集中查名稱與實體。"
+    },
+    "start": {
+      "en": "Search a name and record the dataset, source and dated relationships.",
+      "zh-TW": "搜尋名稱並記錄資料集、出處與有日期的關係。"
+    },
+    "limitations": {
+      "en": "The datasets are historical and incomplete. Inclusion does not itself imply illegal conduct.",
+      "zh-TW": "資料具有歷史性且不完整；被收錄本身不代表違法。"
+    },
+    "source_status": "documented",
+    "source_url": "https://offshoreleaks.icij.org/pages/about",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "pacer",
+    "intents": [
+      "person",
+      "company"
+    ],
+    "goals": [
+      "public-records"
+    ],
+    "regions": [
+      "us"
+    ],
+    "reason": {
+      "en": "Find records in the US federal court system.",
+      "zh-TW": "查找美國聯邦法院系統記錄。"
+    },
+    "start": {
+      "en": "Review registration and fee requirements, then search by party or case identifiers.",
+      "zh-TW": "先查看註冊與費用條件，再依當事人或案件識別資料查詢。"
+    },
+    "limitations": {
+      "en": "Federal scope, not all state courts. A name or allegation does not establish identity or outcome.",
+      "zh-TW": "限聯邦範圍，不含所有州法院；姓名或指控不能確認身份或案件結果。"
+    },
+    "source_status": "documented",
+    "source_url": "https://pacer.uscourts.gov/find-case",
+    "source_checked_at": "2026-10-03"
+  },
+  {
+    "tool_id": "osint-link",
+    "intents": [],
+    "goals": [],
+    "regions": [
+      "global"
+    ],
+    "reason": {
+      "en": "The reference book identifies this as its companion list of resource links.",
+      "zh-TW": "參考書在導言將此網站列為配套資源連結清單。"
+    },
+    "start": {
+      "en": "Choose a relevant topic, inspect a candidate link and check its required input, access and coverage on the original website.",
+      "zh-TW": "選相關主題，查看候選連結，再到原網站核對所需輸入、存取條件與涵蓋範圍。"
+    },
+    "limitations": {
+      "en": "This is a directory, not a subject lookup or verified database. Its individual links may change or become unavailable.",
+      "zh-TW": "這是目錄，並非對象查詢或已核驗資料庫；其中個別連結可能變更或失效。"
+    },
+    "source_status": "documented",
+    "source_url": "https://osint.link/",
+    "source_checked_at": "2026-10-03"
+  }
+]
