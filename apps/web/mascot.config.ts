@@ -3,13 +3,13 @@ export const mascotConfig = {
   version: "1.0.0-osint-hub",
   storageKey: "postsoma-osint-hub-mascot-v1",
   core: {
-    light: "/mascot/core/plate_light.png",
-    dark: "/mascot/core/plate_dark.png",
+    light: "/mascot/optimized/plate_light.webp",
+    dark: "/mascot/optimized/plate_dark.webp",
     width: 1122,
     height: 1228,
     sprout: {
-      light: "/mascot/core/sprout_light.png",
-      dark: "/mascot/core/sprout_dark.png",
+      light: "/mascot/optimized/sprout_light.webp",
+      dark: "/mascot/optimized/sprout_dark.webp",
       left: "43.94%", top: "0%", displayWidth: "12.03%", displayHeight: "11.16%",
       pivot: "48.74% 85.4%",
     },
@@ -20,12 +20,12 @@ export const mascotConfig = {
   },
   slots: {
     magnifier: {
-      light: "/mascot/skins/osint-navigator/magnifier_clean.png", dark: "/mascot/skins/osint-navigator/magnifier_dark.png",
+      light: "/mascot/optimized/magnifier_clean.webp", dark: "/mascot/optimized/magnifier_dark.webp",
       right: "-4%", top: "48%", width: "24%", zIndex: 3, pivot: "50% 80%", transform: "rotate(12deg)",
       behavior: { follow_breath: true, on_click: "lens_scan", on_shock: "lens_recoil", on_antic: "trace_follow" },
     },
     trail: {
-      light: "/mascot/skins/osint-navigator/trail_clean.png", dark: "/mascot/skins/osint-navigator/trail_dark.png",
+      light: "/mascot/optimized/trail_clean.webp", dark: "/mascot/optimized/trail_dark.webp",
       left: "10%", top: "8%", width: "16%", zIndex: 4, pivot: "50% 50%", transform: "rotate(-8deg)",
       behavior: { follow_breath: true, on_click: "trail_reveal", on_shock: "trail_recoil", on_antic: "trace_follow" },
     },

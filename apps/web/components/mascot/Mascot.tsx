@@ -19,9 +19,11 @@ export default function OsintMascot() {
   const [snapshot, setSnapshot] = useState(initialSnapshot)
   const [theme, setTheme] = useState<"light" | "dark">("dark")
   const signalsRef = useRef<MascotSignal[]>([])
+  const dockRef = useRef<HTMLElement>(null)
+  const [renderPaused, setRenderPaused] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  useMascotSenses(buttonRef, signalsRef, setSnapshot, setTheme)
+  useMascotSenses(buttonRef, signalsRef, setSnapshot, setTheme, dockRef, setRenderPaused)
 
   const anchorX = () => {
     const box = buttonRef.current?.getBoundingClientRect()
@@ -56,7 +58,7 @@ export default function OsintMascot() {
 
   return (
     <div className="osint-mascot-boundary">
-    <aside aria-label="OSINT Hub mascot" className="osint-mascot-dock" data-mode={snapshot.mode}
+    <aside ref={dockRef} data-render-paused={renderPaused || snapshot.mode === "guarded" || snapshot.mode === "shy_wait"} aria-label="OSINT Hub mascot" className="osint-mascot-dock" data-mode={snapshot.mode}
       data-behavior={snapshot.behavior ?? "idle"} data-theme={theme} style={style}
       onTransitionEnd={(event) => {
         if (event.target === event.currentTarget && event.propertyName === "transform")
@@ -84,13 +86,23 @@ export default function OsintMascot() {
                 transform: slot.transform, transformOrigin: slot.pivot,
               }}><img src={theme === "dark" ? slot.dark : slot.light} alt="" draggable={false} /></span>
             ))}
-            <svg className="osint-mascot-eyes" viewBox={`0 0 ${mascotConfig.core.width} ${mascotConfig.core.height}`}>
-              {mascotConfig.core.eyes.map((eye, index) => <g className="osint-mascot-eye" key={index}
-                style={{ transformOrigin: `${eye.x}px ${eye.y}px` }}>
-                <circle className="osint-mascot-eye-halo" cx={eye.x} cy={eye.y} r={eye.haloRadius} />
-                <circle className="osint-mascot-eye-moon" cx={eye.x} cy={eye.y} r={eye.moonRadius} />
-              </g>)}
-            </svg>
+            <span className="osint-mascot-eyes">
+              {mascotConfig.core.eyes.map((eye, index) => {
+                const extent = eye.haloRadius + 6.5
+                const size = extent * 2
+                return <span className="osint-mascot-eye" key={index} style={{
+                  left: `${(eye.x - extent) / mascotConfig.core.width * 100}%`,
+                  top: `${(eye.y - extent) / mascotConfig.core.height * 100}%`,
+                  width: `${size / mascotConfig.core.width * 100}%`,
+                  height: `${size / mascotConfig.core.height * 100}%`,
+                }}>
+                  <svg viewBox={`0 0 ${size} ${size}`}>
+                    <circle className="osint-mascot-eye-halo" cx={extent} cy={extent} r={eye.haloRadius} />
+                    <circle className="osint-mascot-eye-moon" cx={extent} cy={extent} r={eye.moonRadius} />
+                  </svg>
+                </span>
+              })}
+            </span>
             <span className="osint-mascot-cheek osint-mascot-cheek-left" />
             <span className="osint-mascot-cheek osint-mascot-cheek-right" />
           </span>
