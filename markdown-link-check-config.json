@@ -1,18 +1,27 @@
 {
-    "ignorePatterns": [
-      {
-        "pattern": "^bundle.zip"
-      },
-      {
-        "pattern": "^/"
+  "ignorePatterns": [
+    {
+      "pattern": "^bundle.zip"
+    },
+    {
+      "pattern": "^/"
+    },
+    {
+      "pattern": "^https://hnsggzyjy\\.henan\\.gov\\.cn/jyxx/002002/002002001/20260305/f294e07c-bfb6-4c63-bdd8-60f7b405ef58\\.html$"
+    },
+    {
+      "pattern": "^https://findbiz\\.nat\\.gov\\.tw/?$"
+    }
+  ],
+  "httpHeaders": [
+    {
+      "urls": [
+        "https://",
+        "http://"
+      ],
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0"
       }
-    ],
-    "httpHeaders": [
-      {
-        "urls": ["https://", "http://"],
-        "headers": {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

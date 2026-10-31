@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>. The search database is generated automatically
+Open `http://localhost:3000`. The search database is generated automatically
 before development and production builds.
 
 ```bash
