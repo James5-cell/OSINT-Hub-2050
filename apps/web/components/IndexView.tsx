@@ -1,109 +1,64 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Search, CheckCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import ResourceSearchBox from "./ResourceSearchBox";
 import KeywordChips from "./KeywordChips";
+
 export default function IndexView() {
   const { locale } = useLocale();
   const zh = locale === "zh-TW";
+  const paths = [
+    {
+      href: "/learn",
+      title: zh ? "認識公開資訊查證" : "Learn the basics",
+      description: zh ? "了解如何選擇來源、比較線索和記錄證據。" : "Learn how to choose sources, compare clues and record evidence.",
+    },
+    {
+      href: "/tasks",
+      title: zh ? "跟著任務練習" : "Work through a task",
+      description: zh ? "從公司登記、舊照片等常見問題開始。" : "Practise with common questions, from company records to old images.",
+    },
+    {
+      href: "/directory",
+      title: zh ? "瀏覽工具目錄" : "Browse the directory",
+      description: zh ? "搜尋工具名稱，或依費用和使用條件篩選。" : "Search by name or filter resources by access and experience.",
+    },
+  ];
   return (
     <div className="resource-home mx-auto w-full max-w-5xl px-5">
       <section className="resource-hero">
-        <p className="resource-eyebrow">
-          {zh
-            ? "公開資訊 · 查證方法 · 實用資源"
-            : "Public information. Useful resources. Better questions."}
-        </p>
-        <h1>
-          {zh ? (
-            <>
-              用公開資訊，
-              <br />
-              <span>找到查證的起點。</span>
-            </>
-          ) : (
-            <>
-              Find a starting point.
-              <br />
-              <span>Follow the public information.</span>
-            </>
-          )}
-        </h1>
+        <h1>{zh ? "從公開資訊開始查證。" : "Find the right place to start your research."}</h1>
         <p className="resource-lead">
           {zh
-            ? "輸入你想了解的對象，我們幫你找到適合的網站，並告訴你怎麼開始。"
-            : "Tell us what you want to research. Find useful websites, understand what they offer, and learn how to start."}
+            ? "輸入想查證的對象，找到合適的公開資源，了解如何開始。"
+            : "Find public sources for your question, understand what they offer and learn how to use them."}
         </p>
         <ResourceSearchBox />
         <div className="resource-popular">
-          <span>{zh ? "從這裡開始" : "Start with"}</span>
+          <span>{zh ? "或從這裡開始" : "Or start with"}</span>
           <KeywordChips />
         </div>
         <p className="resource-small">
           {zh
-            ? "這裡推薦公開資源，不會替你搜尋個人或公司的實際資料。"
-            : "We recommend public resources. We do not look up people or companies for you."}
+            ? "本站推薦資源，不會替你搜尋個人或公司的實際資料。"
+            : "This site recommends resources; it does not look up people or companies for you."}
         </p>
       </section>
-      <section
-        className="resource-how"
-        aria-label={zh ? "使用方法" : "How it works"}
-      >
-        {[
-          {
-            icon: Search,
-            title: zh ? "說出你想查什麼" : "Start with a question",
-            text: zh
-              ? "公司、人名、圖片或網址，不需要先懂專業術語。"
-              : "A company, person, image or website. No specialist terminology needed.",
-          },
-          {
-            icon: ArrowRight,
-            title: zh ? "找到合適的入口" : "Choose a useful source",
-            text: zh
-              ? "了解推薦理由、適用範圍和第一步操作。"
-              : "See why a resource fits, where it applies and how to use it.",
-          },
-          {
-            icon: CheckCheck,
-            title: zh ? "比較線索，再下結論" : "Compare before concluding",
-            text: zh
-              ? "核對不同來源，分清楚線索和已證實的資訊。"
-              : "Check independent sources and distinguish a lead from a verified fact.",
-          },
-        ].map(({ icon: Icon, title, text }) => (
-          <article key={title}>
-            <Icon size={22} aria-hidden="true" />
-            <h2>{title}</h2>
-            <p>{text}</p>
-          </article>
-        ))}
-      </section>
-      <section className="resource-intro-card">
-        <BookOpen size={30} aria-hidden="true" />
-        <div>
-          <h2>{zh ? "第一次聽說 OSINT？" : "New to OSINT?"}</h2>
-          <p>
-            {zh
-              ? "OSINT 是利用公開資訊進行查找、核實和分析。從一個簡單案例開始，了解它能做什麼。"
-              : "Open-source intelligence means finding, verifying and analysing publicly available information. Learn with a simple example."}
-          </p>
+      <section className="resource-paths" aria-labelledby="explore-heading">
+        <div className="resource-paths-heading">
+          <h2 id="explore-heading">{zh ? "繼續探索" : "Explore further"}</h2>
+          <p>{zh ? "選擇適合你的下一步。" : "Choose the next step that suits you."}</p>
         </div>
-        <Link className="resource-secondary" href="/learn">
-          {zh ? "認識 OSINT" : "Learn the basics"}
-          <ArrowRight size={18} aria-hidden="true" />
-        </Link>
+        <div>
+          {paths.map((path) => (
+            <Link href={path.href} className="resource-path" key={path.href}>
+              <span><strong>{path.title}</strong><span>{path.description}</span></span>
+              <ArrowRight size={19} aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
       </section>
-      <section className="resource-intro-card mt-6"><div><h2>{zh ? "有問題，但不知道怎麼查？" : "Have a question but need a method?"}</h2><p>{zh ? "公司登記、舊照片、新聞說法或網站歷史，跟著任務一步步查證。" : "Work through company records, old images, news claims or website history."}</p></div><Link className="resource-secondary" href="/tasks">{zh ? "選一個查證任務" : "Choose a research task"}<ArrowRight size={18}/></Link></section>
-      <p className="resource-directory-link">
-        <Link href="/directory">
-          {zh
-            ? "已經知道要找什麼？瀏覽完整工具目錄"
-            : "Already know what you need? Browse the resource directory"}{" "}
-          <ArrowRight size={15} aria-hidden="true" />
-        </Link>
-      </p>
     </div>
   );
 }

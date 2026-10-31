@@ -77,9 +77,6 @@ export default function ResourceFinder({
   return (
     <main className="resource-finder mx-auto w-full max-w-5xl flex-1 px-5 py-10 sm:py-14">
       <header className="mb-7">
-        <p className="resource-eyebrow">
-          {zh ? "OSINT 公開資源導航" : "OSINT resource navigator"}
-        </p>
         <h1 className="text-3xl sm:text-4xl mb-3">
           {directory
             ? zh
@@ -138,7 +135,7 @@ export default function ResourceFinder({
                 <button
                   className="resource-chip"
                   aria-pressed={!goal}
-                  onClick={() => update({ intent: intent.id, goal: "all" })}
+                  onClick={() => update({ intent: intent.id, goal: "all", role: null })}
                 >
                   {zh ? "所有目的" : "All goals"}
                 </button>
@@ -149,7 +146,7 @@ export default function ResourceFinder({
                       key={g.id}
                       className="resource-chip"
                       aria-pressed={goal === g.id}
-                      onClick={() => update({ intent: intent.id, goal: g.id })}
+                      onClick={() => update({ intent: intent.id, goal: g.id, role: null })}
                     >
                       {g.label[locale]}
                     </button>
@@ -171,7 +168,7 @@ export default function ResourceFinder({
                   <button
                     className="resource-chip"
                     key={i.id}
-                    onClick={() => update({ intent: i.id, goal: null })}
+                    onClick={() => update({ intent: i.id, goal: null, role: null })}
                   >
                     {i.label[locale]}
                   </button>
@@ -262,7 +259,7 @@ export default function ResourceFinder({
                 : zh
                   ? "適合的資源"
                   : "Useful resources"}{" "}
-              <span className="resource-muted">({results.length})</span>
+              <span className="resource-muted">({visibleResults.length})</span>
             </h2>
             {hasSearch && (
               <p className="resource-small">
@@ -296,6 +293,7 @@ export default function ResourceFinder({
                       goal: "all",
                       direct: null,
                       known: null,
+                      role: null,
                     })
                   }
                 >

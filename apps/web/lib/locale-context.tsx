@@ -19,11 +19,13 @@ export type DefaultStartView = "index" | "workflows" | "search";
 
 export interface AppSettings {
   showFullEthicalGuidance: boolean;
+  showMascot: boolean;
   defaultStartView:        DefaultStartView;
 }
 
 const DEFAULT_SETTINGS: AppSettings = {
   showFullEthicalGuidance: true,
+  showMascot: false,
   defaultStartView:        "index",
 };
 

@@ -6,7 +6,7 @@ import type { Tool, FilterState } from "@/lib/types";
 import { EMPTY_FILTERS } from "@/lib/types";
 import { useLocale } from "@/lib/locale-context";
 import { t } from "@/lib/i18n";
-import { allTools, allTags, allPlatforms } from "@/lib/tools";
+import { allTools } from "@/lib/tools";
 import { searchTools, buildSearchIndex } from "@/lib/search";
 import { applyFilters, countActiveFilters } from "@/lib/filters";
 import { getCategoryById, filterCategoryTools } from "@/lib/categories";
@@ -37,6 +37,9 @@ export default function CategoryView({ categoryId, onBack, onDetails }: Category
     () => (category ? filterCategoryTools(allTools, category) : []),
     [category]
   );
+
+  const availableTags = useMemo(() => Array.from(new Set(baseTools.flatMap((tool) => tool.tags ?? []))).sort(), [baseTools]);
+  const availablePlatforms = useMemo(() => Array.from(new Set(baseTools.flatMap((tool) => tool.platforms ?? []))).sort(), [baseTools]);
 
   useEffect(() => { buildSearchIndex(baseTools); }, [baseTools]);
 
@@ -78,16 +81,16 @@ export default function CategoryView({ categoryId, onBack, onDetails }: Category
         <h1 className="text-3xl font-semibold mb-2" style={{ color: "var(--text)" }}>
           {categoryName}
         </h1>
-        <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+        <p className="resource-muted">
           {categoryDetail}
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-4">
-          <span className="text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--muted)" }}>
+          <span className="text-sm" style={{ color: "var(--muted)" }}>
             {t(dict.common.toolsCountInCategory, { n: baseTools.length })}
           </span>
           <div className="flex flex-wrap gap-1.5">
             {category.targetTypes.map((t) => (
-              <Chip key={t} label={t} />
+              <Chip key={t} label={dict.labels.targets[t] ?? t} />
             ))}
           </div>
         </div>
@@ -96,7 +99,7 @@ export default function CategoryView({ categoryId, onBack, onDetails }: Category
       {/* Recommended tools */}
       {recommended.length > 0 && (
         <div className="mb-8 rounded-md p-4" style={{ background: "var(--card)", border: "1px solid var(--border)" }}>
-          <p className="text-xs mb-3" style={{ fontFamily: "var(--font-mono)", color: "var(--muted)", fontSize: "0.6rem", textTransform: "uppercase", letterSpacing: "0.12em" }}>
+          <p className="text-xs mb-3" style={{ color: "var(--muted)", fontSize: "1rem" }}>
             {dict.common.recommendedStarts}
           </p>
           <div className="flex flex-wrap gap-2">
@@ -106,8 +109,8 @@ export default function CategoryView({ categoryId, onBack, onDetails }: Category
                 type="button"
                 onClick={() => onDetails(tool)}
                 aria-label={`${dict.tool.inspect} ${tool.name}`}
-                className="flex items-center gap-1.5 rounded px-2.5 py-1 text-xs transition-all"
-                style={{ fontFamily: "var(--font-mono)", background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}
+                className="flex items-center gap-1.5 rounded px-3 min-h-11 text-sm transition-all"
+                style={{ background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}
                 onMouseOver={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "var(--accent-dim)"; el.style.color = "var(--accent)"; }}
                 onMouseOut={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "var(--border)"; el.style.color = "var(--text)"; }}
               >
@@ -122,13 +125,13 @@ export default function CategoryView({ categoryId, onBack, onDetails }: Category
       {/* Search + Filters */}
       <div className="flex items-start gap-2 mb-4">
         <ToolSearch value={query} onChange={setQuery} />
-        <ToolFilters filters={filters} onChange={setFilters} availableTags={allTags} availableTargetTypes={category.targetTypes} availablePlatforms={allPlatforms} />
+        <ToolFilters filters={filters} onChange={setFilters} availableTags={availableTags} availableTargetTypes={category.targetTypes} availablePlatforms={availablePlatforms} />
       </div>
 
       <ActiveFilters query={query} filters={filters} onClearQuery={() => setQuery("")} onUpdateFilters={setFilters} />
 
       <div className="mb-5 flex items-center justify-between" aria-live="polite" aria-atomic="true">
-        <p className="text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--muted)" }}>
+        <p className="text-sm" style={{ color: "var(--muted)" }}>
           <span style={{ color: "var(--accent)" }}>{filteredTools.length}</span> / {baseTools.length} {dict.search.tools.toLowerCase()}
           {(hasQuery || activeCount > 0) && (
             <button type="button" onClick={() => { setQuery(""); setFilters(EMPTY_FILTERS); }} className="ml-3 transition-colors" style={{ color: "var(--muted)" }} onMouseOver={(e) => (e.currentTarget.style.color = "var(--danger)")} onMouseOut={(e) => (e.currentTarget.style.color = "var(--muted)")}>
@@ -156,7 +159,7 @@ function ViewShell({
   const { dict } = useLocale();
 
   return (
-    <main className="flex-1 animate-fade-in">
+    <div className="category-view flex-1">
       <div className="border-b" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
         <div className="mx-auto max-w-screen-xl px-5 py-3 flex items-center gap-3">
           <button
@@ -179,14 +182,14 @@ function ViewShell({
       </div>
 
       <div className="mx-auto max-w-screen-xl px-5 py-10">{children}</div>
-    </main>
+    </div>
   );
 }
 
 function EmptyMessage({ title, message }: { title: string; message: string }) {
   return (
     <div className="py-16 text-center">
-      <p className="text-2xl font-semibold mb-2" style={{ color: "var(--text)" }}>{title}</p>
+      <h1 className="text-2xl font-semibold mb-2" style={{ color: "var(--text)" }}>{title}</h1>
       <p className="text-sm" style={{ color: "var(--muted)" }}>{message}</p>
     </div>
   );
@@ -201,7 +204,7 @@ function Chip({ label }: { label: string }) {
         background:  "var(--accent-faint)",
         color:       "var(--accent-dim)",
         border:      "1px solid rgba(125,211,252,0.12)",
-        fontSize:    "0.6rem",
+        fontSize:    "0.9rem",
       }}
     >
       {label}

@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useDialogFocus } from "@/lib/use-dialog-focus";
 import { X } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import { useTheme } from "@/lib/theme-context";
@@ -14,44 +15,7 @@ export default function SettingsPanel({
   const { theme, setTheme } = useTheme();
   const zh = locale === "zh-TW";
   const panel = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.activeElement as HTMLElement | null;
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    panel.current?.focus();
-    function keydown(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
-      if (e.key !== "Tab") return;
-      const elements = panel.current?.querySelectorAll<HTMLElement>(
-        "button, input, select, a[href]",
-      );
-      if (!elements?.length) return;
-      const first = elements[0],
-        last = elements[elements.length - 1];
-      if (
-        e.shiftKey &&
-        (document.activeElement === first ||
-          document.activeElement === panel.current)
-      ) {
-        e.preventDefault();
-        last.focus();
-      } else if (
-        !e.shiftKey &&
-        (document.activeElement === last ||
-          document.activeElement === panel.current)
-      ) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-    document.addEventListener("keydown", keydown);
-    return () => {
-      document.body.style.overflow = overflow;
-      document.removeEventListener("keydown", keydown);
-      previous?.focus();
-    };
-  }, [open, onClose]);
+  useDialogFocus(open, panel, onClose);
   if (!open) return null;
   return (
     <div
@@ -74,25 +38,24 @@ export default function SettingsPanel({
           borderLeft: "1px solid var(--border)",
         }}
       >
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-5">
           <h2 id="settings-heading" className="text-2xl">
             {zh ? "設定" : "Settings"}
           </h2>
           <button
-            className="resource-secondary"
+            className="settings-close"
             aria-label={zh ? "關閉設定" : "Close settings"}
             onClick={onClose}
           >
             <X size={20} />
           </button>
         </div>
-        <fieldset className="mb-8">
-          <legend className="text-lg mb-3">{zh ? "外觀" : "Appearance"}</legend>
-          <div className="resource-chips">
+        <fieldset className="settings-section">
+          <legend >{zh ? "外觀" : "Appearance"}</legend>
+          <div className="settings-options">
             {(["dark", "light"] as const).map((t) => (
               <button
                 key={t}
-                className="resource-chip"
                 aria-pressed={theme === t}
                 onClick={() => setTheme(t)}
               >
@@ -101,13 +64,12 @@ export default function SettingsPanel({
             ))}
           </div>
         </fieldset>
-        <fieldset className="mb-8">
-          <legend className="text-lg mb-3">{zh ? "語言" : "Language"}</legend>
-          <div className="resource-chips">
+        <fieldset className="settings-section">
+          <legend >{zh ? "語言" : "Language"}</legend>
+          <div className="settings-options">
             {(["en", "zh-TW"] as const).map((l) => (
               <button
                 key={l}
-                className="resource-chip"
                 aria-pressed={locale === l}
                 onClick={() => setLocale(l)}
               >
@@ -116,9 +78,17 @@ export default function SettingsPanel({
             ))}
           </div>
         </fieldset>
-        <label className="flex items-start gap-3 min-h-11">
+        <div className="settings-section">
+        <label className="settings-check">
           <input
-            className="mt-1 w-5 h-5"
+            type="checkbox"
+            checked={settings.showMascot}
+            onChange={(e) => updateSettings({ showMascot: e.target.checked })}
+          />
+          <span>{zh ? "顯示桌寵" : "Show mascot"}</span>
+        </label>
+        <label className="settings-check">
+          <input
             type="checkbox"
             checked={settings.showFullEthicalGuidance}
             onChange={(e) =>
@@ -131,6 +101,7 @@ export default function SettingsPanel({
               : "Show full usage guidance in resource details"}
           </span>
         </label>
+        </div>
       </div>
     </div>
   );

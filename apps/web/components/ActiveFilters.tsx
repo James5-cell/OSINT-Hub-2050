@@ -2,6 +2,7 @@
 
 import type { FilterState } from "@/lib/types";
 import { countActiveFilters } from "@/lib/filters";
+import { useLocale } from "@/lib/locale-context";
 
 interface ActiveFiltersProps {
   query?: string;
@@ -16,6 +17,7 @@ export default function ActiveFilters({
   onClearQuery,
   onUpdateFilters,
 }: ActiveFiltersProps) {
+  const { dict } = useLocale();
   const activeCount = countActiveFilters(filters);
   const hasQuery = (query ?? "").trim().length > 0;
 
@@ -33,7 +35,7 @@ export default function ActiveFilters({
       {filters.target_types.map((t) => (
         <Chip
           key={`t-${t}`}
-          label={t}
+          label={dict.labels.targets[t] ?? t}
           onRemove={() =>
             onUpdateFilters({
               ...filters,
@@ -45,7 +47,7 @@ export default function ActiveFilters({
       {filters.pricing.map((p) => (
         <Chip
           key={`p-${p}`}
-          label={p}
+          label={dict.labels.pricing[p] ?? p}
           onRemove={() =>
             onUpdateFilters({
               ...filters,
@@ -57,7 +59,7 @@ export default function ActiveFilters({
       {filters.difficulty.map((d) => (
         <Chip
           key={`d-${d}`}
-          label={d}
+          label={dict.labels.difficulty[d] ?? d}
           onRemove={() =>
             onUpdateFilters({
               ...filters,
@@ -69,7 +71,7 @@ export default function ActiveFilters({
       {filters.platforms.map((pl) => (
         <Chip
           key={`pl-${pl}`}
-          label={pl}
+          label={dict.labels.platforms[pl] ?? pl}
           onRemove={() =>
             onUpdateFilters({
               ...filters,
@@ -103,12 +105,13 @@ function Chip({
   onRemove: () => void;
   variant?: "filter" | "query";
 }) {
+  const { locale } = useLocale();
   return (
     <button
       type="button"
       onClick={onRemove}
-      aria-label={`Remove ${variant === "query" ? "search" : "filter"}: ${label}`}
-      className="flex items-center gap-1.5 rounded px-2 py-0.5 transition-all"
+      aria-label={locale === "zh-TW" ? `移除${variant === "query" ? "搜尋" : "篩選"}：${label}` : `Remove ${variant === "query" ? "search" : "filter"}: ${label}`}
+      className="flex items-center gap-1.5 rounded px-3 min-h-11 transition-all"
       style={{
         fontFamily: "var(--font-mono)",
         background: variant === "query" ? "var(--surface)" : "var(--accent-faint)",
@@ -116,7 +119,7 @@ function Chip({
         border:     variant === "query"
           ? "1px solid var(--border)"
           : "1px solid rgba(125,211,252,0.2)",
-        fontSize: "0.65rem",
+        fontSize: "0.9rem",
       }}
       onMouseOver={(e) => {
         (e.currentTarget as HTMLButtonElement).style.borderColor =

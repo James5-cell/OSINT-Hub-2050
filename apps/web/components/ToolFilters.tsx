@@ -1,7 +1,7 @@
 "use client";
 
 import { SlidersHorizontal, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type {
   FilterState,
   Pricing,
@@ -34,7 +34,7 @@ function FilterGroup<T extends string>({
         style={{
           fontFamily: "var(--font-mono)",
           color: "var(--muted)",
-          fontSize: "0.6rem",
+          fontSize: "0.85rem",
           textTransform: "uppercase",
           letterSpacing: "0.12em",
         }}
@@ -50,7 +50,7 @@ function FilterGroup<T extends string>({
               type="button"
               aria-pressed={active}
               onClick={() => onToggle(opt)}
-              className="rounded px-2 py-0.5 text-xs transition-all"
+              className="rounded px-3 min-h-11 text-sm transition-all"
               style={{
                 fontFamily: "var(--font-mono)",
                 background: active ? "var(--accent-faint)" : "var(--surface)",
@@ -58,7 +58,7 @@ function FilterGroup<T extends string>({
                 border:     active
                   ? "1px solid var(--accent-dim)"
                   : "1px solid var(--border)",
-                fontSize: "0.65rem",
+                fontSize: "0.9rem",
               }}
             >
               {labels[opt]}
@@ -93,8 +93,17 @@ export default function ToolFilters({
   availableTargetTypes,
   availablePlatforms,
 }: ToolFiltersProps) {
-  const { dict } = useLocale();
+  const { dict, locale } = useLocale();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") { setOpen(false); toggleRef.current?.focus(); }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
   const activeCount = countActiveFilters(filters);
 
   function update<K extends keyof FilterState>(
@@ -112,10 +121,11 @@ export default function ToolFilters({
       {/* Toggle */}
       <button
         type="button"
+        ref={toggleRef}
         aria-expanded={open}
-        aria-label={`Filters${activeCount > 0 ? `, ${activeCount} active` : ""}`}
+        aria-label={locale === "zh-TW" ? `篩選${activeCount > 0 ? `，已啟用 ${activeCount} 項` : ""}` : `Filters${activeCount > 0 ? `, ${activeCount} active` : ""}`}
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded px-3 py-2 text-xs transition-all"
+        className="flex items-center gap-2 rounded min-h-11 px-3 py-2 text-sm transition-all"
         style={{
           fontFamily: "var(--font-mono)",
           background:   open || activeCount > 0 ? "var(--accent-faint)" : "var(--surface)",
@@ -145,11 +155,13 @@ export default function ToolFilters({
       {/* Dropdown */}
       {open && (
         <div
-          className="absolute right-0 top-full z-30 mt-2 w-80 rounded-md animate-fade-in"
+          className="absolute right-0 top-full z-30 mt-2 rounded-md animate-fade-in overflow-y-auto"
           style={{
             background: "var(--panel)",
             border: "1px solid var(--border)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.7)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+            width: "min(20rem, calc(100vw - 2.5rem))",
+            maxHeight: "min(70vh, 40rem)",
           }}
           role="dialog"
           aria-label={dict.search.filters}
@@ -164,7 +176,7 @@ export default function ToolFilters({
               style={{
                 fontFamily: "var(--font-mono)",
                 color: "var(--muted)",
-                fontSize: "0.6rem",
+                fontSize: "0.85rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
               }}
@@ -191,7 +203,7 @@ export default function ToolFilters({
               )}
               <button
                 type="button"
-                aria-label="Close filter panel"
+                aria-label={locale === "zh-TW" ? "關閉篩選" : "Close filter panel"}
                 onClick={() => setOpen(false)}
                 style={{ color: "var(--muted)" }}
                 onMouseOver={(e) =>
@@ -243,7 +255,7 @@ export default function ToolFilters({
                   style={{
                     fontFamily: "var(--font-mono)",
                     color: "var(--muted)",
-                    fontSize: "0.6rem",
+                    fontSize: "0.85rem",
                     textTransform: "uppercase",
                     letterSpacing: "0.12em",
                   }}
@@ -259,7 +271,7 @@ export default function ToolFilters({
                         type="button"
                         aria-pressed={active}
                         onClick={() => update("tags", tag)}
-                        className="rounded px-2 py-0.5 transition-all"
+                        className="rounded px-3 min-h-11 transition-all"
                         style={{
                           fontFamily: "var(--font-mono)",
                           background: active ? "var(--accent-faint)" : "var(--surface)",
@@ -267,7 +279,7 @@ export default function ToolFilters({
                           border:     active
                             ? "1px solid var(--accent-dim)"
                             : "1px solid var(--border)",
-                          fontSize: "0.65rem",
+                          fontSize: "0.9rem",
                         }}
                       >
                         {tag}

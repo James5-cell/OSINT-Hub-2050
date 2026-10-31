@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 
   return buildPageMetadata({
-    title: `${wf.title} — OSINT Hub`,
+    title: wf.title,
     description: wf.summary,
     path: `/workflows/${id}`,
     ogTitle: `${wf.title} — OSINT Hub`,

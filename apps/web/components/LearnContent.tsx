@@ -42,9 +42,6 @@ export default function LearnContent() {
   ];
   return (
     <main className="resource-learn mx-auto w-full max-w-4xl flex-1 px-5 py-12">
-      <p className="resource-eyebrow">
-        {zh ? "從零開始" : "Start with the basics"}
-      </p>
       <h1 className="text-3xl sm:text-4xl mb-5">
         {zh
           ? "公開資訊，怎麼變成可靠的判斷？"
@@ -61,9 +58,8 @@ export default function LearnContent() {
           : "Publicly available information is not automatically accurate or unrestricted in use. This site helps you find sources and methods; conclusions still depend on the evidence."}
       </p>
       <section className="resource-lesson-grid mt-10">
-        {lessons.map((lesson, i) => (
+        {lessons.map((lesson) => (
           <article key={lesson.title}>
-            <span className="resource-eyebrow">0{i + 1}</span>
             <h2 className="text-xl mt-2 mb-3">{lesson.title}</h2>
             <p className="resource-muted">{lesson.text}</p>
           </article>

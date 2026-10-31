@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useRef } from "react";
+import { useDialogFocus } from "@/lib/use-dialog-focus";
 import {
   X,
   ExternalLink,
@@ -41,7 +42,7 @@ function FieldRow({ label, children }: { label: string; children: React.ReactNod
         style={{
           fontFamily: "var(--font-mono)",
           color: "var(--faint)",
-          fontSize: "0.6rem",
+          fontSize: "0.85rem",
           textTransform: "uppercase",
           letterSpacing: "0.1em",
         }}
@@ -61,21 +62,8 @@ interface ToolDetailPanelProps {
 export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps) {
   const { locale, dict, settings } = useLocale();
   const showFullEthics = settings.showFullEthicalGuidance;
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); },
-    [onClose]
-  );
-
-  useEffect(() => {
-    if (tool) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [tool, handleKeyDown]);
+  const panel = useRef<HTMLDivElement>(null);
+  useDialogFocus(Boolean(tool), panel, onClose);
 
   if (!tool) return null;
 
@@ -91,10 +79,12 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
 
       {/* Panel */}
       <div
+        ref={panel}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label={`${tool.name} — ${dict.search.viewDetails}`}
-        className="fixed right-0 top-0 bottom-0 z-50 flex flex-col w-full max-w-lg animate-panel-in overflow-hidden"
+        className="resource-detail-panel fixed right-0 top-0 bottom-0 z-50 flex flex-col w-full max-w-lg animate-panel-in overflow-hidden"
         style={{
           background: "var(--panel)",
           borderLeft: "1px solid var(--border)",
@@ -113,7 +103,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                 style={{
                   fontFamily: "var(--font-mono)",
                   color: "var(--faint)",
-                  fontSize: "0.6rem",
+                  fontSize: "0.85rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
                 }}
@@ -129,7 +119,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
             type="button"
             aria-label={dict.common.closePanel}
             onClick={onClose}
-            className="rounded p-1.5 transition-colors shrink-0"
+            className="rounded min-w-11 min-h-11 flex items-center justify-center transition-colors shrink-0"
             style={{ color: "var(--muted)" }}
             onMouseOver={(e) => (e.currentTarget.style.color = "var(--text)")}
             onMouseOut={(e) => (e.currentTarget.style.color = "var(--muted)")}
@@ -168,7 +158,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                   </p>
                   <p
                     className="text-xs leading-relaxed"
-                    style={{ color: "rgba(249,115,22,0.75)" }}
+                    style={{ color: "var(--text)" }}
                   >
                     {tool.ethics_note ?? dict.tool.legalNote}
                   </p>
@@ -194,7 +184,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                   style={{
                     fontFamily: "var(--font-mono)",
                     color:      "var(--danger)",
-                    fontSize:   "0.65rem",
+                    fontSize:   "0.85rem",
                     textTransform: "uppercase",
                     letterSpacing: "0.06em",
                   }}
@@ -212,7 +202,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
               style={{
                 fontFamily: "var(--font-mono)",
                 color: "var(--faint)",
-                fontSize: "0.6rem",
+                fontSize: "0.85rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
               }}
@@ -234,7 +224,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                 style={{
                   fontFamily: "var(--font-mono)",
                   color: "var(--faint)",
-                  fontSize: "0.6rem",
+                  fontSize: "0.85rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
                 }}
@@ -309,7 +299,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                         background: "var(--surface)",
                         color: "var(--muted)",
                         border: "1px solid var(--border)",
-                        fontSize: "0.65rem",
+                        fontSize: "0.85rem",
                       }}
                     >
                       {dict.labels.targets[tt] ?? tt}
@@ -330,7 +320,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                         background: "var(--surface)",
                         color: "var(--muted)",
                         border: "1px solid var(--border)",
-                        fontSize: "0.65rem",
+                        fontSize: "0.85rem",
                       }}
                     >
                       {dict.labels.platforms[p] ?? p}
@@ -351,7 +341,7 @@ export default function ToolDetailPanel({ tool, onClose }: ToolDetailPanelProps)
                         background: "var(--accent-faint)",
                         color: "var(--accent-dim)",
                         border: "1px solid rgba(125,211,252,0.12)",
-                        fontSize: "0.65rem",
+                        fontSize: "0.85rem",
                       }}
                     >
                       {tag}

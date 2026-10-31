@@ -6,7 +6,6 @@ export default function AboutContent() {
   const zh = locale === "zh-TW";
   return (
     <main className="resource-learn mx-auto w-full max-w-3xl flex-1 px-5 py-12">
-      <p className="resource-eyebrow">OSINT Hub</p>
       <h1 className="text-3xl mb-6">
         {zh ? "關於這個專案" : "About this project"}
       </h1>

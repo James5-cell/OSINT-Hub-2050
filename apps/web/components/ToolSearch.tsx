@@ -31,7 +31,7 @@ export default function ToolSearch({ value, onChange }: ToolSearchProps) {
         placeholder={dict.search.placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded py-2 pl-9 pr-9 text-sm outline-none transition-colors"
+        className="w-full min-h-11 rounded py-2 pl-9 pr-9 text-sm transition-colors"
         style={{
           background: "var(--surface)",
           border: "1px solid var(--border)",
@@ -53,7 +53,7 @@ export default function ToolSearch({ value, onChange }: ToolSearchProps) {
             onChange("");
             inputRef.current?.focus();
           }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-0.5 transition-colors"
+          className="absolute right-1 top-1/2 -translate-y-1/2 rounded min-w-11 min-h-11 flex items-center justify-center transition-colors"
           style={{ color: "var(--muted)" }}
           onMouseOver={(e) => {
             e.currentTarget.style.color = "var(--text)";

@@ -2,6 +2,7 @@
 
 import { type CSSProperties, useRef, useState } from "react"
 import { mascotConfig } from "@/mascot.config"
+import { useLocale } from "@/lib/locale-context"
 import { type MascotSignal, type MascotSnapshot } from "./engine/player"
 import "./mascot.css"
 import { useMascotSenses } from "./engine/senses"
@@ -16,6 +17,12 @@ const initialSnapshot: MascotSnapshot = {
 }
 
 export default function OsintMascot() {
+  const { settings } = useLocale()
+  return settings.showMascot ? <ActiveMascot /> : null
+}
+
+function ActiveMascot() {
+  const { locale } = useLocale()
   const [snapshot, setSnapshot] = useState(initialSnapshot)
   const [theme, setTheme] = useState<"light" | "dark">("dark")
   const signalsRef = useRef<MascotSignal[]>([])
@@ -65,7 +72,7 @@ export default function OsintMascot() {
           enqueue({ type: "transition_end" })
       }}>
       <button ref={buttonRef} type="button" className="osint-mascot-button"
-        aria-label="與 OSINT Hub 桌寵互動"
+        aria-label={locale === "zh-TW" ? "與 OSINT Hub 桌寵互動" : "Interact with the OSINT Hub mascot"}
         onPointerEnter={() => enqueue({ type: "hover", anchorX: anchorX() })}
         onPointerLeave={() => enqueue({ type: "hover_leave" })}
         onClick={() => enqueue({ type: "tap", at: Date.now(), anchorX: anchorX() })}>

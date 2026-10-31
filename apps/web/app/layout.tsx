@@ -154,7 +154,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LocaleProvider>
             <SiteHeader />
-            {children}
+            <div id="main-content" tabIndex={-1} className="flex flex-col flex-1">{children}</div>
             <SiteFooter />
             <OsintMascot />
           </LocaleProvider>
